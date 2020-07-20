@@ -12,7 +12,6 @@ const headers = () => {
 
 
 const login = data => {
-    console.log(data)
   return fetch(`${API_ROOT}/login`,{
     method:"POST",
     headers: headers(),
@@ -27,9 +26,22 @@ const getCurrentUser = () => {
   }).then(res => res.json())
 };
 
+const createUser = data => {
+return fetch(`${API_ROOT}/users`,{
+  method:"POST",
+  headers: headers(),
+  body: JSON.stringify({"user":data})
+})
+.then(res => res.json())
+};
+
+
 export const api = {
   auth: {
     login,
     getCurrentUser
+  },
+  newUser: {
+    createUser
   }
 };

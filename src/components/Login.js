@@ -1,5 +1,7 @@
 import React from 'react';
 import {api} from '../services/api'
+import { Link } from 'react-router-dom'
+
 class Login extends React.Component {
   constructor() {
     super();
@@ -24,9 +26,7 @@ class Login extends React.Component {
       if (res.message === "Invalid username or password") {
         this.setState({error: true})
       } else {
-        console.log(res.message)
         this.props.onLogin(res)
-        console.log(this.props)
         this.props.history.push('/portfolio')
       }
     })
@@ -40,7 +40,7 @@ class Login extends React.Component {
         <div>
           <form onSubmit={this.handleSubmit}>
             <div>
-              <label>Username</label>
+              <label>Username </label>
               <input
                 name="username"
                 placeholder="username"
@@ -49,7 +49,7 @@ class Login extends React.Component {
               />
             </div>
             <div>
-              <label>Password</label>
+              <label>Password </label>
               <input
                 name="password"
                 type="password"
@@ -62,6 +62,7 @@ class Login extends React.Component {
               Login
             </button>
           </form>
+          New to Portfolio Practice? <Link className="" to="/signup">Signup</Link>
         </div>
       </div>
     );

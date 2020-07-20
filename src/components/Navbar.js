@@ -37,6 +37,8 @@ const Navbar = props => {
               <div>Sign In</div>
             </Link>
           )}
+        <div></div>
+
         </div>
       </div>
     );

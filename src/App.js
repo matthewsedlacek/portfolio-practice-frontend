@@ -32,7 +32,6 @@ class App extends React.Component {
   // receives username from login form matches to user object in fetched user array and sets
   // object to currentUser in localStorage as string
   login = data => { 
-    console.log(data.message)
     localStorage.setItem("token", data.jwt)
     this.setState({auth:{...this.state.auth, user:{id:data.user.id, username: data.user.username} }})
   };
@@ -53,18 +52,26 @@ class App extends React.Component {
   // }
 
   render(){
-    console.log('test','test')
     return (
         <div>
           <Navbar currentUser={this.state.auth.user} handleLogout={this.logout}/>
           <Switch>
           <div>
-          <div id="content">
+          <div>
             <Route
               exact
               path="/login"
               render={props => <Login {...props} onLogin={this.login} />}
             />
+              </div>
+              <div>
+              <Route
+              exact
+              path="/signup"
+              render={props => <Signup {...props} onLogin={this.login} />}
+            />
+
+              </div>
             {/* <Route exact path='/signup' component={ () => <Signup currentUser={activeUser} handleSignUp={this.handleSignUp}/>} /> */}
             {/* <Route exact path="/home" component={ () => <Home currentUser={activeUser}/>} /> */}
             {/* { localStorage.currentUser? <Route exact path="/profile" component={ () => <Profile currentUser={activeUser}/>} /> : null}
@@ -72,7 +79,6 @@ class App extends React.Component {
             { localStorage.currentUser? <Route exact path='/businessquestions' component={ () => <BusinessQuestions currentUser={activeUser} />} />: null}
             { localStorage.currentUser? <Route exact path='/createbusiness' component={() => <CreateBusiness currentUser={activeUser}/>} />: null}
             { localStorage.currentUser? <Redirect to='/home' /> : <Redirect to='/login' />} */}
-              </div>
             </div>
           </Switch>
         </div>
