@@ -19,7 +19,6 @@ const login = data => {
     body: JSON.stringify({"user":data})
   })
   .then(res => res.json())
-
 };
 
 const getCurrentUser = () => {

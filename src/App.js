@@ -32,11 +32,11 @@ class App extends React.Component {
   // receives username from login form matches to user object in fetched user array and sets
   // object to currentUser in localStorage as string
   login = data => { 
-    console.log(data)
+    console.log(data.message)
     localStorage.setItem("token", data.jwt)
-    debugger
     this.setState({auth:{...this.state.auth, user:{id:data.user.id, username: data.user.username} }})
   };
+
 
   logout = () => {
     localStorage.removeItem("token")
@@ -58,8 +58,8 @@ class App extends React.Component {
         <div>
           <Navbar currentUser={this.state.auth.user} handleLogout={this.logout}/>
           <Switch>
-          <div className="ui container grid">
-          <div id="content" className="sixteen wide column">
+          <div>
+          <div id="content">
             <Route
               exact
               path="/login"
