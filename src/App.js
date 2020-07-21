@@ -1,90 +1,100 @@
-import React from 'react';
+import React from "react";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { api } from "./services/api";
-import { Route, Switch } from "react-router-dom";
-import Profile from './containers/Profile'
-
-let activeUser = JSON.parse(localStorage.getItem('currentUser'))
+import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { Route} from "react-router-dom";
+import Profile from "./containers/Profile";
+import Portfolio from "./containers/Portfolio";
+import Trading from "./containers/Trading";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      loggedIn: false,
       auth: {
-        user: {}
-      }
+        user: {},
+      },
     };
   }
-  
-  componentDidMount() {
-    const token = localStorage.getItem("token")
-    if(token){
-      api.auth.getCurrentUser()
-      .then(user => {
-        this.setState({auth:{...this.state.auth, user:{id:user.id, username:user.username} }})
-      })
-    }
 
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      api.auth.getCurrentUser().then((data) => {
+        this.setState({
+          auth: {
+            ...this.state.auth,
+            user: { id: data.user.id, username: data.user.username },
+          },
+          loggedIn: true,
+        });
+      });
+    }
   }
 
-  // receives username from login form matches to user object in fetched user array and sets
-  // object to currentUser in localStorage as string
-  login = data => { 
-    localStorage.setItem("token", data.jwt)
-    this.setState({auth:{...this.state.auth, user:{id:data.user.id, username: data.user.username} }})
+  login = (data) => {
+    localStorage.setItem("token", data.jwt);
+    this.setState({
+      auth: {
+        ...this.state.auth,
+        user: { id: data.user.id, username: data.user.username },
+      },
+      loggedIn: true,
+    });
   };
-
 
   logout = () => {
-    localStorage.removeItem("token")
-    this.setState({auth:{user:{}}})
+    localStorage.removeItem("token");
+    this.setState({ auth: { user: {} }, loggedIn: false });
   };
 
-  // handleSignUp = (newUser) => {
-  //   let users = this.state.users;
-  //   let newUsers = [...users.push(newUser)]
-  //   console.log(newUsers, users)
-  //   this.setState({
-  //     users: newUsers
-  //   })
-  // }
-
-  render(){
+  render() {
     return (
-        <div>
-          <Navbar currentUser={this.state.auth.user} handleLogout={this.logout}/>
-          <Switch>
-          <div>
-          <div>
-            <Route
-              exact
-              path="/login"
-              render={props => <Login {...props} onLogin={this.login} />}
-            />
-              </div>
-              <div>
-              <Route
-              exact
-              path="/signup"
-              render={props => <Signup {...props} onLogin={this.login} />}
-            />
-
-              </div>
-            {/* <Route exact path='/signup' component={ () => <Signup currentUser={activeUser} handleSignUp={this.handleSignUp}/>} /> */}
-            {/* <Route exact path="/home" component={ () => <Home currentUser={activeUser}/>} /> */}
-            {/* { localStorage.currentUser? <Route exact path="/profile" component={ () => <Profile currentUser={activeUser}/>} /> : null}
-            { localStorage.currentUser? <Route exact path='/report' component={ () => <Report currentUser={activeUser} />} /> : null}
-            { localStorage.currentUser? <Route exact path='/businessquestions' component={ () => <BusinessQuestions currentUser={activeUser} />} />: null}
-            { localStorage.currentUser? <Route exact path='/createbusiness' component={() => <CreateBusiness currentUser={activeUser}/>} />: null}
-            { localStorage.currentUser? <Redirect to='/home' /> : <Redirect to='/login' />} */}
-            </div>
-          </Switch>
-        </div>
-    )
+      <div className="App">
+        <Router>
+          <Navbar
+            currentUser={this.state.auth.user}
+            handleLogout={this.logout}
+            loggedIn={this.state.loggedIn}
+          />
+          <Route
+            exact
+            path="/login"
+            render={(props) => <Login {...props} onLogin={this.login} />}
+          />
+          <Route
+            exact
+            path="/signup"
+            render={(props) => <Signup {...props} onLogin={this.login} />}
+          />
+          <Route
+            exact
+            path="/profile"
+            render={(props) => (
+              <Profile {...props} currentUser={this.state.auth.user} />
+            )}
+          />
+          <Route
+            exact
+            path="/portfolio"
+            render={(props) => (
+              <Portfolio {...props} currentUser={this.state.auth.user} />
+            )}
+          />
+          <Route
+            exact
+            path="/trading"
+            render={(props) => (
+              <Trading {...props} currentUser={this.state.auth.user} />
+            )}
+          />
+        </Router>
+      </div>
+    );
   }
 }
 
 export default App;
-

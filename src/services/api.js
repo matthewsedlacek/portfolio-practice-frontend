@@ -1,4 +1,5 @@
 const API_ROOT = `http://localhost:3000/api/v1`;
+const API = `http://localhost:3000/`;
 
 const token = () => localStorage.getItem("token");
 
@@ -20,10 +21,13 @@ const login = data => {
   .then(res => res.json())
 };
 
-const getCurrentUser = () => {
+const getCurrentUser = data => {
+  console.log(data)
   return fetch(`${API_ROOT}/profile`,{
+    method:"GET",
     headers:headers()
-  }).then(res => res.json())
+  })
+  .then(res => res.json())
 };
 
 const createUser = data => {
@@ -35,6 +39,24 @@ return fetch(`${API_ROOT}/users`,{
 .then(res => res.json())
 };
 
+const getPortfolios = () => {
+  return fetch(`${API}/portfolios/`, { headers: headers() }).then(res =>
+    res.json()
+  );
+};
+
+const getTransactions = () => {
+  return fetch(`${API}/transactions/`, { headers: headers() }).then(res =>
+    res.json()
+  );
+};
+
+const getStockPrices = () => {
+  return fetch(`${API}/stock_prices/`, { headers: headers() }).then(res =>
+    res.json()
+  );
+};
+
 
 export const api = {
   auth: {
@@ -43,5 +65,13 @@ export const api = {
   },
   newUser: {
     createUser
+  },
+  userData: {
+    getPortfolios,
+    getTransactions
+  },
+  stockPrices: {
+    getStockPrices
   }
+
 };

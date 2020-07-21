@@ -27,7 +27,7 @@ class Login extends React.Component {
         this.setState({error: true})
       } else {
         this.props.onLogin(res)
-        this.props.history.push('/portfolio')
+        this.props.history.push('/profile')
       }
     })
   };

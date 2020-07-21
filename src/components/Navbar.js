@@ -1,29 +1,30 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 
+
+// Styling
+const link = {
+  width: '100px',
+  padding: '12px',
+  margin: '0 6px 6px',
+  background: 'blue',
+  textDecoration: 'none',
+  textAlign: 'center',
+  color: 'white',
+}
+
 const Navbar = props => {
-    const currentUser = props.currentUser;
-    const loggedIn = !!props.currentUser.id;
+    // const currentUser = props.currentUser;
+    const loggedIn = props.loggedIn;
     return (
       <div>
-        <Link to="/">
           <h2>
             <div>Portfolio Practice</div>
+            {console.log(loggedIn)}
           </h2>
-        </Link>
-        <div>
-          <Link to="/portfolio">
-            Portfolio
-          </Link>
-          <Link to="/trading">
-            Trading
-          </Link>
-          {loggedIn ? (
-            <a>Welcome {currentUser.username}</a>
-          ) : null}
           {loggedIn ? (
             <a>
-              <div
+              <div style={link}
                 onClick={() => {
                   props.handleLogout();
                   props.history.push("/login");
@@ -33,10 +34,28 @@ const Navbar = props => {
               </div>
             </a>
           ) : (
-            <Link to="/login">
-              <div>Sign In</div>
+            <Link to="/login" exact style={link} activeStyle={{background: 'darkblue' }} >
+              Sign In
             </Link>
           )}
+        <div>
+          {loggedIn ? (
+            // <a>Welcome {currentUser.username}</a>
+            <React.Fragment>
+            <Link to="/profile" 
+            exact style={link} activeStyle={{background: 'darkblue' }}>
+            Home
+          </Link> 
+            <Link to="/portfolio"
+            exact style={link} activeStyle={{background: 'darkblue' }}>
+            Portfolios
+          </Link> 
+          <Link to="/trading"
+          exact style={link} activeStyle={{background: 'darkblue' }}>
+            Trade
+          </Link>
+            </React.Fragment>
+          ) : null}
         <div></div>
 
         </div>
