@@ -8,13 +8,23 @@ const Transaction = (props) => {
   } = props.transaction.stock_price;
 
   const { quantity } = props.transaction;
-  console.log(props.transaction.stock_price);
+  //   console.log(props.transaction.stock_price);
+
+  const { ticker, name } = props.transaction.stock_price.company;
+  console.log(props.transaction.stock_price.company);
+
+  //   const filterCompany = () => {
+  //     let companyInfo = "";
+  //     return props.companies.filter((selectedCompany) => {
+  //       const companyInfo = selectedCompany.id === props.transaction.stock_price;
+  //     });
+  //   };
 
   return (
     <Fragment>
       <tr>
-        <td>{company_id}</td>
-        <td>{company_id}</td>
+        <td>{ticker}</td>
+        <td>{name}</td>
         <td>{quantity}</td>
         <td>{current_price}</td>
         <td>{current_price}</td>

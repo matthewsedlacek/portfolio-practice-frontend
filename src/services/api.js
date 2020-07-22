@@ -60,6 +60,12 @@ const getStockPrices = () => {
   );
 };
 
+const getCompanies = () => {
+  return fetch(`${API}/companies/`, { headers: headers() }).then((res) =>
+    res.json()
+  );
+};
+
 export const api = {
   auth: {
     login,
@@ -74,5 +80,8 @@ export const api = {
   },
   stockPrices: {
     getStockPrices,
+  },
+  companyData: {
+    getCompanies,
   },
 };

@@ -6,7 +6,12 @@ const PortfolioCard = (props) => {
     // debugger;
     console.log(props);
     return props.portfolio.transactions.map((selectedTransaction) => {
-      return <Transaction transaction={selectedTransaction} />;
+      return (
+        <Transaction
+          transaction={selectedTransaction}
+          //   companies={props.companies}
+        />
+      );
     });
   };
 

@@ -11,6 +11,7 @@ class Portfolio extends React.Component {
   state = {
     portfolios: [],
     transactions: [],
+    companies: [],
     newPortfolio: {
       name: "",
       value: 0,
@@ -19,6 +20,7 @@ class Portfolio extends React.Component {
 
   componentDidMount() {
     this.fetchPortfolios();
+    // this.fetchCompanies();
   }
 
   fetchPortfolios = () => {
@@ -37,10 +39,20 @@ class Portfolio extends React.Component {
           currentUser={this.props.currentUser}
           key={soloPortfolio.id}
           portfolio={soloPortfolio}
+          companies={this.state.companies}
         />
       );
     });
   };
+
+  //   fetchCompanies = () => {
+  //     const token = localStorage.getItem("token");
+  //     if (token) {
+  //       api.companyData.getCompanies().then((data) => {
+  //         this.setState({ companies: data });
+  //       });
+  //     }
+  //   };
 
   handleChange = (e) => {
     const newFields = {
