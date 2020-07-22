@@ -1,27 +1,22 @@
-import React, { Fragment } from 'react'
-import {api} from '../services/api'
-import Portfolio from './Portfolio'
-import { Route} from "react-router-dom";
+import React, { Fragment } from "react";
+import { api } from "../services/api";
+import { Route } from "react-router-dom";
 
 class Profile extends React.Component {
-
-state = {
+  state = {
     awards: [],
     marketNews: [],
-    watchList: []
-}
+    watchList: [],
+  };
 
-render() {
-    console.log(this.props.currentUser)
+  render() {
     return (
-        <Fragment>
-            <h1>{this.props.currentUser.username}</h1>
-           {/* <Route exact path="/portfolio" render={props => <Portfolio {...props} currentUser={this.props.currentUser} />}/> */}
-    
-        </Fragment>
+      <Fragment>
+        <h1>Welcome {this.props.currentUser.username}</h1>
+        {/* <Route exact path="/portfolio" render={props => <Portfolio {...props} currentUser={this.props.currentUser} />}/> */}
+      </Fragment>
     );
-}
-
+  }
 }
 
 export default Profile;

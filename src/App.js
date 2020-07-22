@@ -24,6 +24,7 @@ class App extends React.Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.auth.getCurrentUser().then((data) => {
+        console.log(data);
         this.setState({
           auth: {
             ...this.state.auth,
