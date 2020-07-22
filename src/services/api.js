@@ -28,10 +28,16 @@ const getCurrentUser = (data) => {
 };
 
 const createUser = (data) => {
-  return fetch(`${API_ROOT}/users`, {
+  console.log(data);
+  return fetch(`${API_ROOT}/users/`, {
     method: "POST",
     headers: headers(),
-    body: JSON.stringify({ portfolio: data }),
+    body: JSON.stringify({
+      user: {
+        username: data.username,
+        password: data.password,
+      },
+    }),
   }).then((res) => res.json());
 };
 
