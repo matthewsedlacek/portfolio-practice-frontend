@@ -31,7 +31,7 @@ const createUser = (data) => {
   return fetch(`${API_ROOT}/users`, {
     method: "POST",
     headers: headers(),
-    body: JSON.stringify({ user: data }),
+    body: JSON.stringify({ portfolio: data }),
   }).then((res) => res.json());
 };
 
@@ -39,6 +39,19 @@ const getPortfolios = () => {
   return fetch(`${API}/portfolios/`, { headers: headers() }).then((res) =>
     res.json()
   );
+};
+
+const newPortfolio = (data, currentUser) => {
+  console.log(data);
+  return fetch(`${API}/portfolios`, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify({
+      name: data.name,
+      value: data.value,
+      user_id: currentUser.id,
+    }),
+  }).then((res) => res.json());
 };
 
 const getStockPrices = () => {
@@ -57,6 +70,7 @@ export const api = {
   },
   userData: {
     getPortfolios,
+    newPortfolio,
   },
   stockPrices: {
     getStockPrices,

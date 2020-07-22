@@ -2,6 +2,7 @@ import React from "react";
 import { api } from "../services/api";
 import "../stylesheets/Portfolio.css";
 import PortfolioCard from "../components/PortfolioCard";
+import Trading from "./Trading";
 import AddPortfolioForm from "../components/AddPortfolioForm";
 
 const API = `http://localhost:3000/`;
@@ -10,7 +11,10 @@ class Portfolio extends React.Component {
   state = {
     portfolios: [],
     transactions: [],
-    newPortfolio: [],
+    newPortfolio: {
+      name: "",
+      value: 0,
+    },
   };
 
   componentDidMount() {
@@ -39,32 +43,21 @@ class Portfolio extends React.Component {
   };
 
   handleChange = (e) => {
-    let addPortfolio = this.state.singleTransaction;
-    this.setState({
-      newPortfolio: {
-        ...addPortfolio,
-        [e.target.name]: e.target.value,
-      },
-    });
+    const newFields = {
+      ...this.state.newPortfolio,
+      [e.target.name]: e.target.value,
+    };
+    this.setState({ newPortfolio: newFields });
   };
 
-  handleSubmit = () => {
-    console.log(this.state.newPortfolio);
-    const configObject = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name: this.state.newPortfolio.title,
-        value: this.state.newPortfolio.value,
-        user_id: this.props.currentUser.id,
-      }),
-    };
-    fetch(`${API}`, configObject)
-      .then((response) => response.json())
-      .then((data) => this.fetchPortfolios());
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.props.currentUser);
+    api.userData
+      .newPortfolio(this.state.newPortfolio, this.props.currentUser)
+      .then((res) => {
+        this.fetchPortfolios();
+      });
   };
 
   render() {
@@ -74,6 +67,10 @@ class Portfolio extends React.Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           newPortfolio={this.state.newPortfolio}
+        />
+        <Trading
+          portfolios={this.state.portfolios}
+          currentUser={this.props.currentUser}
         />
         {this.renderPortfolios()}
       </div>

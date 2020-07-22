@@ -19,14 +19,14 @@ class AddPortfolioForm extends Component {
           <div>
             <input
               type="text"
-              name="title"
+              name="name"
               placeholder="Portfolio Name"
               onChange={this.onChange}
               value={this.props.newPortfolio.title}
             />
             <input
               type="number"
-              name="amount"
+              name="value"
               placeholder="Amount"
               step="100.0"
               onChange={this.onChange}

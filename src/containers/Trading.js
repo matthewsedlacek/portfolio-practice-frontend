@@ -17,10 +17,6 @@ class Trading extends React.Component {
     }
   }
 
-  filterPortfolios = () => {
-    console.log(this.props.currentUser);
-  };
-
   render() {
     console.log(this.props);
     return (
