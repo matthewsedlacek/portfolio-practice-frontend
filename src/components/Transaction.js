@@ -11,7 +11,7 @@ const Transaction = (props) => {
   //   console.log(props.transaction.stock_price);
 
   const { ticker, name } = props.transaction.stock_price.company;
-  console.log(props.transaction.stock_price.company);
+  //   console.log(props.transaction.stock_price.company);
 
   //   const filterCompany = () => {
   //     let companyInfo = "";
