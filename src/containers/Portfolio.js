@@ -80,10 +80,10 @@ class Portfolio extends React.Component {
           handleSubmit={this.handleSubmit}
           newPortfolio={this.state.newPortfolio}
         />
-        <Trading
+        {/* <Trading
           portfolios={this.state.portfolios}
           currentUser={this.props.currentUser}
-        />
+        /> */}
         {this.renderPortfolios()}
       </div>
     );
