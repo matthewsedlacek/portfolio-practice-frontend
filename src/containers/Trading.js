@@ -15,17 +15,7 @@ class Trading extends React.Component {
   componentDidMount() {
     this.fetchPortfolios();
     this.fetchCompanies();
-    // this.fetchStockPrices();
   }
-
-  // fetchStockPrices = () => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     api.stockPrices.getStockPrices().then((data) => {
-  //       this.setState({ stockPrices: data });
-  //     });
-  //   }
-  // };
 
   fetchPortfolios = () => {
     const token = localStorage.getItem("token");
@@ -60,12 +50,9 @@ class Trading extends React.Component {
           portfolios={this.state.portfolios}
           stockPrices={this.state.stockPrices}
           onfilterCompanies={this.filterCompanies}
-        />
-        {/* will need to change companies to this.state.searchedCompanies after function is built */}
-        <StockList
-          // stockPrices={this.state.stockPrices}
           companies={this.state.searchedCompanies}
         />
+        <StockList companies={this.state.searchedCompanies} />
       </div>
     );
   }

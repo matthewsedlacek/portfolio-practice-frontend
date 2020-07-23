@@ -18,6 +18,12 @@ class OrderForm extends Component {
       <div>
         <form>
           <div>
+            Portfolio
+            <input
+              type="text"
+              placeholder="Portfolio"
+              option={this.props.portfolios}
+            />
             Name{" "}
             <input
               type="text"
@@ -26,11 +32,11 @@ class OrderForm extends Component {
             />
             Quantity{" "}
             <input
-              type="text"
-              name="name"
-              // placeholder="Portfolio Name"
+              type="number"
+              name="value"
+              placeholder="Amount"
+              step="1.0"
               // onChange={this.onChange}
-              // value={this.props.newPortfolio.title}
             />
           </div>
           <button type="submit">Buy</button>
