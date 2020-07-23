@@ -28,13 +28,6 @@ const StockCard = (props) => {
               {props.stock.percent_change}
             </span>
           </div>
-          <span>
-            <div>
-              <button>Buy</button>
-
-              <button>Sell</button>
-            </div>
-          </span>
         </div>
       </div>
     </div>

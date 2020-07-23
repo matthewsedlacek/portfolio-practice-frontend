@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+import Login from "./components/authorization/Login";
+import Signup from "./components/authorization/Signup";
 import { api } from "./services/api";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import { Route} from "react-router-dom";

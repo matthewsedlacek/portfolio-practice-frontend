@@ -1,42 +1,43 @@
-import React from 'react';
-import {api} from '../services/api'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { api } from "../../services/api";
+import { Link } from "react-router-dom";
 
-class Login extends React.Component {
+class Signup extends React.Component {
   constructor() {
     super();
     this.state = {
       error: false,
       fields: {
-        username: '',
-        password: ''
-      }
+        username: "",
+        password: "",
+      },
     };
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
     this.setState({ fields: newFields });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    api.auth.login(this.state.fields)
-    .then(res => {
-      if (res.message === "Invalid username or password") {
-        this.setState({error: true})
+    api.newUser.createUser(this.state.fields).then((res) => {
+      if (res.error === "failed to create user") {
+        this.setState({ error: true });
       } else {
-        this.props.onLogin(res)
-        this.props.history.push('/profile')
+        this.props.onLogin(res);
+        this.props.history.push("/profile");
       }
-    })
+    });
   };
 
   render() {
     const { fields } = this.state;
     return (
       <div>
-        {this.state.error ? <h1>Incorrect Password or Username. Please Try again...</h1> : null}
+        {this.state.error ? (
+          <h1>Username taken or Password not provided. Please Try again...</h1>
+        ) : null}
         <div>
           <form onSubmit={this.handleSubmit}>
             <div>
@@ -58,15 +59,16 @@ class Login extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <button type="submit">
-              Login
-            </button>
+            <button type="submit">Sign Up</button>
           </form>
-          New to Portfolio Practice? <Link className="" to="/signup">Signup</Link>
+          Already registered?{" "}
+          <Link className="" to="/login">
+            Log in
+          </Link>
         </div>
       </div>
     );
   }
 }
 
-export default Login;
+export default Signup;
