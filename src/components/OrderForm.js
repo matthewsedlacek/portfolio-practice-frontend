@@ -61,32 +61,34 @@ const OrderForm = (props) => {
         <div>
           Portfolio
           <input type="text" placeholder="Portfolio" />
-          Name{" "}
-          <input
-            type="text"
-            id="auto"
-            placeholder="Company Name"
-            onClick={() => setDisplay(!display)}
-            onChange={handleChange}
-            // onChange={(e) => setSearch(e.target.value)}
-            // onChange={(e) => handleFilter(e)}
-          />
-          {display && (
-            <div className="autoContainer">
-              {options.map((companyObject, i) => {
-                return (
-                  <div
-                    onClick={() => handleCompanyClick(companyObject)}
-                    className="option"
-                    key={i}
-                    tabIndex="0"
-                  >
-                    <span>{companyObject.name}</span>
-                  </div>
-                );
-              })}
-            </div>
-          )}
+          <div ref={wrapperRef}>
+            Name{" "}
+            <input
+              type="text"
+              id="auto"
+              placeholder="Company Name"
+              onClick={() => setDisplay(!display)}
+              onChange={handleChange}
+              // onChange={(e) => setSearch(e.target.value)}
+              // onChange={(e) => handleFilter(e)}
+            />
+            {display && (
+              <div className="autoContainer">
+                {options.map((companyObject, i) => {
+                  return (
+                    <div
+                      onClick={() => handleCompanyClick(companyObject)}
+                      className="option"
+                      key={i}
+                      tabIndex="0"
+                    >
+                      <span>{companyObject.name}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
           Quantity{" "}
           <input
             type="number"
