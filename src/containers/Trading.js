@@ -36,15 +36,9 @@ class Trading extends React.Component {
   };
 
   handleCompanySelect = (company) => {
-    console.log(company);
-  };
-
-  filterCompanies = (event) => {
-    console.log(event.target.value);
-    let newCompaniesList = this.state.companies.filter((foundCompanies) =>
-      foundCompanies.name.includes(event.target.value)
-    );
-    this.setState({ searchedCompanies: newCompaniesList });
+    this.setState({
+      searchedCompanies: company,
+    });
   };
 
   render() {
@@ -52,9 +46,7 @@ class Trading extends React.Component {
       <div>
         <OrderForm
           portfolios={this.state.portfolios}
-          stockPrices={this.state.stockPrices}
-          onfilterCompanies={this.filterCompanies}
-          companies={this.state.searchedCompanies}
+          companies={this.state.companies}
           selectCompany={this.handleCompanySelect}
         />
         <StockList companies={this.state.searchedCompanies} />

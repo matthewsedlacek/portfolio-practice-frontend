@@ -9,17 +9,21 @@ class StockList extends Component {
   //   });
   // };
 
-  renderCompanies = () => {
-    return this.props.companies.map((soloCompany) => {
-      return <StockCard key={soloCompany.id} stock={soloCompany} />;
-    });
-  };
+  // renderCompanies = () => {
+  //   return this.props.companies.map((soloCompany) => {
+  //     return <StockCard key={soloCompany.id} stock={soloCompany} />;
+  //   });
+  // };
 
   render() {
     return (
       <div>
-        {/* {this.renderStocks()} */}
-        {this.renderCompanies()}
+        <StockCard
+          key={this.props.companies.id}
+          stock={this.props.companies}
+          stockPrice={this.props.companies.stock_prices}
+        />
+        ;
       </div>
     );
   }
