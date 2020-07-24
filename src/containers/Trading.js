@@ -35,6 +35,10 @@ class Trading extends React.Component {
     }
   };
 
+  handleCompanySelect = (company) => {
+    console.log(company);
+  };
+
   filterCompanies = (event) => {
     console.log(event.target.value);
     let newCompaniesList = this.state.companies.filter((foundCompanies) =>
@@ -51,6 +55,7 @@ class Trading extends React.Component {
           stockPrices={this.state.stockPrices}
           onfilterCompanies={this.filterCompanies}
           companies={this.state.searchedCompanies}
+          selectCompany={this.handleCompanySelect}
         />
         <StockList companies={this.state.searchedCompanies} />
       </div>

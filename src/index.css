@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.autoContainer {
+  position: absolute;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #00897b;
+  background-color: #fafafa;
+  left: 14px;
+  top: 235px;
+  width: 475px;
+}
