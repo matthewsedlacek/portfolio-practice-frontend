@@ -3,14 +3,13 @@ import { api } from "../services/api";
 import StockList from "../components/trading/StockList";
 import OrderForm from "../components/trading/OrderForm";
 import PortfolioInfo from "../components/trading/PortfolioInfo";
-// need to change nesting on backend. Companies has many stock_prices
 
 class Trading extends React.Component {
   state = {
     portfolios: [],
-    stockPrices: [],
     companies: [],
     searchedCompanies: [],
+    singlePortfolio: [],
   };
 
   componentDidMount() {
@@ -42,12 +41,21 @@ class Trading extends React.Component {
     });
   };
 
+  handlePortfolioSelect = (portfolio) => {
+    console.log(portfolio);
+    this.setState({
+      singlePortfolio: portfolio,
+    });
+  };
+
   render() {
     return (
       <div>
-        <PortfolioInfo />
-        <OrderForm
+        <PortfolioInfo
           portfolios={this.state.portfolios}
+          selectPortfolio={this.handlePortfolioSelect}
+        />
+        <OrderForm
           companies={this.state.companies}
           selectCompany={this.handleCompanySelect}
         />
