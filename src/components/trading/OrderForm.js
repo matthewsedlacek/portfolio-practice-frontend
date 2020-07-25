@@ -1,5 +1,11 @@
-import React, { Component, useState, useEffect, useRef } from "react";
-import { Button, ButtonGroup, DropdownButton, MenuItem } from "react-bootstrap";
+import React, { useState, useEffect, useRef } from "react";
+// import {
+//   Button,
+//   ButtonGroup,
+//   DropdownButton,
+//   MenuItem,
+//   Dropdown,
+// } from "react-bootstrap";
 
 const OrderForm = (props) => {
   const [display, setDisplay] = useState(false);
@@ -21,18 +27,12 @@ const OrderForm = (props) => {
     }
   };
 
-  const compArray = props.companies.map((comp) => comp.name);
-
   const handleChange = (e) => {
     setSearch(e.target.value);
     let filteredCompanies = props.companies.filter((company) =>
       company.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setOptions(filteredCompanies);
-  };
-
-  const handleFilter = (e) => {
-    setSearch(e.target.value);
   };
 
   const setName = (name) => {
@@ -45,33 +45,10 @@ const OrderForm = (props) => {
     setName(companyObject.name);
   };
 
-  // const populateOptions(options) {
-  //   return options.map((option, index) => (
-  //     <option key={index} value={option}>{option}</option>
-  //   ));
-  // }
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   props.handleSubmit(event);
-  // };
-
-  const { portfolios } = props.portfolios;
-
   return (
     <div>
       <form>
         <div>
-          Portfolio
-          <DropdownButton
-            title="Select Portfolio"
-            className="m-b m-t"
-            id="dropdown-organization"
-          >
-            {props.portfolios.map((portfolio, i) => (
-              <option key={i}>{portfolio.name}</option>
-            ))}
-          </DropdownButton>
           <div ref={wrapperRef}>
             Name{" "}
             <input
@@ -80,6 +57,7 @@ const OrderForm = (props) => {
               placeholder="Company Name"
               onClick={() => setDisplay(!display)}
               onChange={handleChange}
+              value={search}
             />
             {display && (
               <div className="autoContainer">

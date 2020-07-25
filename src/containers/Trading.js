@@ -1,7 +1,8 @@
 import React from "react";
 import { api } from "../services/api";
-import StockList from "../components/StockList";
-import OrderForm from "../components/OrderForm";
+import StockList from "../components/trading/StockList";
+import OrderForm from "../components/trading/OrderForm";
+import PortfolioInfo from "../components/trading/PortfolioInfo";
 // need to change nesting on backend. Companies has many stock_prices
 
 class Trading extends React.Component {
@@ -44,6 +45,7 @@ class Trading extends React.Component {
   render() {
     return (
       <div>
+        <PortfolioInfo />
         <OrderForm
           portfolios={this.state.portfolios}
           companies={this.state.companies}
