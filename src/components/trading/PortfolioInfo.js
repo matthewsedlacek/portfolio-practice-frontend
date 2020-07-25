@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 // import {
 //   Button,
 //   ButtonGroup,
@@ -46,33 +46,44 @@ const PortfolioInfo = (props) => {
   };
 
   return (
-    <div ref={wrapperRef}>
-      Name{" "}
-      <input
-        type="text"
-        id="auto"
-        placeholder="Select Portfolio"
-        onClick={() => setDisplay(!display)}
-        onChange={handleChange}
-        value={search}
-      />
-      {display && (
-        <div className="autoContainer">
-          {options.map((portfolioObject, i) => {
-            return (
-              <div
-                onClick={() => handlePortfolioClick(portfolioObject)}
-                className="option"
-                key={i}
-                tabIndex="0"
-              >
-                <span>{portfolioObject.name}</span>
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
+    <Fragment>
+      {console.log(props.selectPortfolio)}
+      <div ref={wrapperRef}>
+        Name{" "}
+        <input
+          type="text"
+          id="auto"
+          placeholder="Select Portfolio"
+          onClick={() => setDisplay(!display)}
+          onChange={handleChange}
+          value={search}
+        />
+        {display && (
+          <div className="autoContainer">
+            {options.map((portfolioObject, i) => {
+              return (
+                <div
+                  onClick={() => handlePortfolioClick(portfolioObject)}
+                  className="option"
+                  key={i}
+                  tabIndex="0"
+                >
+                  <span>{portfolioObject.name}</span>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+      <div>
+        {/* will need to update to locked_in value */}
+        Portfolio Value: <h1>{props.singlePortfolio.value}</h1>
+        {/* Will need to update to available cash */}
+        Buying Power: <h1>{props.singlePortfolio.value}</h1>
+        {/* Will need to update to available cash */}
+        Available Cash: <h1>{props.singlePortfolio.value}</h1>
+      </div>
+    </Fragment>
   );
 };
 

@@ -54,6 +54,7 @@ class Trading extends React.Component {
         <PortfolioInfo
           portfolios={this.state.portfolios}
           selectPortfolio={this.handlePortfolioSelect}
+          singlePortfolio={this.state.singlePortfolio}
         />
         <OrderForm
           companies={this.state.companies}
