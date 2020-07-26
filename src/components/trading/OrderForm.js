@@ -50,6 +50,11 @@ const OrderForm = (props) => {
     props.handleBuyStock(event);
   };
 
+  const handleSellStock = (event) => {
+    event.preventDefault();
+    props.handleSellStock(event);
+  };
+
   const onQuantityChange = (e) => {
     props.handleQuantityChange(e);
   };
@@ -98,7 +103,9 @@ const OrderForm = (props) => {
         <button type="submit" onClick={handleBuyStock}>
           Buy
         </button>
-        <button type="submit">Sell</button>
+        <button type="submit" onClick={handleBuyStock}>
+          Sell
+        </button>
       </form>
     </div>
   );

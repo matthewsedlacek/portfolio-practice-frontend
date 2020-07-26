@@ -71,6 +71,29 @@ class Trading extends React.Component {
     }
   };
 
+  handleSellStock = (e) => {
+    e.preventDefault();
+    let portfolioValue = this.state.singlePortfolio.value;
+    let stock_price = this.state.searchedCompanies.stock_prices[
+      this.state.searchedCompanies.stock_prices.length - 1
+    ].current_price;
+    let quantity = parseInt(this.state.tradeQuantity);
+    // change logic to be includes the stock you're selling
+    if (portfolioValue > stock_price * quantity) {
+      api.userData
+        .newBuyTransaction(
+          this.state.searchedCompanies.stock_prices,
+          this.state.singlePortfolio,
+          this.state.tradeQuantity
+        )
+        .then((res) => {
+          this.fetchPortfolios();
+        });
+    } else {
+      console.log("Insuffienct Cash Available");
+    }
+  };
+
   handleQuantityChange = (e) => {
     this.setState({ tradeQuantity: e.target.value });
   };
@@ -88,6 +111,7 @@ class Trading extends React.Component {
           selectCompany={this.handleCompanySelect}
           handleQuantityChange={this.handleQuantityChange}
           handleBuyStock={this.handleBuyStock}
+          handleSellStock={this.handleSellStock}
           updatedQuantity={this.state.tradeQuantity}
         />
         <StockList companies={this.state.searchedCompanies} />
