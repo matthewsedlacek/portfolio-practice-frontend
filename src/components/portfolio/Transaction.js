@@ -7,7 +7,7 @@ const Transaction = (props) => {
     dollar_change,
   } = props.transaction.stock_price;
 
-  const { quantity } = props.transaction;
+  const { quantity, buy_sell } = props.transaction;
   //   console.log(props.transaction.stock_price);
 
   const { ticker, name } = props.transaction.stock_price.company;
@@ -30,6 +30,7 @@ const Transaction = (props) => {
         <td>{current_price}</td>
         <td>{quantity * current_price}</td>
         <td>{dollar_change}</td>
+        <td>{buy_sell}</td>
       </tr>
     </Fragment>
   );

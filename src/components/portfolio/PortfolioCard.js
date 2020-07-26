@@ -46,6 +46,9 @@ const PortfolioCard = (props) => {
             <th>
               <h3>Today's Change</h3>
             </th>
+            <th>
+              <h3>Transaction Type</h3>
+            </th>
           </tr>
           {renderTransactions()}
         </tbody>

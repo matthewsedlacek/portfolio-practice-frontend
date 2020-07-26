@@ -76,11 +76,11 @@ const PortfolioInfo = (props) => {
       </div>
       <div>
         {/* will need to update to locked_in value */}
-        Portfolio Value: <h1>{props.singlePortfolio.value}</h1>
+        Portfolio Value: <h1>{props.singlePortfolio.locked_in_value}</h1>
         {/* Will need to update to available cash */}
-        Buying Power: <h1>{props.singlePortfolio.value}</h1>
+        Buying Power: <h1>{props.singlePortfolio.available_cash}</h1>
         {/* Will need to update to available cash */}
-        Available Cash: <h1>{props.singlePortfolio.value}</h1>
+        Available Cash: <h1>{props.singlePortfolio.available_cash}</h1>
       </div>
     </Fragment>
   );

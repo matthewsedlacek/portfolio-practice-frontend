@@ -54,8 +54,10 @@ const newPortfolio = (data, currentUser) => {
     headers: headers(),
     body: JSON.stringify({
       name: data.name,
-      value: data.value,
+      starting_value: data.value,
       user_id: currentUser.id,
+      locked_in_value: data.value,
+      available_cash: data.value,
     }),
   }).then((res) => res.json());
 };
@@ -72,7 +74,7 @@ const getCompanies = () => {
   );
 };
 
-const newBuyTransaction = (data, portfolio, quantity) => {
+const newBuyTransaction = (data, portfolio, quantity, transactionValue) => {
   let stockId = parseInt(data[data.length - 1].id);
   let portfolioId = parseInt(portfolio.id);
   let purchaseQuantity = parseInt(quantity);
@@ -84,11 +86,12 @@ const newBuyTransaction = (data, portfolio, quantity) => {
       portfolio_id: portfolioId,
       buy_sell: "buy",
       quantity: purchaseQuantity,
+      value: transactionValue,
     }),
   }).then((res) => res.json());
 };
 
-const newSellTransaction = (data, portfolio, quantity) => {
+const newSellTransaction = (data, portfolio, quantity, transactionValue) => {
   let stockId = parseInt(data[data.length - 1].id);
   let portfolioId = parseInt(portfolio.id);
   let purchaseQuantity = parseInt(quantity);
@@ -100,6 +103,7 @@ const newSellTransaction = (data, portfolio, quantity) => {
       portfolio_id: portfolioId,
       buy_sell: "sell",
       quantity: purchaseQuantity,
+      value: transactionValue,
     }),
   }).then((res) => res.json());
 };
