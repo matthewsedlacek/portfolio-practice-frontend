@@ -65,6 +65,7 @@ class Trading extends React.Component {
         )
         .then((res) => {
           this.fetchPortfolios();
+          this.props.history.push("/portfolio");
         });
     } else {
       console.log("Insuffienct Cash Available");
@@ -123,6 +124,7 @@ class Trading extends React.Component {
         )
         .then((res) => {
           this.fetchPortfolios();
+          this.props.history.push("/portfolio");
         });
     } else {
       console.log("You do not own specified shares");
