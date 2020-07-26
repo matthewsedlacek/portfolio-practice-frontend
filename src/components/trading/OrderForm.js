@@ -103,7 +103,7 @@ const OrderForm = (props) => {
         <button type="submit" onClick={handleBuyStock}>
           Buy
         </button>
-        <button type="submit" onClick={handleBuyStock}>
+        <button type="submit" onClick={handleSellStock}>
           Sell
         </button>
       </form>
