@@ -45,6 +45,15 @@ const OrderForm = (props) => {
     setName(companyObject.name);
   };
 
+  const handleBuyStock = (event) => {
+    event.preventDefault();
+    props.handleBuyStock(event);
+  };
+
+  const onQuantityChange = (e) => {
+    props.handleQuantityChange(e);
+  };
+
   return (
     <div>
       <form>
@@ -82,10 +91,13 @@ const OrderForm = (props) => {
             name="value"
             placeholder="Amount"
             step="1.0"
-            // onChange={onChange}
+            onChange={onQuantityChange}
+            value={props.tradeQuantity}
           />
         </div>
-        <button type="submit">Buy</button>
+        <button type="submit" onClick={handleBuyStock}>
+          Buy
+        </button>
         <button type="submit">Sell</button>
       </form>
     </div>

@@ -47,7 +47,6 @@ const PortfolioInfo = (props) => {
 
   return (
     <Fragment>
-      {console.log(props.selectPortfolio)}
       <div ref={wrapperRef}>
         Name{" "}
         <input

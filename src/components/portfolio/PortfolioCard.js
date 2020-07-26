@@ -3,8 +3,6 @@ import Transaction from "./Transaction";
 
 const PortfolioCard = (props) => {
   const renderTransactions = () => {
-    // debugger;
-    console.log(props);
     return props.portfolio.transactions.map((selectedTransaction) => {
       return (
         <Transaction

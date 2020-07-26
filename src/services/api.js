@@ -72,6 +72,22 @@ const getCompanies = () => {
   );
 };
 
+const newBuyTransaction = (data, portfolio, quantity) => {
+  let stockId = parseInt(data[data.length - 1].id);
+  let portfolioId = parseInt(portfolio.id);
+  let purchaseQuantity = parseInt(quantity);
+  return fetch(`${API}/transactions/`, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify({
+      stock_price_id: stockId,
+      portfolio_id: portfolioId,
+      buy_sell: "buy",
+      quantity: purchaseQuantity,
+    }),
+  }).then((res) => res.json());
+};
+
 export const api = {
   auth: {
     login,
@@ -83,6 +99,7 @@ export const api = {
   userData: {
     getPortfolios,
     newPortfolio,
+    newBuyTransaction,
   },
   stockPrices: {
     getStockPrices,

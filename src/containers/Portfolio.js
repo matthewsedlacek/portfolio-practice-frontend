@@ -2,7 +2,6 @@ import React from "react";
 import { api } from "../services/api";
 import "../stylesheets/Portfolio.css";
 import PortfolioCard from "../components/portfolio/PortfolioCard";
-import Trading from "./Trading";
 import AddPortfolioForm from "../components/portfolio/AddPortfolioForm";
 
 const API = `http://localhost:3000/`;
