@@ -91,6 +91,22 @@ const newBuyTransaction = (data, portfolio, quantity, transactionValue) => {
   }).then((res) => res.json());
 };
 
+const stockPurchase = (portfolio, transactionValue) => {
+  console.log(portfolio);
+  let portfolioId = portfolio.id;
+  let currentValue = portfolio.available_cash;
+  let newValue = currentValue - transactionValue;
+  console.log(newValue);
+  console.log(transactionValue);
+  return fetch(`${API}/portfolios/${portfolioId}`, {
+    method: "PATCH",
+    headers: headers(),
+    body: JSON.stringify({
+      available_cash: newValue,
+    }),
+  }).then((res) => res.json());
+};
+
 const newSellTransaction = (data, portfolio, quantity, transactionValue) => {
   let stockId = parseInt(data[data.length - 1].id);
   let portfolioId = parseInt(portfolio.id);
@@ -108,6 +124,23 @@ const newSellTransaction = (data, portfolio, quantity, transactionValue) => {
   }).then((res) => res.json());
 };
 
+const stockSale = (portfolio, transactionValue) => {
+  console.log(portfolio);
+  let portfolioId = portfolio.id;
+  let currentValue = portfolio.available_cash;
+  let newValue = currentValue + transactionValue;
+  console.log(newValue);
+  console.log(transactionValue);
+  return fetch(`${API}/portfolios/${portfolioId}`, {
+    method: "PATCH",
+    headers: headers(),
+    body: JSON.stringify({
+      available_cash: newValue,
+      // need logic to tell if gain or loss
+    }),
+  }).then((res) => res.json());
+};
+
 export const api = {
   auth: {
     login,
@@ -121,6 +154,8 @@ export const api = {
     newPortfolio,
     newBuyTransaction,
     newSellTransaction,
+    stockPurchase,
+    stockSale,
   },
   stockPrices: {
     getStockPrices,

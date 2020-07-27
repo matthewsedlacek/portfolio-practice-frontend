@@ -66,12 +66,28 @@ class Trading extends React.Component {
           tradeValue
         )
         .then((res) => {
-          this.fetchPortfolios();
+          // this.fetchPortfolios();
+          this.buyStock();
           this.props.history.push("/portfolio");
         });
     } else {
       console.log("Insuffienct Cash Available");
     }
+  };
+
+  buyStock = () => {
+    let stock_price = this.state.searchedCompanies.stock_prices[
+      this.state.searchedCompanies.stock_prices.length - 1
+    ].current_price;
+    let quantity = parseInt(this.state.tradeQuantity);
+    let tradeValue = stock_price * quantity;
+    api.userData
+      .stockPurchase(this.state.singlePortfolio, tradeValue)
+      .then((res) => {
+        this.fetchPortfolios();
+        // this.buyStock();
+        this.props.history.push("/portfolio");
+      });
   };
 
   handleSellStock = (e) => {
@@ -114,12 +130,28 @@ class Trading extends React.Component {
           tradeValue
         )
         .then((res) => {
-          this.fetchPortfolios();
-          this.props.history.push("/portfolio");
+          // this.fetchPortfolios();
+          this.sellStock();
+          // this.props.history.push("/portfolio");
         });
     } else {
       console.log("You do not own specified shares");
     }
+  };
+
+  sellStock = () => {
+    let stock_price = this.state.searchedCompanies.stock_prices[
+      this.state.searchedCompanies.stock_prices.length - 1
+    ].current_price;
+    let quantity = parseInt(this.state.tradeQuantity);
+    let tradeValue = stock_price * quantity;
+    api.userData
+      .stockSale(this.state.singlePortfolio, tradeValue)
+      .then((res) => {
+        this.fetchPortfolios();
+        // this.buyStock();
+        this.props.history.push("/portfolio");
+      });
   };
 
   handleQuantityChange = (e) => {
