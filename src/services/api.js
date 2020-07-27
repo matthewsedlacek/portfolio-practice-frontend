@@ -1,9 +1,18 @@
 const API_ROOT = `http://localhost:3000/api/v1`;
 const API = `http://localhost:3000`;
+const NEWS = `https://stocknewsapi.com/api/v1/category?section=general&items=50&token=8kzkbtqiqnqmsubqcym2fqishmzzhkxnqr8ipinj`;
 
 const token = () => localStorage.getItem("token");
 
 const headers = () => {
+  return {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: token(),
+  };
+};
+
+const newsHeaders = () => {
   return {
     "Content-Type": "application/json",
     Accept: "application/json",
@@ -45,6 +54,10 @@ const getPortfolios = () => {
   return fetch(`${API}/portfolios/`, { headers: headers() }).then((res) =>
     res.json()
   );
+};
+
+const getNews = () => {
+  return fetch(`${NEWS}`, { headers: newsHeaders() }).then((res) => res.json());
 };
 
 const newPortfolio = (data, currentUser) => {
@@ -160,6 +173,9 @@ export const api = {
   },
   stockPrices: {
     getStockPrices,
+  },
+  marketNews: {
+    getNews,
   },
   companyData: {
     getCompanies,
