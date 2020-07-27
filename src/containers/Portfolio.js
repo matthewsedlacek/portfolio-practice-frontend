@@ -4,8 +4,6 @@ import "../stylesheets/Portfolio.css";
 import PortfolioCard from "../components/portfolio/PortfolioCard";
 import AddPortfolioForm from "../components/portfolio/AddPortfolioForm";
 
-const API = `http://localhost:3000/`;
-
 class Portfolio extends React.Component {
   state = {
     portfolios: [],
