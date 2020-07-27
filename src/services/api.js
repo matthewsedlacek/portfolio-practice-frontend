@@ -1,5 +1,5 @@
 const API_ROOT = `http://localhost:3000/api/v1`;
-const API = `http://localhost:3000/`;
+const API = `http://localhost:3000`;
 
 const token = () => localStorage.getItem("token");
 
@@ -129,6 +129,7 @@ const stockSale = (portfolio, transactionValue) => {
   let portfolioId = portfolio.id;
   let currentValue = portfolio.available_cash;
   let newValue = currentValue + transactionValue;
+  console.log(currentValue);
   console.log(newValue);
   console.log(transactionValue);
   return fetch(`${API}/portfolios/${portfolioId}`, {
