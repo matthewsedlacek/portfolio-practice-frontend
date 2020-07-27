@@ -149,11 +149,12 @@ const newSellTransaction = (data, portfolio, quantity, transactionValue) => {
   }).then((res) => res.json());
 };
 
-const stockSale = (portfolio, transactionValue) => {
+const stockSale = (portfolio, transactionValue, totalGainLoss) => {
   console.log(portfolio);
   let portfolioId = portfolio.id;
   let currentValue = portfolio.available_cash;
   let newValue = currentValue + transactionValue;
+  let newPortfolioValue = portfolio.locked_in_value + totalGainLoss;
   console.log(currentValue);
   console.log(newValue);
   console.log(transactionValue);
@@ -162,7 +163,7 @@ const stockSale = (portfolio, transactionValue) => {
     headers: headers(),
     body: JSON.stringify({
       available_cash: newValue,
-      // need logic to tell if gain or loss
+      locked_in_value: newPortfolioValue,
     }),
   }).then((res) => res.json());
 };
