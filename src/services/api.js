@@ -120,6 +120,18 @@ const stockPurchase = (portfolio, transactionValue) => {
   }).then((res) => res.json());
 };
 
+const updateStockStatus = (stock) => {
+  console.log(stock);
+  let stockId = stock.id;
+  return fetch(`${API}/stock_prices/${stockId}`, {
+    method: "PATCH",
+    headers: headers(),
+    body: JSON.stringify({
+      transacted: true,
+    }),
+  }).then((res) => res.json());
+};
+
 const newSellTransaction = (data, portfolio, quantity, transactionValue) => {
   let stockId = parseInt(data[data.length - 1].id);
   let portfolioId = parseInt(portfolio.id);
@@ -173,6 +185,7 @@ export const api = {
   },
   stockPrices: {
     getStockPrices,
+    updateStockStatus,
   },
   marketNews: {
     getNews,
