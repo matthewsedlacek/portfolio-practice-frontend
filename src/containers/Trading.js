@@ -159,7 +159,7 @@ class Trading extends React.Component {
     api.userData
       .stockSale(this.state.singlePortfolio, tradeValue)
       .then((res) => {
-        this.fetchPortfolios();
+        this.transactedStatus();
         // this.buyStock();
         this.props.history.push("/portfolio");
       });
