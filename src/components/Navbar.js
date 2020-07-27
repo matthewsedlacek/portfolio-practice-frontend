@@ -35,14 +35,14 @@ const NavBar = (props) => {
             </div>
           </a>
         ) : (
-          <Link
+          <Nav.Link
             to="/login"
             exact
             // style={link}
             // activeStyle={{ background: "darkblue" }}
           >
             Sign In
-          </Link>
+          </Nav.Link>
         )}
         {loggedIn ? (
           // <a>Welcome {currentUser.username}</a>
