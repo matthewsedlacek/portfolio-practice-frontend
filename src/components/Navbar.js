@@ -46,7 +46,7 @@ const NavBar = (props) => {
             // style={link}
             // activeStyle={{ background: "darkblue" }}
           >
-            Sign In
+            {/* Sign In */}
           </div>
         )}
         {loggedIn ? (
