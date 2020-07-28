@@ -5,16 +5,19 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NewsList from "../components/profile/news/NewsList";
+import SearchBar from "../components/profile/watchlist/SearchBar";
 
 class Profile extends React.Component {
   state = {
     awards: [],
     newsArray: [],
     watchList: [],
+    companies: [],
+    searchedCompanies: [],
   };
 
   componentDidMount() {
-    // this.fetchNews();
+    this.fetchNews();
     this.fetchCompanies();
   }
 
@@ -36,12 +39,24 @@ class Profile extends React.Component {
     }
   };
 
+  handleCompanySelect = (company) => {
+    this.setState({
+      searchedCompanies: company,
+    });
+  };
+
   render() {
     return (
       <Container>
         <Row>
-          <Col bg="dark">
+          <Col md={4} bg="dark">
             <h1>Welcome {this.props.currentUser.username}</h1>{" "}
+          </Col>
+          <Col md={{ span: 4, offset: 4 }}>
+            <SearchBar
+              companies={this.state.companies}
+              selectCompany={this.handleCompanySelect}
+            />
           </Col>
         </Row>
         <Row>
