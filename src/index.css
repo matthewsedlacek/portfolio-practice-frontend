@@ -34,3 +34,18 @@ textAlign: "center"; */
   display: flex;
   flex-direction: row-reverse;
 }
+
+.loginPaper {
+  margin-top: 100px;
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+}
+.loginSubmit {
+  margin: 100px;
+  background-color: lightblue;
+}
+.loginForm {
+  width: "100%";
+  margin-top: 25px;
+}
