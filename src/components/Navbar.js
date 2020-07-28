@@ -2,6 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import "font-awesome/css/font-awesome.min.css";
 
 // Styling
 // const link = {
@@ -20,14 +21,14 @@ const NavBar = (props) => {
     <div className="navBar">
       <div>
         <div>
-          Portfolio Practice
-          <img
+          <i className="fa fa-dollar"></i> Portfolio Practice
+          {/* <img
             alt=""
             src=".../stylesheets/logo.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
-          />
+          /> */}
         </div>
         {loggedIn ? (
           <div
