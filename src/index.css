@@ -67,3 +67,9 @@ textAlign: "center"; */
   padding: 5px; /* Some padding */
   /* background-color: lightgrey; */
 }
+
+.navBarLogo {
+  width: auto;
+  height: "30";
+  padding: 5px;
+}

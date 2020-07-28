@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import "font-awesome/css/font-awesome.min.css";
+import Logo from "../stylesheets/logo.png";
 
 // Styling
 // const link = {
@@ -21,14 +22,9 @@ const NavBar = (props) => {
     <div className="navBar">
       <div>
         <div>
-          <i className="fa fa-dollar"></i> Portfolio Practice
-          {/* <img
-            alt=""
-            src=".../stylesheets/logo.png"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          /> */}
+          {/* <i className="fa fa-dollar"></i> */}
+          <img alt="h" src={Logo} className="navBarLogo" />
+          {/* Portfolio Practice */}
         </div>
         {loggedIn ? (
           <div

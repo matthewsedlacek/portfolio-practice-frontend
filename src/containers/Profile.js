@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import NewsList from "../components/profile/NewsList";
+import NewsList from "../components/profile/news/NewsList";
 
 class Profile extends React.Component {
   state = {
@@ -14,8 +14,8 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchNews();
-    // this.fetchCompanies();
+    // this.fetchNews();
+    this.fetchCompanies();
   }
 
   fetchNews = () => {
@@ -23,6 +23,15 @@ class Profile extends React.Component {
     if (token) {
       api.marketNews.getNews().then((data) => {
         this.setState({ newsArray: data });
+      });
+    }
+  };
+
+  fetchCompanies = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      api.companyData.getCompanies().then((data) => {
+        this.setState({ companies: data });
       });
     }
   };
