@@ -19,3 +19,13 @@ code {
   border-color: #00897b;
   background-color: #fafafa;
 }
+
+#navBarTabs {
+  width: "100px";
+  padding: "12px";
+  margin: "0 6px 6px";
+  background: "blue";
+  /* textDecoration: "none";
+textAlign: "center"; */
+  color: "white";
+}

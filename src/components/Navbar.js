@@ -17,68 +17,75 @@ import Nav from "react-bootstrap/Nav";
 const NavBar = (props) => {
   const loggedIn = props.loggedIn;
   return (
-    <Nav variant="tabs" defaultActiveKey="/profile">
-      <Nav.Item>
-        <Nav.Item>
-          <div>Portfolio Practice</div>
-        </Nav.Item>
+    <div>
+      <div>
+        <div>
+          Portfolio Practice
+          <img
+            alt=""
+            src=".../stylesheets/logo.png"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />
+        </div>
         {loggedIn ? (
-          <a>
-            <div
-              // style={link}
-              onClick={() => {
-                props.handleLogout();
-                props.history.push("/login");
-              }}
-            >
-              Sign Out
-            </div>
-          </a>
+          <div
+            // style={link}
+            onClick={() => {
+              props.handleLogout();
+              props.history.push("/login");
+            }}
+          >
+            Sign Out
+          </div>
         ) : (
-          <Nav.Link
+          <div
             to="/login"
             exact
             // style={link}
             // activeStyle={{ background: "darkblue" }}
           >
             Sign In
-          </Nav.Link>
+          </div>
         )}
         {loggedIn ? (
           // <a>Welcome {currentUser.username}</a>
           <React.Fragment>
-            <Nav.Item>
-              <Nav.Link
-                href="/profile"
-                // style={link}
-                // activeStyle={{ background: "darkblue" }}
-              >
-                Home
-              </Nav.Link>
-            </Nav.Item>
+            <Nav>
+              <Nav.Item>
+                <Nav.Link
+                  href="/profile"
+                  // style={link}
+                  // activeStyle={{ background: "darkblue" }}
+                >
+                  Home
+                </Nav.Link>
+              </Nav.Item>
 
-            <Nav.Item>
-              <Nav.Link
-                href="/portfolio"
-                // style={link}
-                // activeStyle={{ background: "darkblue" }}
-              >
-                Portfolios
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link
-                href="/trading"
-                // style={link}
-                // activeStyle={{ background: "darkblue" }}
-              >
-                Trade
-              </Nav.Link>
-            </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  href="/portfolio"
+                  // style={link}
+                  // activeStyle={{ background: "darkblue" }}
+                >
+                  Portfolios
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  href="/trading"
+                  // style={link}
+                  // activeStyle={{ background: "darkblue" }}
+                >
+                  Trade
+                </Nav.Link>
+              </Nav.Item>
+            </Nav>
           </React.Fragment>
         ) : null}
-      </Nav.Item>
-    </Nav>
+      </div>
+    </div>
   );
 };
 

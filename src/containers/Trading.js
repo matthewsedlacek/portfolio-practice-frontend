@@ -51,13 +51,13 @@ class Trading extends React.Component {
 
   handleBuyStock = (e) => {
     e.preventDefault();
-    let portfolioValue = this.state.singlePortfolio.starting_value;
+    let availableCash = this.state.singlePortfolio.available_cash;
     let stock_price = this.state.searchedCompanies.stock_prices[
       this.state.searchedCompanies.stock_prices.length - 1
     ].current_price;
     let quantity = parseInt(this.state.tradeQuantity);
     let tradeValue = stock_price * quantity;
-    if (portfolioValue >= stock_price * quantity) {
+    if (availableCash >= stock_price * quantity) {
       api.userData
         .newBuyTransaction(
           this.state.searchedCompanies.stock_prices,
