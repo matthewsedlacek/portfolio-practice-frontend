@@ -29,3 +29,8 @@ code {
 textAlign: "center"; */
   color: "white";
 }
+
+.box {
+  display: flex;
+  flex-direction: row-reverse;
+}

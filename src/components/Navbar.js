@@ -52,36 +52,38 @@ const NavBar = (props) => {
         {loggedIn ? (
           // <a>Welcome {currentUser.username}</a>
           <React.Fragment>
-            <Nav>
-              <Nav.Item>
-                <Nav.Link
-                  href="/profile"
-                  // style={link}
-                  // activeStyle={{ background: "darkblue" }}
-                >
-                  Home
-                </Nav.Link>
-              </Nav.Item>
+            <div class="box">
+              <Nav>
+                <Nav.Item>
+                  <Nav.Link
+                    href="/profile"
+                    // style={link}
+                    // activeStyle={{ background: "darkblue" }}
+                  >
+                    Home
+                  </Nav.Link>
+                </Nav.Item>
 
-              <Nav.Item>
-                <Nav.Link
-                  href="/portfolio"
-                  // style={link}
-                  // activeStyle={{ background: "darkblue" }}
-                >
-                  Portfolios
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link
-                  href="/trading"
-                  // style={link}
-                  // activeStyle={{ background: "darkblue" }}
-                >
-                  Trade
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
+                <Nav.Item>
+                  <Nav.Link
+                    href="/portfolio"
+                    // style={link}
+                    // activeStyle={{ background: "darkblue" }}
+                  >
+                    Portfolios
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link
+                    href="/trading"
+                    // style={link}
+                    // activeStyle={{ background: "darkblue" }}
+                  >
+                    Trade
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </div>
           </React.Fragment>
         ) : null}
       </div>

@@ -1,6 +1,9 @@
 import React, { Fragment } from "react";
 import { api } from "../services/api";
 import { Route } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class Profile extends React.Component {
   state = {
@@ -25,11 +28,22 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <Fragment>
-        <h1>Welcome {this.props.currentUser.username}</h1>
-        {/* <div>{this.renderPortfolios()}</div> */}
-        {/* <Route exact path="/portfolio" render={props => <Portfolio {...props} currentUser={this.props.currentUser} />}/> */}
-      </Fragment>
+      <Container>
+        <Row>
+          <Col bg="dark">
+            <h1>Welcome {this.props.currentUser.username}</h1>{" "}
+          </Col>
+        </Row>
+        <Row>
+          <br></br>
+          <br></br>{" "}
+        </Row>
+        <Row>
+          <Col>Awards</Col>
+          <Col>Market News</Col>
+          <Col>Watchlist</Col>
+        </Row>
+      </Container>
     );
   }
 }
