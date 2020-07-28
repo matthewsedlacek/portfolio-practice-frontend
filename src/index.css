@@ -58,5 +58,12 @@ textAlign: "center"; */
   border: 1px solid #ddd; /* Gray border */
   border-radius: 4px; /* Rounded border */
   padding: 5px; /* Some padding */
-  width: 150px; /* Set a small width */
+  width: 275px; /* Set a small width */
+}
+
+.profileContainer {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px; /* Rounded border */
+  padding: 5px; /* Some padding */
+  /* background-color: lightgrey; */
 }
