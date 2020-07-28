@@ -4,11 +4,12 @@ import { Route } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import NewsList from "../components/profile/NewsList";
 
 class Profile extends React.Component {
   state = {
     awards: [],
-    news: [],
+    newsArray: [],
     watchList: [],
   };
 
@@ -21,7 +22,7 @@ class Profile extends React.Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.marketNews.getNews().then((data) => {
-        this.setState({ news: data });
+        this.setState({ newsArray: data });
       });
     }
   };
@@ -39,9 +40,18 @@ class Profile extends React.Component {
           <br></br>{" "}
         </Row>
         <Row>
-          <Col>Awards</Col>
-          <Col>Market News</Col>
-          <Col>Watchlist</Col>
+          <Col>
+            <h2>Awards</h2>
+          </Col>
+          <Col>
+            <h2>Market News</h2>
+            <div>
+              <NewsList news={this.state.newsArray.data} />
+            </div>
+          </Col>
+          <Col>
+            <h2>Watchlist</h2>
+          </Col>
         </Row>
       </Container>
     );

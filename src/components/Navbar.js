@@ -17,7 +17,7 @@ import Nav from "react-bootstrap/Nav";
 const NavBar = (props) => {
   const loggedIn = props.loggedIn;
   return (
-    <div>
+    <div className="navBar">
       <div>
         <div>
           Portfolio Practice

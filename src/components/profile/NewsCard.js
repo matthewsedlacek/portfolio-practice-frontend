@@ -1,39 +1,44 @@
 import React from "react";
 
-const StockCard = (props) => {
+const NewsCard = (props) => {
   return (
     <div>
       <br></br>
-      <div key={props.stock.id}>
+      <div key={props.newsStory.id}>
         <div>
-          <img alt={props.stock.name} src={props.stock.logo} />
+          <a href={props.newsStory.news_url}>
+            <img
+              alt={props.newsStory.title}
+              src={props.newsStory.image_url}
+              className="newsThumnail"
+              target="_blank"
+            />
+          </a>
         </div>
         <div>
           <div>
-            {props.stock.name}
+            {props.newsStory.title}
             <i />
           </div>
-          <div>
-            <small>{props.stock.sector}</small>
-          </div>
+          <div>{/* <small>{props.stock.sector}</small> */}</div>
         </div>
         <div>
           <span>
-            <i />$
+            {/* <i />$
             {props.stockPrice
               ? props.stockPrice[props.stockPrice.length - 1].current_price
-              : ""}
+              : ""} */}
           </span>
           <div>
             <span>
               <i />
-              Daily Change:
+              {/* Daily Change:
               {props.stockPrice
                 ? props.stockPrice[props.stockPrice.length - 1].dollar_change
                 : ""}{" "}
               {props.stockPrice
                 ? props.stockPrice[props.stockPrice.length - 1].percent_change
-                : ""}
+                : ""} */}
             </span>
           </div>
         </div>
@@ -42,4 +47,4 @@ const StockCard = (props) => {
   );
 };
 
-export default StockCard;
+export default NewsCard;
