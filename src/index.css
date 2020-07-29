@@ -73,3 +73,13 @@ textAlign: "center"; */
   height: "30";
   padding: 5px;
 }
+
+#navBarButtons {
+  width: "100px";
+  padding: "10px";
+  margin: "0 6px 0px";
+  background: "blue";
+  text-decoration: "none";
+  text-align: "center";
+  color: "white";
+}

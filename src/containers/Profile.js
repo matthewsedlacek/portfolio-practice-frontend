@@ -17,7 +17,7 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchNews();
+    // this.fetchNews();
     this.fetchCompanies();
   }
 

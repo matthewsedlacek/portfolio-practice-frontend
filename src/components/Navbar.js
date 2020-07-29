@@ -5,16 +5,16 @@ import Nav from "react-bootstrap/Nav";
 import "font-awesome/css/font-awesome.min.css";
 import Logo from "../stylesheets/logo.png";
 
-// Styling
-// const link = {
-//   width: "100px",
-//   padding: "12px",
-//   margin: "0 6px 6px",
-//   background: "blue",
-//   textDecoration: "none",
-//   textAlign: "center",
-//   color: "white",
-// };
+// Styling;
+const link = {
+  // width: "5px",
+  padding: "10px",
+  // margin: "0 0px 0px",
+  // background: "blue",
+  // textDecoration: "none",
+  // textAlign: "center",
+  // color: "white",
+};
 
 const NavBar = (props) => {
   const loggedIn = props.loggedIn;
@@ -52,32 +52,63 @@ const NavBar = (props) => {
             <div class="box">
               <Nav>
                 <Nav.Item>
-                  <Nav.Link
+                  {/* <Nav.Link */}
+                  <a
+                    id="navBarButtons"
+                    class="btn btn-primary active"
                     href="/profile"
-                    // style={link}
-                    // activeStyle={{ background: "darkblue" }}
+                    role="button"
+                    size="lg"
+                    // className="navBarButtons"
                   >
                     Home
-                  </Nav.Link>
+                  </a>
+                  {/* </Nav.Link> */}
                 </Nav.Item>
-
                 <Nav.Item>
-                  <Nav.Link
-                    href="/portfolio"
-                    // style={link}
+                  <Nav.Link style={link}></Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  {/* <Nav.Link */}
+                  {/* href="/portfolio"
+                    style={link}
                     // activeStyle={{ background: "darkblue" }}
+                  >
+                    Portfolios */}
+                  <a
+                    id="navBarButtons"
+                    class="btn btn-primary active"
+                    href="/portfolio"
+                    role="button"
+                    size="lg"
+                    // className="navBarButtons"
                   >
                     Portfolios
-                  </Nav.Link>
+                  </a>
+                  {/* </Nav.Link> */}
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link
+                  <Nav.Link style={link}></Nav.Link>
+                </Nav.Item>
+                <Nav.Item id="navBarButtons">
+                  {/* <Nav.Link
+                  <a ></a>
                     href="/trading"
-                    // style={link}
+                    style={link}
                     // activeStyle={{ background: "darkblue" }}
+                  > */}
+                  <a
+                    id="navBarButtons"
+                    class="btn btn-primary active"
+                    href="/trading"
+                    role="button"
+                    size="lg"
+                    // className="navBarButtons"
                   >
                     Trade
-                  </Nav.Link>
+                  </a>
+                  {/* Trade */}
+                  {/* </Nav.Link> */}
                 </Nav.Item>
               </Nav>
             </div>
