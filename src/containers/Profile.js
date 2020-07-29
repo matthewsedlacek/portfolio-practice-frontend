@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NewsList from "../components/profile/news/NewsList";
 import SearchBar from "../components/profile/watchlist/SearchBar";
+import WatchList from "../components/profile/watchlist/WatchList";
 
 class Profile extends React.Component {
   state = {
@@ -14,10 +15,11 @@ class Profile extends React.Component {
     watchList: [],
     companies: [],
     searchedCompanies: [],
+    searchedStockPrice: [],
   };
 
   componentDidMount() {
-    this.fetchNews();
+    // this.fetchNews();
     this.fetchCompanies();
   }
 
@@ -41,6 +43,7 @@ class Profile extends React.Component {
 
   handleCompanySelect = (company) => {
     this.setState({
+      searchedStockPrice: company.stock_prices[company.stock_prices.length - 1],
       searchedCompanies: company,
     });
   };
@@ -75,6 +78,12 @@ class Profile extends React.Component {
           </Col>
           <Col>
             <h2>Watchlist</h2>
+            <div>
+              <WatchList
+                company={this.state.searchedCompanies}
+                stock={this.state.searchedStockPrice}
+              />
+            </div>
           </Col>
         </Row>
       </Container>
