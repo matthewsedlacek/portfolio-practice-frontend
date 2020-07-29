@@ -27,7 +27,7 @@ const NavBar = (props) => {
         <Container>
           <Row>
             <Col md={4}>
-              <div>
+              <div class="logoBox">
                 {/* <i className="fa fa-dollar"></i> */}
                 <img alt="h" src={Logo} className="navBarLogo" />
                 {/* Portfolio Practice */}
@@ -60,54 +60,56 @@ const NavBar = (props) => {
         </Container>
         {loggedIn ? (
           // <a>Welcome {currentUser.username}</a>
-          <React.Fragment>
-            <div class="box">
-              <Nav>
-                <Nav.Item>
-                  {/* <Nav.Link */}
-                  <a
-                    id="navBarButtons"
-                    class="btn btn-primary active"
-                    href="/profile"
-                    role="button"
-                    size="lg"
-                    // className="navBarButtons"
-                  >
-                    Home
-                  </a>
-                  {/* </Nav.Link> */}
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link style={link}></Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <a
-                    id="navBarButtons"
-                    class="btn btn-primary active"
-                    href="/portfolio"
-                    role="button"
-                    size="lg"
-                  >
-                    Portfolios
-                  </a>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link style={link}></Nav.Link>
-                </Nav.Item>
-                <Nav.Item id="navBarButtons">
-                  <a
-                    id="navBarButtons"
-                    class="btn btn-primary active"
-                    href="/trading"
-                    role="button"
-                    size="lg"
-                  >
-                    Trade
-                  </a>
-                </Nav.Item>
-              </Nav>
-            </div>
-          </React.Fragment>
+          <Container>
+            <React.Fragment>
+              <div class="box">
+                <Nav>
+                  <Nav.Item>
+                    {/* <Nav.Link */}
+                    <a
+                      id="navBarButtons"
+                      class="btn btn-primary active"
+                      href="/profile"
+                      role="button"
+                      size="lg"
+                      // className="navBarButtons"
+                    >
+                      Home
+                    </a>
+                    {/* </Nav.Link> */}
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link style={link}></Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <a
+                      id="navBarButtons"
+                      class="btn btn-primary active"
+                      href="/portfolio"
+                      role="button"
+                      size="lg"
+                    >
+                      Portfolios
+                    </a>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link style={link}></Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item id="navBarButtons">
+                    <a
+                      id="navBarButtons"
+                      class="btn btn-primary active"
+                      href="/trading"
+                      role="button"
+                      size="lg"
+                    >
+                      Trade
+                    </a>
+                  </Nav.Item>
+                </Nav>
+              </div>
+            </React.Fragment>
+          </Container>
         ) : null}
       </div>
     </div>

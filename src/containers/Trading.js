@@ -3,6 +3,9 @@ import { api } from "../services/api";
 import StockList from "../components/trading/StockList";
 import OrderForm from "../components/trading/OrderForm";
 import PortfolioInfo from "../components/trading/PortfolioInfo";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class Trading extends React.Component {
   state = {
@@ -199,22 +202,24 @@ class Trading extends React.Component {
 
   render() {
     return (
-      <div>
-        <PortfolioInfo
-          portfolios={this.state.portfolios}
-          selectPortfolio={this.handlePortfolioSelect}
-          singlePortfolio={this.state.singlePortfolio}
-        />
-        <OrderForm
-          companies={this.state.companies}
-          selectCompany={this.handleCompanySelect}
-          handleQuantityChange={this.handleQuantityChange}
-          handleBuyStock={this.handleBuyStock}
-          handleSellStock={this.handleSellStock}
-          updatedQuantity={this.state.tradeQuantity}
-        />
-        <StockList companies={this.state.searchedCompanies} />
-      </div>
+      <Container>
+        <div>
+          <PortfolioInfo
+            portfolios={this.state.portfolios}
+            selectPortfolio={this.handlePortfolioSelect}
+            singlePortfolio={this.state.singlePortfolio}
+          />
+          <OrderForm
+            companies={this.state.companies}
+            selectCompany={this.handleCompanySelect}
+            handleQuantityChange={this.handleQuantityChange}
+            handleBuyStock={this.handleBuyStock}
+            handleSellStock={this.handleSellStock}
+            updatedQuantity={this.state.tradeQuantity}
+          />
+          <StockList companies={this.state.searchedCompanies} />
+        </div>
+      </Container>
     );
   }
 }

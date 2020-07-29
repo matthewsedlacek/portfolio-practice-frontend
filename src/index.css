@@ -35,6 +35,11 @@ textAlign: "center"; */
   flex-direction: row-reverse;
 }
 
+.logoBox {
+  display: flex;
+  flex-direction: row;
+}
+
 .loginPaper {
   margin-top: 100px;
   display: "flex";

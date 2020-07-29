@@ -2,6 +2,9 @@ import React from "react";
 import { api } from "../services/api";
 import PortfolioCard from "../components/portfolio/PortfolioCard";
 import AddPortfolioForm from "../components/portfolio/AddPortfolioForm";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class Portfolio extends React.Component {
   state = {
@@ -31,12 +34,14 @@ class Portfolio extends React.Component {
   renderPortfolios = () => {
     return this.state.portfolios.map((soloPortfolio) => {
       return (
-        <PortfolioCard
-          currentUser={this.props.currentUser}
-          key={soloPortfolio.id}
-          portfolio={soloPortfolio}
-          companies={this.state.companies}
-        />
+        <Container>
+          <PortfolioCard
+            currentUser={this.props.currentUser}
+            key={soloPortfolio.id}
+            portfolio={soloPortfolio}
+            companies={this.state.companies}
+          />
+        </Container>
       );
     });
   };
