@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import NewsList from "../components/profile/news/NewsList";
 import SearchBar from "../components/profile/watchlist/SearchBar";
 import WatchList from "../components/profile/watchlist/WatchList";
+import AwardList from "../components/profile/awards/AwardList";
 
 class Profile extends React.Component {
   state = {
@@ -69,6 +70,7 @@ class Profile extends React.Component {
         <Row>
           <Col>
             <h2>Awards</h2>
+            <AwardList />
           </Col>
           <Col>
             <h2>Market News</h2>

@@ -29,7 +29,11 @@ const NavBar = (props) => {
             <Col md={4}>
               <div class="logoBox">
                 {/* <i className="fa fa-dollar"></i> */}
-                <img alt="h" src={Logo} className="navBarLogo" />
+                <img
+                  alt="Portfolio Practice"
+                  src={Logo}
+                  className="navBarLogo"
+                />
                 {/* Portfolio Practice */}
               </div>
             </Col>
