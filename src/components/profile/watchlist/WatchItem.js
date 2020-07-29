@@ -6,14 +6,14 @@ import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 
 const WatchItem = (props) => {
-  const rowFromAbove = props;
-  // const { current_price, percent_change } = props.stock;
+  const { ticker } = props.watchedStock.company;
+  const { current_price, percent_change } = props.watchedStock;
 
   return (
     <TableRow>
-      {/* <TableCell align="left">{ticker}</TableCell>
+      <TableCell align="left">{ticker}</TableCell>
       <TableCell align="left">{current_price}</TableCell>
-      <TableCell align="left">{percent_change}</TableCell> */}
+      <TableCell align="left">{percent_change}</TableCell>
       <Button align="bottom">
         <IconButton aria-label="delete" disabled color="primary">
           <DeleteOutlineIcon />
