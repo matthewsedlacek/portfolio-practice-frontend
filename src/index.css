@@ -56,7 +56,7 @@ textAlign: "center"; */
 }
 
 .navBar {
-  background-color: lightskyblue;
+  background-color: #2395cb;
 }
 
 .newsThumnail {
@@ -64,6 +64,13 @@ textAlign: "center"; */
   border-radius: 4px; /* Rounded border */
   padding: 5px; /* Some padding */
   width: 275px; /* Set a small width */
+}
+
+.awardThumbnail {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px; /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
 }
 
 .profileContainer {

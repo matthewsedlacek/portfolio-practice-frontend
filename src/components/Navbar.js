@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import "font-awesome/css/font-awesome.min.css";
-import Logo from "../stylesheets/logo.png";
+import Logo from "../stylesheets/logo2.png";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

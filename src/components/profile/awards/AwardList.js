@@ -2,6 +2,13 @@ import React, { Fragment } from "react";
 import Day from "./daytrader.png";
 import First from "./firststock.png";
 import Gain from "./growportfolio.png";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 const AwardList = (props) => {
   //   const awardArray = [
@@ -18,33 +25,67 @@ const AwardList = (props) => {
 
   return (
     <Fragment>
-      <div className="profileContainer">
-        <table>
-          <tbody>
+      <TableContainer className="profileContainer">
+        <Table>
+          <TableBody>
             <div>
               <br></br>
-              <div>
+              <TableRow>
                 <br></br>
-                <div>
+                <TableCell>
                   <img
                     alt="First Stock Purchase"
                     src={First}
-                    className="newsThumnail"
+                    className="awardThumbnail"
                     target="_blank"
                   />
-                </div>
-                <div>
+                </TableCell>
+                <TableCell>
                   <div>
                     First Stock Purchase
                     <i />
                   </div>
-                </div>
-              </div>
-              <div>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <br></br>
+                <TableCell>
+                  <img
+                    alt="Day Trader"
+                    src={Day}
+                    className="awardThumbnail"
+                    target="_blank"
+                  />
+                </TableCell>
+                <TableCell>
+                  <div>
+                    Day Trader
+                    <i />
+                  </div>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <br></br>
+                <TableCell>
+                  <img
+                    alt="Gain on Stock Sale"
+                    src={Gain}
+                    className="awardThumbnail"
+                    target="_blank"
+                  />
+                </TableCell>
+                <TableCell>
+                  <div>
+                    Gain on Stock Sale
+                    <i />
+                  </div>
+                </TableCell>
+              </TableRow>
+              {/* <div>
                 <img
                   alt="Day Trader"
                   src={Day}
-                  className="newsThumnail"
+                  className="awardThumbnail"
                   target="_blank"
                 />
               </div>
@@ -59,7 +100,7 @@ const AwardList = (props) => {
               <img
                 alt="Gain on Stock Sale"
                 src={Gain}
-                className="newsThumnail"
+                className="awardThumbnail"
                 target="_blank"
               />
             </div>
@@ -67,11 +108,11 @@ const AwardList = (props) => {
               <div>
                 Gain on Stock Sale
                 <i />
-              </div>
+              </div> */}
             </div>
-          </tbody>
-        </table>
-      </div>
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Fragment>
   );
 };
