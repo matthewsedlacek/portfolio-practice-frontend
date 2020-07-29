@@ -87,6 +87,12 @@ const getCompanies = () => {
   );
 };
 
+const getWatchList = () => {
+  return fetch(`${API}/watchlists/`, { headers: headers() }).then((res) =>
+    res.json()
+  );
+};
+
 const newBuyTransaction = (data, portfolio, quantity, transactionValue) => {
   let stockId = parseInt(data[data.length - 1].id);
   let portfolioId = parseInt(portfolio.id);
@@ -183,6 +189,7 @@ export const api = {
     newSellTransaction,
     stockPurchase,
     stockSale,
+    getWatchList,
   },
   stockPrices: {
     getStockPrices,

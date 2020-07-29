@@ -43,6 +43,7 @@ class Signup extends React.Component {
       if (res.error === "failed to create user") {
         this.setState({ error: true });
       } else {
+        // add create watchlist function and call here
         this.props.onLogin(res);
         this.props.history.push("/profile");
       }

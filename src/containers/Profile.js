@@ -20,6 +20,7 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
+    this.fetchWatchlist();
     // this.fetchNews();
     this.fetchCompanies();
   }
@@ -38,6 +39,15 @@ class Profile extends React.Component {
     if (token) {
       api.companyData.getCompanies().then((data) => {
         this.setState({ companies: data });
+      });
+    }
+  };
+
+  fetchWatchlist = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      api.userData.getWatchList().then((data) => {
+        this.setState({ watchList: data[0] });
       });
     }
   };
@@ -82,8 +92,8 @@ class Profile extends React.Component {
             <h2>Watchlist</h2>
             <div>
               <WatchList
-                company={this.state.searchedCompanies}
-                stock={this.state.searchedStockPrice}
+                userWatchList={this.state.watchList.stock_prices}
+                // stock={this.state.searchedStockPrice}
               />
             </div>
           </Col>

@@ -9,6 +9,13 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 const WatchList = (props) => {
+  const renderWatchedStock = () => {
+    console.log(props.userWatchList);
+    return props.userWatchList.map((singleWatch) => {
+      console.log(singleWatch);
+      return <WatchItem watchedStock={singleWatch} />;
+    });
+  };
   return (
     <div className="profileContainer">
       <TableContainer component={Paper}>
@@ -21,9 +28,8 @@ const WatchList = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <WatchItem company={props.company} stock={props.stock} />
             {/* <IconButton aria-label="delete"> */}
-
+            {props.userWatchList && renderWatchedStock()}
             {/* </IconButton> */}
           </TableBody>
         </Table>
