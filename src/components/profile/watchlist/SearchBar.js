@@ -45,18 +45,9 @@ const SearchBar = (props) => {
     setName(companyObject.name);
   };
 
-  const handleBuyStock = (event) => {
+  const handleAddWatchlist = (event) => {
     event.preventDefault();
-    props.handleBuyStock(event);
-  };
-
-  const handleSellStock = (event) => {
-    event.preventDefault();
-    props.handleSellStock(event);
-  };
-
-  const onQuantityChange = (e) => {
-    props.handleQuantityChange(e);
+    props.handleAddWatchlist(event);
   };
 
   return (
@@ -90,22 +81,10 @@ const SearchBar = (props) => {
               </div>
             )}
           </div>
-          {/* Quantity{" "}
-          <input
-            type="number"
-            name="value"
-            placeholder="Amount"
-            step="1.0"
-            onChange={onQuantityChange}
-            value={props.tradeQuantity}
-          /> */}
         </div>
-        <button type="submit" onClick={handleBuyStock}>
+        <button type="submit" onClick={handleAddWatchlist}>
           Add To Watch List
         </button>
-        {/* <button type="submit" onClick={handleSellStock}>
-          Sell
-        </button> */}
       </form>
     </div>
   );

@@ -4,6 +4,9 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import "font-awesome/css/font-awesome.min.css";
 import Logo from "../stylesheets/logo.png";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 // Styling;
 const link = {
@@ -21,31 +24,40 @@ const NavBar = (props) => {
   return (
     <div className="navBar">
       <div>
-        <div>
-          {/* <i className="fa fa-dollar"></i> */}
-          <img alt="h" src={Logo} className="navBarLogo" />
-          {/* Portfolio Practice */}
-        </div>
-        {loggedIn ? (
-          <div
-            // style={link}
-            onClick={() => {
-              props.handleLogout();
-              props.history.push("/login");
-            }}
-          >
-            Sign Out
-          </div>
-        ) : (
-          <div
-            to="/login"
-            exact
-            // style={link}
-            // activeStyle={{ background: "darkblue" }}
-          >
-            {/* Sign In */}
-          </div>
-        )}
+        <Container>
+          <Row>
+            <Col md={4}>
+              <div>
+                {/* <i className="fa fa-dollar"></i> */}
+                <img alt="h" src={Logo} className="navBarLogo" />
+                {/* Portfolio Practice */}
+              </div>
+            </Col>
+            <Col md={{ span: 4, offset: 4 }}>
+              {loggedIn ? (
+                <div
+                  class="box"
+                  // style={link}
+                  onClick={() => {
+                    props.handleLogout();
+                    props.history.push("/login");
+                  }}
+                >
+                  Sign Out
+                </div>
+              ) : (
+                <div
+                  to="/login"
+                  exact
+                  // style={link}
+                  // activeStyle={{ background: "darkblue" }}
+                >
+                  {/* Sign In */}
+                </div>
+              )}
+            </Col>
+          </Row>
+        </Container>
         {loggedIn ? (
           // <a>Welcome {currentUser.username}</a>
           <React.Fragment>
@@ -69,46 +81,29 @@ const NavBar = (props) => {
                   <Nav.Link style={link}></Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  {/* <Nav.Link */}
-                  {/* href="/portfolio"
-                    style={link}
-                    // activeStyle={{ background: "darkblue" }}
-                  >
-                    Portfolios */}
                   <a
                     id="navBarButtons"
                     class="btn btn-primary active"
                     href="/portfolio"
                     role="button"
                     size="lg"
-                    // className="navBarButtons"
                   >
                     Portfolios
                   </a>
-                  {/* </Nav.Link> */}
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link style={link}></Nav.Link>
                 </Nav.Item>
                 <Nav.Item id="navBarButtons">
-                  {/* <Nav.Link
-                  <a ></a>
-                    href="/trading"
-                    style={link}
-                    // activeStyle={{ background: "darkblue" }}
-                  > */}
                   <a
                     id="navBarButtons"
                     class="btn btn-primary active"
                     href="/trading"
                     role="button"
                     size="lg"
-                    // className="navBarButtons"
                   >
                     Trade
                   </a>
-                  {/* Trade */}
-                  {/* </Nav.Link> */}
                 </Nav.Item>
               </Nav>
             </div>
