@@ -125,7 +125,7 @@ const PortfolioCard = (props) => {
   const rows = [createData("Frozen yoghurt", 159, 6.0, 24, 4.0, 3.99)];
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{ marginTop: 10 }}>
       <Table aria-label="collapsible table">
         <TableHead className="portfolioTableContainer">
           <TableRow>
