@@ -14,6 +14,7 @@ class Profile extends React.Component {
     awards: [],
     newsArray: [],
     watchList: [],
+    watchListPrices: [],
     companies: [],
     searchedCompanies: [],
     searchedStockPrice: [],
@@ -47,7 +48,7 @@ class Profile extends React.Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.userData.getWatchList().then((data) => {
-        this.setState({ watchList: data[0] });
+        this.setState({ watchList: data });
       });
     }
   };
@@ -56,6 +57,24 @@ class Profile extends React.Component {
     this.setState({
       searchedStockPrice: company.stock_prices[company.stock_prices.length - 1],
       searchedCompanies: company,
+    });
+  };
+
+  handleWatchListAdd = () => {
+    api.userData
+      .newWatchListItem(
+        this.props.currentUser.id,
+        this.state.searchedStockPrice.id
+      )
+      .then((res) => {
+        this.fetchWatchlist();
+      });
+  };
+
+  handleWatchListRemove = (watchedItem) => {
+    console.log(watchedItem);
+    api.userData.deleteWatchListItem(watchedItem).then((res) => {
+      this.fetchWatchlist();
     });
   };
 
@@ -70,6 +89,7 @@ class Profile extends React.Component {
             <SearchBar
               companies={this.state.companies}
               selectCompany={this.handleCompanySelect}
+              watchListAdd={this.handleWatchListAdd}
             />
           </Col>
         </Row>
@@ -92,8 +112,8 @@ class Profile extends React.Component {
             <h2>Watchlist</h2>
             <div>
               <WatchList
-                userWatchList={this.state.watchList.stock_prices}
-                // stock={this.state.searchedStockPrice}
+                userWatchList={this.state.watchList}
+                handleDelete={this.handleWatchListRemove}
               />
             </div>
           </Col>

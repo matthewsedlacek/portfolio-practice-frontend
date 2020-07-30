@@ -10,10 +10,14 @@ import Paper from "@material-ui/core/Paper";
 
 const WatchList = (props) => {
   const renderWatchedStock = () => {
-    console.log(props.userWatchList);
     return props.userWatchList.map((singleWatch) => {
-      console.log(singleWatch);
-      return <WatchItem watchedStock={singleWatch} />;
+      return (
+        <WatchItem
+          watchedStock={singleWatch}
+          id={singleWatch.id}
+          handleDelete={props.handleDelete}
+        />
+      );
     });
   };
   return (

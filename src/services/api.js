@@ -88,7 +88,7 @@ const getCompanies = () => {
 };
 
 const getWatchList = () => {
-  return fetch(`${API}/watchlists/`, { headers: headers() }).then((res) =>
+  return fetch(`${API}/watchlist_prices/`, { headers: headers() }).then((res) =>
     res.json()
   );
 };
@@ -174,6 +174,27 @@ const stockSale = (portfolio, transactionValue, totalGainLoss) => {
   }).then((res) => res.json());
 };
 
+const newWatchListItem = (watchListId, stockPrice) => {
+  console.log(watchListId);
+  console.log(stockPrice);
+
+  return fetch(`${API}/watchlist_prices/`, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify({
+      watchlist_id: watchListId,
+      stock_price_id: stockPrice,
+    }),
+  }).then((res) => res.json());
+};
+
+const deleteWatchListItem = (watchedItem) => {
+  return fetch(`${API}/watchlist_prices/${watchedItem.id}`, {
+    method: "DELETE",
+    headers: headers(),
+  }).then((res) => res.json());
+};
+
 export const api = {
   auth: {
     login,
@@ -190,6 +211,8 @@ export const api = {
     stockPurchase,
     stockSale,
     getWatchList,
+    newWatchListItem,
+    deleteWatchListItem,
   },
   stockPrices: {
     getStockPrices,

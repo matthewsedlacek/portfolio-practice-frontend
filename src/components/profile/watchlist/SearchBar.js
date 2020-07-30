@@ -45,9 +45,9 @@ const SearchBar = (props) => {
     setName(companyObject.name);
   };
 
-  const handleAddWatchlist = (event) => {
+  const handleAddToWatchlist = (event) => {
     event.preventDefault();
-    props.handleAddWatchlist(event);
+    props.watchListAdd(event);
   };
 
   return (
@@ -82,7 +82,7 @@ const SearchBar = (props) => {
             )}
           </div>
         </div>
-        <button type="submit" onClick={handleAddWatchlist}>
+        <button type="submit" onClick={handleAddToWatchlist}>
           Add To Watch List
         </button>
       </form>
