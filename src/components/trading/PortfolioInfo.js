@@ -1,11 +1,16 @@
 import React, { Fragment, useState, useEffect, useRef } from "react";
-// import {
-//   Button,
-//   ButtonGroup,
-//   DropdownButton,
-//   MenuItem,
-//   Dropdown,
-// } from "react-bootstrap";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+}));
 
 const PortfolioInfo = (props) => {
   const [display, setDisplay] = useState(false);
@@ -48,8 +53,8 @@ const PortfolioInfo = (props) => {
   return (
     <Fragment>
       <div ref={wrapperRef}>
-        Name{" "}
-        <input
+        Portfolio Name{" "}
+        <TextField
           type="text"
           id="auto"
           placeholder="Select Portfolio"
@@ -75,12 +80,23 @@ const PortfolioInfo = (props) => {
         )}
       </div>
       <div>
-        {/* will need to update to locked_in value */}
-        Portfolio Value: <h1>{props.singlePortfolio.locked_in_value}</h1>
-        {/* Will need to update to available cash */}
-        Buying Power: <h1>{props.singlePortfolio.available_cash}</h1>
-        {/* Will need to update to available cash */}
-        Available Cash: <h1>{props.singlePortfolio.available_cash}</h1>
+        {props.singlePortfolio.locked_in_value ? (
+          <div>
+            {/* will need to update to locked_in value */}
+            <div>
+              Portfolio Value: $
+              {props.singlePortfolio.locked_in_value.toFixed(2)}
+            </div>
+            {/* Will need to update to available cash */}
+            <div>
+              Buying Power: ${props.singlePortfolio.available_cash.toFixed(2)}
+            </div>
+            {/* Will need to update to available cash */}
+            <div>
+              Available Cash: ${props.singlePortfolio.available_cash.toFixed(2)}
+            </div>
+          </div>
+        ) : null}
       </div>
     </Fragment>
   );
