@@ -39,7 +39,6 @@ class App extends React.Component {
   login = (data) => {
     console.log(data);
     localStorage.setItem("token", data.jwt);
-    debugger;
     this.setState({
       auth: {
         ...this.state.auth,

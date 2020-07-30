@@ -71,7 +71,7 @@ class Trading extends React.Component {
         .then((res) => {
           // this.fetchPortfolios();
           this.buyStock();
-          this.props.history.push("/portfolio");
+          // this.props.history.push("/portfolio");
         });
     } else {
       console.log("Insuffienct Cash Available");
@@ -192,7 +192,7 @@ class Trading extends React.Component {
       .then((res) => {
         this.transactedStatus();
         // this.buyStock();
-        this.props.history.push("/portfolio");
+        // this.props.history.push("/portfolio");
       });
   };
 

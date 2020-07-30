@@ -11,18 +11,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 const AwardList = (props) => {
-  //   const awardArray = [
-  //     { img_src: { Day }, title: "Day Trader" },
-  //     { img_src: { First }, title: "First Stock Purchase" },
-  //     { img_src: { Gain }, title: "Gain on Stock Sale" },
-  //   ];
-
-  //   const renderAwards = () => {
-  //     return awardArray.map((singleAward) => {
-  //       return <AwardCard award={singleAward} />;
-  //     });
-  //   };
-
   return (
     <Fragment>
       <TableContainer className="profileContainer">
