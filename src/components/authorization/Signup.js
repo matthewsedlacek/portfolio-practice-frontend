@@ -45,8 +45,8 @@ class Signup extends React.Component {
       } else {
         // add create watchlist function and call here
         this.props.onLogin(res);
-        // this.watchListGenerate();
-        this.props.history.push("/profile");
+        this.watchListGenerate();
+        // this.props.history.push("/profile");
       }
     });
   };
@@ -57,8 +57,8 @@ class Signup extends React.Component {
         this.setState({ error: true });
       } else {
         // add create watchlist function and call here
-        this.props.onLogin(res);
-        this.watchListGenerate();
+        // this.props.onLogin(res);
+        // this.watchListGenerate();
         this.props.history.push("/profile");
       }
     });
