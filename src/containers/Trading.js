@@ -202,7 +202,7 @@ class Trading extends React.Component {
 
   render() {
     return (
-      <Container>
+      <Container style={{ marginTop: 10 }}>
         <Row>
           <Col md={4} className="profileContainer">
             <PortfolioInfo
@@ -211,7 +211,7 @@ class Trading extends React.Component {
               singlePortfolio={this.state.singlePortfolio}
             />
           </Col>
-          <Col md={{ span: 3, offset: 2 }} className="profileContainer">
+          <Col md={{ span: 3, offset: 2 }}>
             <StockList companies={this.state.searchedCompanies} />
           </Col>
         </Row>
