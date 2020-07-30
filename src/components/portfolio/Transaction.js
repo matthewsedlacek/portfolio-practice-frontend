@@ -26,9 +26,9 @@ const Transaction = (props) => {
         <td>{ticker}</td>
         <td>{name}</td>
         <td>{quantity}</td>
-        <td>{current_price}</td>
-        <td>{current_price}</td>
-        <td>{quantity * current_price}</td>
+        <td>{current_price.toFixed(2)}</td>
+        <td>{current_price.toFixed(2)}</td>
+        <td>{(quantity * current_price).toFixed(2)}</td>
         <td>{dollar_change}</td>
         <td>{buy_sell}</td>
       </tr>

@@ -95,3 +95,8 @@ textAlign: "center"; */
   text-align: "center";
   color: "white";
 }
+
+.portfolioTableContainer {
+  margin: 100px;
+  background-color: lightblue;
+}
