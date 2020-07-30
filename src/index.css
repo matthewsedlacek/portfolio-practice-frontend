@@ -18,6 +18,7 @@ code {
   border-style: solid;
   border-color: #00897b;
   background-color: #fafafa;
+  z-index: 1;
 }
 
 #navBarTabs {
@@ -99,4 +100,8 @@ textAlign: "center"; */
 .portfolioTableContainer {
   margin: 100px;
   background-color: lightblue;
+}
+
+.orderFormButtons {
+  margin-right: 1000px;
 }

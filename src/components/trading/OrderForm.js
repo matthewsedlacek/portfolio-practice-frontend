@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-// import {
-//   Button,
-//   ButtonGroup,
-//   DropdownButton,
-//   MenuItem,
-//   Dropdown,
-// } from "react-bootstrap";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+}));
 
 const OrderForm = (props) => {
   const [display, setDisplay] = useState(false);
@@ -62,17 +67,21 @@ const OrderForm = (props) => {
   return (
     <div>
       <form>
+        <div align="center">Order Form</div>
         <div>
           <div ref={wrapperRef}>
-            Name{" "}
-            <input
-              type="text"
-              id="auto"
-              placeholder="Company Name"
-              onClick={() => setDisplay(!display)}
-              onChange={handleChange}
-              value={search}
-            />
+            Company Name{" "}
+            <div align="center">
+              <TextField
+                type="text"
+                id="auto"
+                placeholder="Company Name"
+                onClick={() => setDisplay(!display)}
+                onChange={handleChange}
+                value={search}
+                label="Required"
+              />
+            </div>
             {display && (
               <div className="autoContainer">
                 {options.map((companyObject, i) => {
@@ -90,22 +99,43 @@ const OrderForm = (props) => {
               </div>
             )}
           </div>
-          Quantity{" "}
-          <input
-            type="number"
-            name="value"
-            placeholder="Amount"
-            step="1.0"
-            onChange={onQuantityChange}
-            value={props.tradeQuantity}
-          />
+          <div>
+            Quantity
+            <div align="center">
+              <TextField
+                type="number"
+                id="standard-number"
+                label="# of Shares"
+                name="value"
+                style={{ marginTop: 0 }}
+                // InputLabelProps={{
+                //   shrink: true,
+                // }}
+                placeholder="Amount"
+                step="1.0"
+                onChange={onQuantityChange}
+                value={props.tradeQuantity}
+              />
+            </div>
+          </div>
         </div>
-        <button type="submit" onClick={handleBuyStock}>
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          onClick={handleBuyStock}
+        >
           Buy
-        </button>
-        <button type="submit" onClick={handleSellStock}>
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          style={{ margin: 10 }}
+          onClick={handleSellStock}
+        >
           Sell
-        </button>
+        </Button>
       </form>
     </div>
   );
