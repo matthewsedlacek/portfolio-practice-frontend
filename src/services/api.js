@@ -75,6 +75,18 @@ const newPortfolio = (data, currentUser) => {
   }).then((res) => res.json());
 };
 
+const newWatchlist = (data) => {
+  console.log(data);
+  return fetch(`${API}/watchlists`, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify({
+      id: data.id,
+      user_id: data.id,
+    }),
+  }).then((res) => res.json());
+};
+
 const getStockPrices = () => {
   return fetch(`${API}/stock_prices/`, { headers: headers() }).then((res) =>
     res.json()
@@ -202,6 +214,7 @@ export const api = {
   },
   newUser: {
     createUser,
+    newWatchlist,
   },
   userData: {
     getPortfolios,

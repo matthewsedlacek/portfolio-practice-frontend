@@ -45,6 +45,20 @@ class Signup extends React.Component {
       } else {
         // add create watchlist function and call here
         this.props.onLogin(res);
+        // this.watchListGenerate();
+        this.props.history.push("/profile");
+      }
+    });
+  };
+
+  watchListGenerate = () => {
+    api.newUser.newWatchlist(this.props.currentUser).then((res) => {
+      if (res.error === "failed to create user") {
+        this.setState({ error: true });
+      } else {
+        // add create watchlist function and call here
+        this.props.onLogin(res);
+        this.watchListGenerate();
         this.props.history.push("/profile");
       }
     });

@@ -94,24 +94,6 @@ class Login extends React.Component {
                 value={fields.password}
                 onChange={this.handleChange}
               />
-
-              {/* <label>Username </label>
-              <input
-                name="username"
-                placeholder="username"
-                value={fields.username}
-                onChange={this.handleChange}
-              /> */}
-              {/* <div> */}
-              {/* <label>Password </label>
-                <input
-                  name="password"
-                  type="password"
-                  placeholder="password"
-                  value={fields.password}
-                  onChange={this.handleChange}
-                />
-              </div> */}
               <Button
                 type="submit"
                 fullWidth

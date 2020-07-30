@@ -69,7 +69,13 @@ class App extends React.Component {
           <Route
             exact
             path="/signup"
-            render={(props) => <Signup {...props} onLogin={this.login} />}
+            render={(props) => (
+              <Signup
+                {...props}
+                onLogin={this.login}
+                currentUser={this.state.auth.user}
+              />
+            )}
           />
           <Route
             exact

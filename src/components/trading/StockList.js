@@ -10,7 +10,6 @@ class StockList extends Component {
           stock={this.props.companies}
           stockPrice={this.props.companies.stock_prices}
         />
-        ;
       </div>
     );
   }

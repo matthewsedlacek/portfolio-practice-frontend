@@ -203,22 +203,35 @@ class Trading extends React.Component {
   render() {
     return (
       <Container>
-        <div>
-          <PortfolioInfo
-            portfolios={this.state.portfolios}
-            selectPortfolio={this.handlePortfolioSelect}
-            singlePortfolio={this.state.singlePortfolio}
-          />
-          <OrderForm
-            companies={this.state.companies}
-            selectCompany={this.handleCompanySelect}
-            handleQuantityChange={this.handleQuantityChange}
-            handleBuyStock={this.handleBuyStock}
-            handleSellStock={this.handleSellStock}
-            updatedQuantity={this.state.tradeQuantity}
-          />
-          <StockList companies={this.state.searchedCompanies} />
-        </div>
+        <Row>
+          <Col md={4} className="profileContainer">
+            <PortfolioInfo
+              portfolios={this.state.portfolios}
+              selectPortfolio={this.handlePortfolioSelect}
+              singlePortfolio={this.state.singlePortfolio}
+            />
+          </Col>
+          <Col md={{ span: 3, offset: 2 }} className="profileContainer">
+            <StockList companies={this.state.searchedCompanies} />
+          </Col>
+        </Row>
+        <Row>
+          <br></br>
+          <br></br>
+          <br></br>
+        </Row>
+        <Row>
+          <Col xs={2} md={4} className="profileContainer">
+            <OrderForm
+              companies={this.state.companies}
+              selectCompany={this.handleCompanySelect}
+              handleQuantityChange={this.handleQuantityChange}
+              handleBuyStock={this.handleBuyStock}
+              handleSellStock={this.handleSellStock}
+              updatedQuantity={this.state.tradeQuantity}
+            />
+          </Col>
+        </Row>
       </Container>
     );
   }

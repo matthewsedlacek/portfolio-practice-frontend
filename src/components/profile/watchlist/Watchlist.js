@@ -9,6 +9,9 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 const WatchList = (props) => {
+  WatchList.defaultProps = {
+    userWatchList: [],
+  };
   const renderWatchedStock = () => {
     return props.userWatchList.map((singleWatch) => {
       return (
