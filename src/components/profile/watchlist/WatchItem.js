@@ -22,8 +22,8 @@ class WatchItem extends React.Component {
     // if (token) {
     if (this.props) {
       api.stockPrices.getWatchListPrice(individualTicker).then((data) => {
-        console.log(data);
-        // this.setState({ watchItemCurrentPrice: data });
+        this.setState({ watchItemCurrentPrice: data });
+        console.log(this.state.watchItemCurrentPrice.c);
       });
     }
   };
@@ -42,7 +42,7 @@ class WatchItem extends React.Component {
     return (
       <TableRow>
         <TableCell align="left">{ticker}</TableCell>
-        <TableCell align="left">{current_price}</TableCell>
+        <TableCell align="left">{this.state.watchItemCurrentPrice.c}</TableCell>
         <TableCell align="left">{percent_change}</TableCell>
         <Button
           align="bottom"
