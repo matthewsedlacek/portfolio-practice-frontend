@@ -34,16 +34,18 @@ class WatchItem extends React.Component {
 
   render() {
     const { ticker } = this.props.watchedStock.stock_price.company;
-    const {
-      current_price,
-      percent_change,
-    } = this.props.watchedStock.stock_price;
+    const currentPrice = this.state.watchItemCurrentPrice.c;
+    const previousClose = this.state.watchItemCurrentPrice.pc;
+    const percentChange = (
+      ((currentPrice - previousClose) / currentPrice) *
+      100
+    ).toFixed(2);
 
     return (
       <TableRow>
         <TableCell align="left">{ticker}</TableCell>
-        <TableCell align="left">{this.state.watchItemCurrentPrice.c}</TableCell>
-        <TableCell align="left">{percent_change}</TableCell>
+        <TableCell align="left">${currentPrice}</TableCell>
+        <TableCell align="left">{percentChange}%</TableCell>
         <Button
           align="bottom"
           onClick={() => this.handleClickDelete(this.props.watchedStock)}
