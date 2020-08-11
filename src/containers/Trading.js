@@ -115,16 +115,16 @@ class Trading extends React.Component {
       });
   };
 
-  transactedStatus = () => {
-    let stock_price = this.state.searchedCompanies.stock_prices[
-      this.state.searchedCompanies.stock_prices.length - 1
-    ];
-    api.stockPrices.updateStockStatus(stock_price).then((res) => {
-      this.fetchPortfolios();
-      // this.buyStock();
-      this.props.history.push("/portfolio");
-    });
-  };
+  // transactedStatus = () => {
+  //   let stock_price = this.state.searchedCompanies.stock_prices[
+  //     this.state.searchedCompanies.stock_prices.length - 1
+  //   ];
+  //   api.stockPrices.updateStockStatus(stock_price).then((res) => {
+  //     this.fetchPortfolios();
+  //     // this.buyStock();
+  //     this.props.history.push("/portfolio");
+  //   });
+  // };
 
   handleSellStock = (e) => {
     e.preventDefault();

@@ -26,6 +26,7 @@ class Transaction extends React.Component {
     // need to add logic for current stock price
     const currentValue = this.state.currentPrice.c * quantity;
     const gainLoss = currentValue - value;
+    const currentPrice = this.state.currentPrice.c * 1;
 
     return (
       <Fragment>
@@ -36,7 +37,7 @@ class Transaction extends React.Component {
           <td>{share_price}</td>
           <td>{value}</td>
           {/* need to add logic to add current price */}
-          <td>{buy_sell === "sell" ? "N/A" : this.state.currentPrice.c}</td>
+          <td>{buy_sell === "sell" ? "N/A" : currentPrice.toFixed(2)}</td>
           <td>{buy_sell === "sell" ? "N/A" : currentValue.toFixed(2)}</td>
           <td>{buy_sell === "sell" ? "N/A" : gainLoss.toFixed(2)}</td>
           <td>{buy_sell}</td>
