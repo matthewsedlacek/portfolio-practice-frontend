@@ -16,14 +16,10 @@ class WatchItem extends React.Component {
   }
 
   fetchCurrentStockPrice = () => {
-    console.log(this.props);
-    // const token = localStorage.getItem("token");
-    let individualTicker = this.props.watchedStock.stock_price.company.ticker;
-    // if (token) {
+    let individualTicker = this.props.watchedStock.company.ticker;
     if (this.props) {
       api.stockPrices.getWatchListPrice(individualTicker).then((data) => {
         this.setState({ watchItemCurrentPrice: data });
-        console.log(this.state.watchItemCurrentPrice.c);
       });
     }
   };
@@ -33,7 +29,7 @@ class WatchItem extends React.Component {
   };
 
   render() {
-    const { ticker } = this.props.watchedStock.stock_price.company;
+    const { ticker } = this.props.watchedStock.company;
     const currentPrice = this.state.watchItemCurrentPrice.c;
     const previousClose = this.state.watchItemCurrentPrice.pc;
     const percentChange = (
@@ -44,7 +40,9 @@ class WatchItem extends React.Component {
     return (
       <TableRow>
         <TableCell align="left">{ticker}</TableCell>
-        <TableCell align="left">${currentPrice}</TableCell>
+        <TableCell align="left">
+          ${this.state.watchItemCurrentPrice ? currentPrice.toFixed(2) : null}
+        </TableCell>
         <TableCell align="left">{percentChange}%</TableCell>
         <Button
           align="bottom"

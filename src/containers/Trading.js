@@ -14,6 +14,7 @@ class Trading extends React.Component {
     searchedCompanies: [],
     singlePortfolio: [],
     tradeQuantity: 0,
+    currentStockPrice: [],
   };
 
   componentDidMount() {
@@ -39,10 +40,28 @@ class Trading extends React.Component {
     }
   };
 
+  fetchCurrentStockPrice = () => {
+    console.log(this.props);
+    // const token = localStorage.getItem("token");
+    let individualTicker = this.state.searchedCompanies.ticker;
+    // if (token) {
+    if (this.props) {
+      api.stockPrices.getCurrentStockPrice(individualTicker).then((data) => {
+        this.setState({ currentStockPrice: data });
+        console.log(this.state.currentStockPrice.c);
+      });
+    }
+  };
+
   handleCompanySelect = (company) => {
-    this.setState({
-      searchedCompanies: company,
-    });
+    this.setState(
+      {
+        searchedCompanies: company,
+      },
+      () => {
+        this.fetchCurrentStockPrice();
+      }
+    );
   };
 
   handlePortfolioSelect = (portfolio) => {
@@ -55,9 +74,10 @@ class Trading extends React.Component {
   handleBuyStock = (e) => {
     e.preventDefault();
     let availableCash = this.state.singlePortfolio.available_cash;
-    let stock_price = this.state.searchedCompanies.stock_prices[
-      this.state.searchedCompanies.stock_prices.length - 1
-    ].current_price;
+    // let stock_price = this.state.searchedCompanies.stock_prices[
+    //   this.state.searchedCompanies.stock_prices.length - 1
+    // ].current_price;
+    let stock_price = this.state.currentStockPrice.c;
     let quantity = parseInt(this.state.tradeQuantity);
     let tradeValue = stock_price * quantity;
     if (availableCash >= stock_price * quantity) {
@@ -70,6 +90,7 @@ class Trading extends React.Component {
         )
         .then((res) => {
           // this.fetchPortfolios();
+          console.log(res);
           this.buyStock();
           // this.props.history.push("/portfolio");
         });
@@ -79,9 +100,10 @@ class Trading extends React.Component {
   };
 
   buyStock = () => {
-    let stock_price = this.state.searchedCompanies.stock_prices[
-      this.state.searchedCompanies.stock_prices.length - 1
-    ].current_price;
+    // let stock_price = this.state.searchedCompanies.stock_prices[
+    //   this.state.searchedCompanies.stock_prices.length - 1
+    // ].current_price;
+    let stock_price = this.state.currentStockPrice.c;
     let quantity = parseInt(this.state.tradeQuantity);
     let tradeValue = stock_price * quantity;
     api.userData

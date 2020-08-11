@@ -1,39 +1,49 @@
 import React, { Fragment } from "react";
+import { api } from "../../services/api";
 
-const Transaction = (props) => {
-  const {
-    company_id,
-    current_price,
-    dollar_change,
-  } = props.transaction.stock_price;
+class Transaction extends React.Component {
+  state = {
+    currentPrice: "",
+  };
 
-  const { quantity, buy_sell } = props.transaction;
-  //   console.log(props.transaction.stock_price);
+  componentDidMount() {
+    this.fetchCurrentStockPrice();
+  }
 
-  const { ticker, name } = props.transaction.stock_price.company;
-  //   console.log(props.transaction.stock_price.company);
+  fetchCurrentStockPrice = () => {
+    let individualTicker = this.props.transaction.company.ticker;
+    if (this.props) {
+      api.stockPrices.getWatchListPrice(individualTicker).then((data) => {
+        this.setState({ currentPrice: data });
+      });
+    }
+  };
 
-  //   const filterCompany = () => {
-  //     let companyInfo = "";
-  //     return props.companies.filter((selectedCompany) => {
-  //       const companyInfo = selectedCompany.id === props.transaction.stock_price;
-  //     });
-  //   };
+  render() {
+    const { quantity, buy_sell, share_price, value } = this.props.transaction;
 
-  return (
-    <Fragment>
-      <tr>
-        <td>{ticker}</td>
-        <td>{name}</td>
-        <td>{quantity}</td>
-        <td>{current_price.toFixed(2)}</td>
-        <td>{current_price.toFixed(2)}</td>
-        <td>{(quantity * current_price).toFixed(2)}</td>
-        <td>{dollar_change}</td>
-        <td>{buy_sell}</td>
-      </tr>
-    </Fragment>
-  );
-};
+    const { ticker, name } = this.props.transaction.company;
+    // need to add logic for current stock price
+    const currentValue = this.state.currentPrice.c * quantity;
+    const gainLoss = currentValue - value;
+
+    return (
+      <Fragment>
+        <tr>
+          <td>{ticker}</td>
+          <td>{name}</td>
+          <td>{quantity}</td>
+          <td>{share_price}</td>
+          <td>{value}</td>
+          {/* need to add logic to add current price */}
+          <td>{buy_sell === "sell" ? "N/A" : this.state.currentPrice.c}</td>
+          <td>{buy_sell === "sell" ? "N/A" : currentValue.toFixed(2)}</td>
+          <td>{buy_sell === "sell" ? "N/A" : gainLoss.toFixed(2)}</td>
+          <td>{buy_sell}</td>
+        </tr>
+      </Fragment>
+    );
+  }
+}
 
 export default Transaction;

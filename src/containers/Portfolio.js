@@ -3,14 +3,12 @@ import { api } from "../services/api";
 import PortfolioCard from "../components/portfolio/PortfolioCard";
 import AddPortfolioForm from "../components/portfolio/AddPortfolioForm";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 class Portfolio extends React.Component {
   state = {
     portfolios: [],
-    transactions: [],
-    companies: [],
+    // transactions: [],
+    // companies: [],
     newPortfolio: {
       name: "",
       value: 0,
@@ -39,7 +37,7 @@ class Portfolio extends React.Component {
             currentUser={this.props.currentUser}
             key={soloPortfolio.id}
             portfolio={soloPortfolio}
-            companies={this.state.companies}
+            // companies={this.state.companies}
           />
         </Container>
       );

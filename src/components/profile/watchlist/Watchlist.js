@@ -13,7 +13,6 @@ const WatchList = (props) => {
     userWatchList: [],
   };
 
-  console.log(props.userWatchList);
   const renderWatchedStock = () => {
     return props.userWatchList.map((singleWatch) => {
       return (
@@ -36,11 +35,7 @@ const WatchList = (props) => {
               <TableCell align="left">Daily Change</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {/* <IconButton aria-label="delete"> */}
-            {props.userWatchList && renderWatchedStock()}
-            {/* </IconButton> */}
-          </TableBody>
+          <TableBody>{props.userWatchList && renderWatchedStock()}</TableBody>
         </Table>
       </TableContainer>
     </div>

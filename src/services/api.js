@@ -37,7 +37,6 @@ const login = (data) => {
 };
 
 const getCurrentUser = (data) => {
-  console.log(data);
   return fetch(`${API_ROOT}/profile`, {
     method: "GET",
     headers: headers(),
@@ -69,6 +68,12 @@ const getNews = () => {
 };
 
 const getWatchListPrice = (ticker) => {
+  return fetch(`${WATCHED_STOCK}${ticker}&token=${FINNHUB_TOKEN}`, {
+    headers: stockHeaders(),
+  }).then((res) => res.json());
+};
+
+const getCurrentStockPrice = (ticker) => {
   console.log(ticker);
   return fetch(`${WATCHED_STOCK}${ticker}&token=${FINNHUB_TOKEN}`, {
     headers: stockHeaders(),
@@ -102,11 +107,11 @@ const newWatchlist = (data) => {
   }).then((res) => res.json());
 };
 
-const getStockPrices = () => {
-  return fetch(`${API}/stock_prices/`, { headers: headers() }).then((res) =>
-    res.json()
-  );
-};
+// const getStockPrices = () => {
+//   return fetch(`${API}/stock_prices/`, { headers: headers() }).then((res) =>
+//     res.json()
+//   );
+// };
 
 const getCompanies = () => {
   return fetch(`${API}/companies/`, { headers: headers() }).then((res) =>
@@ -115,20 +120,20 @@ const getCompanies = () => {
 };
 
 const getWatchList = () => {
-  return fetch(`${API}/watchlist_prices/`, { headers: headers() }).then((res) =>
-    res.json()
-  );
+  return fetch(`${API}/watchlist_companies`, {
+    headers: headers(),
+  }).then((res) => res.json());
 };
 
 const newBuyTransaction = (data, portfolio, quantity, transactionValue) => {
-  let stockId = parseInt(data[data.length - 1].id);
+  console.log(data, portfolio, quantity, transactionValue);
   let portfolioId = parseInt(portfolio.id);
   let purchaseQuantity = parseInt(quantity);
   return fetch(`${API}/transactions/`, {
     method: "POST",
     headers: headers(),
     body: JSON.stringify({
-      stock_price_id: stockId,
+      stock_price_id: 1,
       portfolio_id: portfolioId,
       buy_sell: "buy",
       quantity: purchaseQuantity,
@@ -153,17 +158,17 @@ const stockPurchase = (portfolio, transactionValue) => {
   }).then((res) => res.json());
 };
 
-const updateStockStatus = (stock) => {
-  console.log(stock);
-  let stockId = stock.id;
-  return fetch(`${API}/stock_prices/${stockId}`, {
-    method: "PATCH",
-    headers: headers(),
-    body: JSON.stringify({
-      transacted: true,
-    }),
-  }).then((res) => res.json());
-};
+// const updateStockStatus = (stock) => {
+//   console.log(stock);
+//   let stockId = stock.id;
+//   return fetch(`${API}/stock_prices/${stockId}`, {
+//     method: "PATCH",
+//     headers: headers(),
+//     body: JSON.stringify({
+//       transacted: true,
+//     }),
+//   }).then((res) => res.json());
+// };
 
 const newSellTransaction = (data, portfolio, quantity, transactionValue) => {
   let stockId = parseInt(data[data.length - 1].id);
@@ -201,22 +206,22 @@ const stockSale = (portfolio, transactionValue, totalGainLoss) => {
   }).then((res) => res.json());
 };
 
-const newWatchListItem = (watchListId, stockPrice) => {
-  console.log(watchListId);
-  console.log(stockPrice);
+const newWatchListItem = (company, user) => {
+  console.log(company.id);
+  console.log(user.id);
 
-  return fetch(`${API}/watchlist_prices/`, {
+  return fetch(`${API}/watchlist_companies/`, {
     method: "POST",
     headers: headers(),
     body: JSON.stringify({
-      watchlist_id: watchListId,
-      stock_price_id: stockPrice,
+      watchlist_id: user.id,
+      company_id: company.id,
     }),
   }).then((res) => res.json());
 };
 
 const deleteWatchListItem = (watchedItem) => {
-  return fetch(`${API}/watchlist_prices/${watchedItem.id}`, {
+  return fetch(`${API}/watchlist_companies/${watchedItem.id}`, {
     method: "DELETE",
     headers: headers(),
   }).then((res) => res.json());
@@ -243,9 +248,10 @@ export const api = {
     deleteWatchListItem,
   },
   stockPrices: {
-    getStockPrices,
-    updateStockStatus,
+    // getStockPrices,
+    // updateStockStatus,
     getWatchListPrice,
+    getCurrentStockPrice,
   },
   marketNews: {
     getNews,

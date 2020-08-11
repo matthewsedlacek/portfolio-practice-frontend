@@ -43,10 +43,8 @@ class Signup extends React.Component {
       if (res.error === "failed to create user") {
         this.setState({ error: true });
       } else {
-        // add create watchlist function and call here
         this.props.onLogin(res);
         this.watchListGenerate();
-        // this.props.history.push("/profile");
       }
     });
   };
@@ -56,9 +54,6 @@ class Signup extends React.Component {
       if (res.error === "failed to create user") {
         this.setState({ error: true });
       } else {
-        // add create watchlist function and call here
-        // this.props.onLogin(res);
-        // this.watchListGenerate();
         this.props.history.push("/profile");
       }
     });
@@ -104,26 +99,6 @@ class Signup extends React.Component {
                 value={fields.password}
                 onChange={this.handleChange}
               />
-
-              {/* <div>
-                <label>Username </label>
-                <input
-                  name="username"
-                  placeholder="username"
-                  value={fields.username}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div>
-                <label>Password </label>
-                <input
-                  name="password"
-                  type="password"
-                  placeholder="password"
-                  value={fields.password}
-                  onChange={this.handleChange}
-                />
-              </div> */}
               <Button
                 type="submit"
                 type="submit"

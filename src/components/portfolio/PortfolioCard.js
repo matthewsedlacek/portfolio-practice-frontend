@@ -87,7 +87,8 @@ const PortfolioCard = (props) => {
                       <TableCell align="left">Ticker</TableCell>
                       <TableCell align="left">Company Name</TableCell>
                       <TableCell align="left">Quantity</TableCell>
-                      <TableCell align="left">Purchase Price ($)</TableCell>
+                      <TableCell align="left">Transaction Price ($)</TableCell>
+                      <TableCell align="left">Transaction Value ($)</TableCell>
                       <TableCell align="left">Current Price ($)</TableCell>
                       <TableCell align="left">Total Value ($)</TableCell>
                       <TableCell align="left">Gain/Loss ($)</TableCell>

@@ -11,17 +11,15 @@ import AwardList from "../components/profile/awards/AwardList";
 
 class Profile extends React.Component {
   state = {
-    awards: [],
+    // awards: [],
     newsArray: [],
     watchList: [],
-    watchListPrices: [],
     companies: [],
     searchedCompanies: [],
-    searchedStockPrice: [],
   };
 
   componentDidMount() {
-    this.fetchWatchlist();
+    // this.fetchWatchlist();
     // this.fetchNews();
     this.fetchCompanies();
   }
@@ -55,17 +53,13 @@ class Profile extends React.Component {
 
   handleCompanySelect = (company) => {
     this.setState({
-      searchedStockPrice: company.stock_prices[company.stock_prices.length - 1],
       searchedCompanies: company,
     });
   };
 
   handleWatchListAdd = () => {
     api.userData
-      .newWatchListItem(
-        this.props.currentUser.id,
-        this.state.searchedStockPrice.id
-      )
+      .newWatchListItem(this.state.searchedCompanies, this.props.currentUser)
       .then((res) => {
         this.fetchWatchlist();
       });
