@@ -110,7 +110,7 @@ class Trading extends React.Component {
     let companyId = this.state.searchedCompanies.id;
     let transactionsList = this.state.singlePortfolio.transactions;
     let transactionCompaniesArray = transactionsList.filter(
-      (transaction) => transaction.stock_price.company_id === companyId
+      (transaction) => transaction.company_id === companyId
     );
     //finds all Buy quantities
     let buyTransactions = transactionCompaniesArray.filter(
@@ -136,10 +136,11 @@ class Trading extends React.Component {
     if (totalBuyQuantities >= totalSellQuantities + quantity) {
       api.userData
         .newSellTransaction(
-          this.state.searchedCompanies.stock_prices,
+          this.state.searchedCompanies,
           this.state.singlePortfolio,
           this.state.tradeQuantity,
-          tradeValue
+          tradeValue,
+          stock_price
         )
         .then((res) => {
           this.sellStock();
@@ -154,7 +155,7 @@ class Trading extends React.Component {
     let companyId = this.state.searchedCompanies.id;
     let transactionsList = this.state.singlePortfolio.transactions;
     let transactionCompaniesArray = transactionsList.filter(
-      (transaction) => transaction.stock_price.company_id === companyId
+      (transaction) => transaction.company_id === companyId
     );
     //finds all Buy quantities
     let buyTransactions = transactionCompaniesArray.filter(

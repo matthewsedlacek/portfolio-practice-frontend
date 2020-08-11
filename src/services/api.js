@@ -175,32 +175,42 @@ const stockPurchase = (portfolio, transactionValue) => {
 //   }).then((res) => res.json());
 // };
 
-const newSellTransaction = (data, portfolio, quantity, transactionValue) => {
-  let stockId = parseInt(data[data.length - 1].id);
+const newSellTransaction = (
+  company,
+  portfolio,
+  quantity,
+  transactionValue,
+  stockPrice
+) => {
+  console.log(company);
+  console.log(portfolio);
+  console.log(quantity);
+  console.log(transactionValue);
   let portfolioId = parseInt(portfolio.id);
-  let purchaseQuantity = parseInt(quantity);
+  let sellQuantity = parseInt(quantity);
   return fetch(`${API}/transactions/`, {
     method: "POST",
     headers: headers(),
     body: JSON.stringify({
-      stock_price_id: stockId,
       portfolio_id: portfolioId,
       buy_sell: "sell",
-      quantity: purchaseQuantity,
+      quantity: sellQuantity,
       value: transactionValue,
+      share_price: stockPrice,
+      company_id: company.id,
     }),
   }).then((res) => res.json());
 };
 
 const stockSale = (portfolio, transactionValue, totalGainLoss) => {
-  console.log(portfolio);
+  // console.log(portfolio);
   let portfolioId = portfolio.id;
   let currentValue = portfolio.available_cash;
   let newValue = currentValue + transactionValue;
   let newPortfolioValue = portfolio.locked_in_value + totalGainLoss;
-  console.log(currentValue);
-  console.log(newValue);
-  console.log(transactionValue);
+  // console.log(currentValue);
+  // console.log(newValue);
+  // console.log(transactionValue);
   return fetch(`${API}/portfolios/${portfolioId}`, {
     method: "PATCH",
     headers: headers(),
