@@ -41,14 +41,11 @@ class Trading extends React.Component {
   };
 
   fetchCurrentStockPrice = () => {
-    console.log(this.props);
-    // const token = localStorage.getItem("token");
     let individualTicker = this.state.searchedCompanies.ticker;
-    // if (token) {
     if (this.props) {
       api.stockPrices.getCurrentStockPrice(individualTicker).then((data) => {
         this.setState({ currentStockPrice: data });
-        console.log(this.state.currentStockPrice.c);
+        // console.log(this.state.currentStockPrice.c);
       });
     }
   };
@@ -65,7 +62,7 @@ class Trading extends React.Component {
   };
 
   handlePortfolioSelect = (portfolio) => {
-    console.log(portfolio);
+    // console.log(portfolio);
     this.setState({
       singlePortfolio: portfolio,
     });
@@ -74,25 +71,22 @@ class Trading extends React.Component {
   handleBuyStock = (e) => {
     e.preventDefault();
     let availableCash = this.state.singlePortfolio.available_cash;
-    // let stock_price = this.state.searchedCompanies.stock_prices[
-    //   this.state.searchedCompanies.stock_prices.length - 1
-    // ].current_price;
-    let stock_price = this.state.currentStockPrice.c;
+    let stock_price = parseFloat(this.state.currentStockPrice.c);
     let quantity = parseInt(this.state.tradeQuantity);
+    let companyId = parseInt(this.state.searchedCompanies.id);
     let tradeValue = stock_price * quantity;
     if (availableCash >= stock_price * quantity) {
       api.userData
         .newBuyTransaction(
-          this.state.searchedCompanies.stock_prices,
           this.state.singlePortfolio,
-          this.state.tradeQuantity,
-          tradeValue
+          quantity,
+          tradeValue,
+          companyId,
+          stock_price
         )
         .then((res) => {
-          // this.fetchPortfolios();
           console.log(res);
           this.buyStock();
-          // this.props.history.push("/portfolio");
         });
     } else {
       console.log("Insuffienct Cash Available");
@@ -100,31 +94,15 @@ class Trading extends React.Component {
   };
 
   buyStock = () => {
-    // let stock_price = this.state.searchedCompanies.stock_prices[
-    //   this.state.searchedCompanies.stock_prices.length - 1
-    // ].current_price;
     let stock_price = this.state.currentStockPrice.c;
     let quantity = parseInt(this.state.tradeQuantity);
     let tradeValue = stock_price * quantity;
     api.userData
       .stockPurchase(this.state.singlePortfolio, tradeValue)
       .then((res) => {
-        this.transactedStatus();
-        // this.buyStock();
-        // this.props.history.push("/portfolio");
+        this.props.history.push("/portfolio");
       });
   };
-
-  // transactedStatus = () => {
-  //   let stock_price = this.state.searchedCompanies.stock_prices[
-  //     this.state.searchedCompanies.stock_prices.length - 1
-  //   ];
-  //   api.stockPrices.updateStockStatus(stock_price).then((res) => {
-  //     this.fetchPortfolios();
-  //     // this.buyStock();
-  //     this.props.history.push("/portfolio");
-  //   });
-  // };
 
   handleSellStock = (e) => {
     e.preventDefault();
@@ -152,9 +130,7 @@ class Trading extends React.Component {
     let totalSellQuantities = sellQuantitiesArray.reduce((a, b) => a + b, 0);
 
     // generates the transaction
-    let stock_price = this.state.searchedCompanies.stock_prices[
-      this.state.searchedCompanies.stock_prices.length - 1
-    ].current_price;
+    let stock_price = this.state.currentStockPrice.c;
     let quantity = parseInt(this.state.tradeQuantity);
     let tradeValue = stock_price * quantity;
     if (totalBuyQuantities >= totalSellQuantities + quantity) {
@@ -166,9 +142,7 @@ class Trading extends React.Component {
           tradeValue
         )
         .then((res) => {
-          // this.fetchPortfolios();
           this.sellStock();
-          // this.props.history.push("/portfolio");
         });
     } else {
       console.log("You do not own specified shares");
@@ -199,9 +173,7 @@ class Trading extends React.Component {
 
     //finds all Sell quantities
 
-    let stock_price = this.state.searchedCompanies.stock_prices[
-      this.state.searchedCompanies.stock_prices.length - 1
-    ].current_price;
+    let stock_price = this.state.currentStockPrice.c;
 
     let gainLoss = stock_price - buyPricePerShare;
 
@@ -212,9 +184,7 @@ class Trading extends React.Component {
     api.userData
       .stockSale(this.state.singlePortfolio, tradeValue, totalGainLoss)
       .then((res) => {
-        this.transactedStatus();
-        // this.buyStock();
-        // this.props.history.push("/portfolio");
+        this.props.history.push("/portfolio");
       });
   };
 

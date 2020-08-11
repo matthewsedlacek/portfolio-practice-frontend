@@ -74,7 +74,6 @@ const getWatchListPrice = (ticker) => {
 };
 
 const getCurrentStockPrice = (ticker) => {
-  console.log(ticker);
   return fetch(`${WATCHED_STOCK}${ticker}&token=${FINNHUB_TOKEN}`, {
     headers: stockHeaders(),
   }).then((res) => res.json());
@@ -125,19 +124,25 @@ const getWatchList = () => {
   }).then((res) => res.json());
 };
 
-const newBuyTransaction = (data, portfolio, quantity, transactionValue) => {
-  console.log(data, portfolio, quantity, transactionValue);
+const newBuyTransaction = (
+  portfolio,
+  quantity,
+  tradeValue,
+  companyId,
+  stockPrice
+) => {
   let portfolioId = parseInt(portfolio.id);
   let purchaseQuantity = parseInt(quantity);
   return fetch(`${API}/transactions/`, {
     method: "POST",
     headers: headers(),
     body: JSON.stringify({
-      stock_price_id: 1,
       portfolio_id: portfolioId,
       buy_sell: "buy",
       quantity: purchaseQuantity,
-      value: transactionValue,
+      value: tradeValue,
+      share_price: stockPrice,
+      company_id: companyId,
     }),
   }).then((res) => res.json());
 };
