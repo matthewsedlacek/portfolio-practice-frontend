@@ -106,8 +106,8 @@ const newWatchlist = (data) => {
   }).then((res) => res.json());
 };
 
-// const getStockPrices = () => {
-//   return fetch(`${API}/stock_prices/`, { headers: headers() }).then((res) =>
+// const getTransactions = () => {
+//   return fetch(`${API}/transactions/`, { headers: headers() }).then((res) =>
 //     res.json()
 //   );
 // };
@@ -263,7 +263,7 @@ export const api = {
     deleteWatchListItem,
   },
   stockPrices: {
-    // getStockPrices,
+    // getTransactions,
     // updateStockStatus,
     getWatchListPrice,
     getCurrentStockPrice,

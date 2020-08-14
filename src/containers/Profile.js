@@ -16,12 +16,14 @@ class Profile extends React.Component {
     watchList: [],
     companies: [],
     searchedCompanies: [],
+    portfolios: [],
   };
 
   componentDidMount() {
-    // this.fetchWatchlist();
+    this.fetchWatchlist();
     // this.fetchNews();
     this.fetchCompanies();
+    this.fetchPortfolios();
   }
 
   fetchNews = () => {
@@ -38,6 +40,24 @@ class Profile extends React.Component {
     if (token) {
       api.companyData.getCompanies().then((data) => {
         this.setState({ companies: data });
+      });
+    }
+  };
+
+  // fetchTransactions = () => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     api.stockPrices.getTransactions().then((data) => {
+  //       this.setState({ transactions: data });
+  //     });
+  //   }
+  // };
+
+  fetchPortfolios = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      api.userData.getPortfolios().then((data) => {
+        this.setState({ portfolios: data });
       });
     }
   };
@@ -94,7 +114,7 @@ class Profile extends React.Component {
         <Row>
           <Col>
             <h2>Awards</h2>
-            <AwardList />
+            <AwardList portfolios={this.state.portfolios} />
           </Col>
           <Col>
             <h2>Market News</h2>

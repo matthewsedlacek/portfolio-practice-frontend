@@ -11,6 +11,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 const AwardList = (props) => {
+  console.log(props.portfolios.length);
   return (
     <Fragment>
       <TableContainer className="profileContainer">
