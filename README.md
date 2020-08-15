@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Portfolio Practice - Frontend
 
-## Available Scripts
+An application that provides users the ability to practice buying and selling S&P 500 stocks using live stock-data.
+This [link](https://github.com/matthewsedlacek/Portfolio-Practice-Backend) will direct you to the backend repository.
 
-In the project directory, you can run:
+## Motivation
 
-### `yarn start`
+Portfolio Practice was created to be an educational tool for new investors and finance students. The application empowers new investors with a no risk opportunity to practice buying and selling stocks. Users are rewarded with stock awards that encourage them to trade and develop new strategies to realize gains. The application also provides users with breaking news stories realted to the stock market as well as a list of terms and equations useful for stock trading.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. Clone this repository
+2. Run `bundle install` in terminal
+3. Run the backend server - refer to [backend](https://github.com/johnrusch/seattle-cycling-traffic-backend) repository
+4. Open the index.html in preferred browser
+5. Enjoy Seattle Bike Traffic
 
-### `yarn test`
+## Features
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Users can:
 
-### `yarn build`
+- Select a bike trail
+- View a dynamic map with all bike counter locations
+- View a bike trail's location, distance, and type
+- View a graph of the bike counter data info
+- Create a comment about the selected bike trail
+- Delete a comment that was recently posted
+- Report a problem to the City of Seattle
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Screenshots
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![](Seattle-Bike-Traffic.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technology Used
 
-### `yarn eject`
+- Rails as API
+- JavaScript
+- Canvas.js
+- Leaflet
+- Boostrap
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contributions
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Authors
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Matthew Sedlacek - [GitHub](https://github.com/matthewsedlacek)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Special Thanks To
 
-## Learn More
+- [SODA Developers](https://dev.socrata.com/foundry/data.seattle.gov/tw7j-dfaw)
+- [Faker](https://github.com/faker-ruby/faker)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Licensing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+For a copy of the GNU General Public License along write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
