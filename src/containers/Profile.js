@@ -17,6 +17,8 @@ class Profile extends React.Component {
     companies: [],
     searchedCompanies: [],
     portfolios: [],
+    profitablePortfolios: [],
+    transactions: [],
   };
 
   componentDidMount() {
@@ -24,6 +26,7 @@ class Profile extends React.Component {
     // this.fetchNews();
     this.fetchCompanies();
     this.fetchPortfolios();
+    this.fetchTransactions();
   }
 
   fetchNews = () => {
@@ -44,22 +47,32 @@ class Profile extends React.Component {
     }
   };
 
-  // fetchTransactions = () => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     api.stockPrices.getTransactions().then((data) => {
-  //       this.setState({ transactions: data });
-  //     });
-  //   }
-  // };
+  fetchTransactions = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      api.stockPrices.getTransactions().then((data) => {
+        this.setState({ transactions: data });
+      });
+    }
+  };
 
   fetchPortfolios = () => {
     const token = localStorage.getItem("token");
     if (token) {
       api.userData.getPortfolios().then((data) => {
         this.setState({ portfolios: data });
+        this.findProfitablePortfolios();
       });
     }
+  };
+
+  findProfitablePortfolios = () => {
+    const newPortfolios = this.state.portfolios.filter(
+      (portfolio) => portfolio.starting_value < portfolio.locked_in_value
+    );
+    this.setState({
+      profitablePortfolios: newPortfolios,
+    });
   };
 
   fetchWatchlist = () => {
@@ -114,7 +127,11 @@ class Profile extends React.Component {
         <Row>
           <Col>
             <h2>Awards</h2>
-            <AwardList portfolios={this.state.portfolios} />
+            <AwardList
+              portfolios={this.state.portfolios}
+              transactions={this.state.transactions}
+              profitablePortfolios={this.state.profitablePortfolios}
+            />
           </Col>
           <Col>
             <h2>Market News</h2>
