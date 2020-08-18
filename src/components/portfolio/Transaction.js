@@ -35,7 +35,7 @@ class Transaction extends React.Component {
           <td>{name}</td>
           <td>{quantity}</td>
           <td>{share_price}</td>
-          <td>{value}</td>
+          <td>{value.toFixed(2)}</td>
           {/* need to add logic to add current price */}
           <td>{buy_sell === "sell" ? "N/A" : currentPrice.toFixed(2)}</td>
           <td>{buy_sell === "sell" ? "N/A" : currentValue.toFixed(2)}</td>

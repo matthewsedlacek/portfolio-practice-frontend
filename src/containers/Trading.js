@@ -204,9 +204,6 @@ class Trading extends React.Component {
               singlePortfolio={this.state.singlePortfolio}
             />
           </Col>
-          <Col md={{ span: 3, offset: 2 }}>
-            <StockList companies={this.state.searchedCompanies} />
-          </Col>
         </Row>
         <Row>
           <br></br>
@@ -222,6 +219,17 @@ class Trading extends React.Component {
               handleBuyStock={this.handleBuyStock}
               handleSellStock={this.handleSellStock}
               updatedQuantity={this.state.tradeQuantity}
+            />
+          </Col>
+          <Col
+            // md={{ span: 3, offset: 2 }}
+            // xs={2}
+            md={4}
+            className="profileContainer"
+          >
+            <StockList
+              companies={this.state.searchedCompanies}
+              stockInfo={this.state.currentStockPrice}
             />
           </Col>
         </Row>

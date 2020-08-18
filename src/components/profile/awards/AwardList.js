@@ -48,7 +48,7 @@ const AwardList = (props) => {
                   </div>
                 </TableCell>
               </TableRow>
-              <TableRow>
+              {/* <TableRow>
                 <br></br>
                 <TableCell>
                   <img
@@ -64,7 +64,7 @@ const AwardList = (props) => {
                     <i />
                   </div>
                 </TableCell>
-              </TableRow>
+              </TableRow> */}
               <TableRow>
                 <br></br>
                 <TableCell>

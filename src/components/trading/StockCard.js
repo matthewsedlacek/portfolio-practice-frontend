@@ -32,38 +32,26 @@ const StockCard = (props) => {
             <div>
               <span style={{ height: 200, margin: 10 }}>
                 <i /> Current Price: $
-                {props.stockPrice
-                  ? props.stockPrice[props.stockPrice.length - 1].current_price
-                  : ""}
+                {props.stockPrice ? props.stockPrice.c : ""}
               </span>
-              <div>
+              {/* <div>
                 <span style={{ height: 200, margin: 10 }}>
                   <i />
                   Daily Change:{" "}
                   {props.stockPrice
-                    ? props.stockPrice[props.stockPrice.length - 1]
-                        .dollar_change
+                    ? props.stockPrice.c - props.stockPrice.pc
                     : ""}{" "}
-                  {props.stockPrice
-                    ? props.stockPrice[props.stockPrice.length - 1]
-                        .percent_change
-                    : ""}
+                  {props.stockPrice ? props.stockPrice : ""}
+                </span>
+              </div> */}
+              <div>
+                <span style={{ height: 200, margin: 10 }}>
+                  Daily High: ${props.stockPrice ? props.stockPrice.h : ""}{" "}
                 </span>
               </div>
               <div>
                 <span style={{ height: 200, margin: 10 }}>
-                  Daily High: $
-                  {props.stockPrice
-                    ? props.stockPrice[props.stockPrice.length - 1].daily_high
-                    : ""}{" "}
-                </span>
-              </div>
-              <div>
-                <span style={{ height: 200, margin: 10 }}>
-                  Daily Low: $
-                  {props.stockPrice
-                    ? props.stockPrice[props.stockPrice.length - 1].daily_low
-                    : ""}{" "}
+                  Daily Low: ${props.stockPrice ? props.stockPrice.l : ""}{" "}
                 </span>
               </div>
             </div>

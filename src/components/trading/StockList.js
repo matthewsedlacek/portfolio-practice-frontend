@@ -8,7 +8,7 @@ class StockList extends Component {
         <StockCard
           key={this.props.companies.id}
           stock={this.props.companies}
-          stockPrice={this.props.companies.stock_prices}
+          stockPrice={this.props.stockInfo}
         />
       </div>
     );
