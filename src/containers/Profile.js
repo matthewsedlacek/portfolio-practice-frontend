@@ -22,8 +22,8 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
-    // this.fetchWatchlist();
-    // this.fetchNews();
+    this.fetchWatchlist();
+    this.fetchNews();
     this.fetchCompanies();
     this.fetchPortfolios();
     this.fetchTransactions();

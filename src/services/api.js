@@ -1,5 +1,7 @@
-const API_ROOT = `http://localhost:3000/api/v1`;
-const API = `http://localhost:3000`;
+const API_ROOT = `https://safe-earth-60639.herokuapp.com//api/v1`;
+const API = `https://safe-earth-60639.herokuapp.com/`;
+// const API_ROOT = `http://localhost:3000/api/v1`;
+// const API = `http://localhost:3000`;
 const NEWS = `https://stocknewsapi.com/api/v1/category?section=general&items=50&token=8kzkbtqiqnqmsubqcym2fqishmzzhkxnqr8ipinj`;
 const WATCHED_STOCK = `https://finnhub.io/api/v1/quote?symbol=`;
 const FINNHUB_TOKEN = "bso3q47rh5rctp1frig0";
@@ -225,7 +227,7 @@ const newWatchListItem = (company, user) => {
   console.log(company.id);
   console.log(user.id);
 
-  return fetch(`${API}/watchlist_companies/`, {
+  return fetch(`${API}/watchlist_companies`, {
     method: "POST",
     headers: headers(),
     body: JSON.stringify({
