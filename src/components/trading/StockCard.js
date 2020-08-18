@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 const StockCard = (props) => {
   return (
     <div>
-      {props.stockPrice ? (
+      {props.stockPrice.length !== 0 ? (
         <Card>
           <CardActionArea>
             <div key={props.stock.id}>
