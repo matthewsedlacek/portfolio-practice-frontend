@@ -1,5 +1,3 @@
-// const API_ROOT = `https://cors-anywhere.herokuapp.com/https://safe-earth-60639.herokuapp.com//api/v1`;
-// const API = `https://cors-anywhere.herokuapp.com/https://safe-earth-60639.herokuapp.com/`;
 const API_ROOT = `http://localhost:3000/api/v1`;
 const API = `http://localhost:3000`;
 const NEWS = `https://stocknewsapi.com/api/v1/category?section=general&items=50&token=8kzkbtqiqnqmsubqcym2fqishmzzhkxnqr8ipinj`;
