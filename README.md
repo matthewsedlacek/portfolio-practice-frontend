@@ -14,7 +14,7 @@ Portfolio Practice was created to be an educational tool for new investors and f
 4. Run `npm start` in your terminal
 5. Enjoy Portfolio Practice
 
-To view a long term user please feel free to access the following user account
+To view an active user please feel free to access the following user account
 username: gordongekko
 password: money
 
