@@ -54,7 +54,6 @@ class Login extends React.Component {
 
     return (
       <Container component="main" maxWidth="xs">
-        {/* <CssBaseLine /> */}
         <div>
           {this.state.error ? (
             <h1>Incorrect Password or Username. Please Try again...</h1>
@@ -62,7 +61,6 @@ class Login extends React.Component {
           <div>
             <form
               className="loginForm"
-              // className={useStyles().classes.form}
               onSubmit={this.handleSubmit}
               noValidate
             >

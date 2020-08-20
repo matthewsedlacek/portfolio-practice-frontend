@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import Day from "./daytrader.png";
 import First from "./firststock.png";
 import Blur from "./question-mark.png";
 import Gain from "./growportfolio.png";
@@ -9,7 +8,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 
 const AwardList = (props) => {
   console.log(props.portfolios.length);
@@ -47,25 +45,6 @@ const AwardList = (props) => {
                     <i />
                   </div>
                 </TableCell>
-              </TableRow>
-              {/* <TableRow>
-                <br></br>
-                <TableCell>
-                  <img
-                    alt="Day Trader"
-                    src={Day}
-                    className="awardThumbnail"
-                    target="_blank"
-                  />
-                </TableCell>
-                <TableCell>
-                  <div>
-                    Day Trader
-                    <i />
-                  </div>
-                </TableCell>
-              </TableRow> */}
-              <TableRow>
                 <br></br>
                 <TableCell>
                   {props.profitablePortfolios.length > 0 ? (

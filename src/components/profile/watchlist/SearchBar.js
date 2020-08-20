@@ -1,11 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-// import {
-//   Button,
-//   ButtonGroup,
-//   DropdownButton,
-//   MenuItem,
-//   Dropdown,
-// } from "react-bootstrap";
 
 const SearchBar = (props) => {
   const [display, setDisplay] = useState(false);

@@ -44,7 +44,6 @@ const getCurrentUser = (data) => {
 };
 
 const createUser = (data) => {
-  console.log(data);
   return fetch(`${API_ROOT}/users/`, {
     method: "POST",
     headers: headers(),
@@ -80,7 +79,6 @@ const getCurrentStockPrice = (ticker) => {
 };
 
 const newPortfolio = (data, currentUser) => {
-  console.log(data);
   return fetch(`${API}/portfolios`, {
     method: "POST",
     headers: headers(),
@@ -95,7 +93,6 @@ const newPortfolio = (data, currentUser) => {
 };
 
 const newWatchlist = (data) => {
-  console.log(data);
   return fetch(`${API}/watchlists`, {
     method: "POST",
     headers: headers(),
@@ -148,7 +145,6 @@ const newBuyTransaction = (
 };
 
 const stockPurchase = (portfolio, transactionValue) => {
-  console.log(portfolio);
   let portfolioId = portfolio.id;
   let currentValue = portfolio.available_cash;
   let newValue = currentValue - transactionValue;
@@ -162,18 +158,6 @@ const stockPurchase = (portfolio, transactionValue) => {
     }),
   }).then((res) => res.json());
 };
-
-// const updateStockStatus = (stock) => {
-//   console.log(stock);
-//   let stockId = stock.id;
-//   return fetch(`${API}/stock_prices/${stockId}`, {
-//     method: "PATCH",
-//     headers: headers(),
-//     body: JSON.stringify({
-//       transacted: true,
-//     }),
-//   }).then((res) => res.json());
-// };
 
 const newSellTransaction = (
   company,
@@ -203,14 +187,10 @@ const newSellTransaction = (
 };
 
 const stockSale = (portfolio, transactionValue, totalGainLoss) => {
-  // console.log(portfolio);
   let portfolioId = portfolio.id;
   let currentValue = portfolio.available_cash;
   let newValue = currentValue + transactionValue;
   let newPortfolioValue = portfolio.locked_in_value + totalGainLoss;
-  // console.log(currentValue);
-  // console.log(newValue);
-  // console.log(transactionValue);
   return fetch(`${API}/portfolios/${portfolioId}`, {
     method: "PATCH",
     headers: headers(),
@@ -264,7 +244,6 @@ export const api = {
   },
   stockPrices: {
     getTransactions,
-    // updateStockStatus,
     getWatchListPrice,
     getCurrentStockPrice,
   },

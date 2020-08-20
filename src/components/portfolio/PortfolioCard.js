@@ -19,12 +19,7 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 const PortfolioCard = (props) => {
   const renderTransactions = () => {
     return props.portfolio.transactions.map((selectedTransaction) => {
-      return (
-        <Transaction
-          transaction={selectedTransaction}
-          //   companies={props.companies}
-        />
-      );
+      return <Transaction transaction={selectedTransaction} />;
     });
   };
 
@@ -57,7 +52,6 @@ const PortfolioCard = (props) => {
 
     return (
       <React.Fragment>
-        {/* <br></br> */}
         <TableRow className={classes.root}>
           <TableCell>
             <IconButton

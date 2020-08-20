@@ -4,7 +4,6 @@ import Login from "./components/authorization/Login";
 import Signup from "./components/authorization/Signup";
 import { api } from "./services/api";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import { Route} from "react-router-dom";
 import Profile from "./containers/Profile";
 import Portfolio from "./containers/Portfolio";
 import Trading from "./containers/Trading";

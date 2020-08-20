@@ -1,54 +1,80 @@
 # Portfolio Practice - Frontend
 
-An application that provides users the ability to practice buying and selling S&P 500 stocks using live stock-data.
-This [link](https://github.com/matthewsedlacek/Portfolio-Practice-Backend) will direct you to the backend repository.
+An application that provides users the ability to practice buying and selling S&P 500 stocks using live stock market data. This [link](https://github.com/matthewsedlacek/Portfolio-Practice-Backend) will direct you to the backend repository.
 
 ## Motivation
 
-Portfolio Practice was created to be an educational tool for new investors and finance students. The application empowers new investors with a no risk opportunity to practice buying and selling stocks. Users are rewarded with stock awards that encourage them to trade and develop new strategies to realize gains. The application also provides users with breaking news stories realted to the stock market as well as a list of terms and equations useful for stock trading.
+Portfolio Practice was created to be an educational tool for new investors and finance students. The application empowers new investors with a no risk opportunity to practice buying and selling stocks. To encourage user engagement users are rewarded with stock awards when they try new strategies and realize gains. The application also provides users with breaking news stories realted to the stock market.
 
 ## Installation
 
-1. Clone this repository
-2. Run `bundle install` in terminal
-3. Run the backend server - refer to [backend](https://github.com/johnrusch/seattle-cycling-traffic-backend) repository
-4. Open the index.html in preferred browser
-5. Enjoy Seattle Bike Traffic
+1. Fork this repository
+2. Run `npm install` in terminal
+3. Run the backend server - refer to [backend](https://github.com/matthewsedlacek/Portfolio-Practice-Backend) repository
+4. Run `npm start` in your terminal
+5. Enjoy Portfolio Practice
+
+To view a long term user please feel free to access the following user account
+username: gordongekko
+password: money
 
 ## Features
 
 Users can:
 
-- Select a bike trail
-- View a dynamic map with all bike counter locations
-- View a bike trail's location, distance, and type
-- View a graph of the bike counter data info
-- Create a comment about the selected bike trail
-- Delete a comment that was recently posted
-- Report a problem to the City of Seattle
+Profile Page
+
+- Add stocks to a personal watchlist
+- View stock price and daily change of stocks in watchlist
+- Add stocks to watchlist
+- Delete stocks from watchlist
+- View news stories related to the stock market
+- View awards earned from trading
+
+Portfolio Page
+
+- Create a portoflio
+- View portoflio transactions
+- View gains and losses on their stock transactions
+- View value, available cash, and buying power of their portfolios
+
+Trading Page
+
+- Buy stocks for specified portfolio
+- Sell stocks for specified portfolio
+- View company stock information
+
+Coming Soon
+
+- List of terms and equations useful for stock trading.
+- Graph showing users returns vs. S&P 500
+- Preview of transaction before submit
 
 ## Screenshots
 
-![](Seattle-Bike-Traffic.gif)
-
 ## Technology Used
 
+- React
 - Rails as API
-- JavaScript
-- Canvas.js
-- Leaflet
+- React
 - Boostrap
+- Material UI
 
-## Contributions
+## Special Thanks To
 
-#### Authors
+Finnhub.io
 
-- Matthew Sedlacek - [GitHub](https://github.com/matthewsedlacek)
+- Stock Market API
 
-#### Special Thanks To
+Stocknewsapi.com
 
-- [SODA Developers](https://dev.socrata.com/foundry/data.seattle.gov/tw7j-dfaw)
-- [Faker](https://github.com/faker-ruby/faker)
+- Stock Market News API
+
+## Collaborators
+
+Helen Johns
+
+- UX/UI Designer
 
 ## Licensing
 

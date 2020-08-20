@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { api } from "../services/api";
-import { Route } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,7 +10,6 @@ import AwardList from "../components/profile/awards/AwardList";
 
 class Profile extends React.Component {
   state = {
-    // awards: [],
     newsArray: [],
     watchList: [],
     companies: [],
@@ -99,7 +97,6 @@ class Profile extends React.Component {
   };
 
   handleWatchListRemove = (watchedItem) => {
-    console.log(watchedItem);
     api.userData.deleteWatchListItem(watchedItem).then((res) => {
       this.fetchWatchlist();
     });

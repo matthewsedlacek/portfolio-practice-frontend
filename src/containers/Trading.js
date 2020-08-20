@@ -45,7 +45,6 @@ class Trading extends React.Component {
     if (this.props) {
       api.stockPrices.getCurrentStockPrice(individualTicker).then((data) => {
         this.setState({ currentStockPrice: data });
-        // console.log(this.state.currentStockPrice.c);
       });
     }
   };
@@ -62,7 +61,6 @@ class Trading extends React.Component {
   };
 
   handlePortfolioSelect = (portfolio) => {
-    // console.log(portfolio);
     this.setState({
       singlePortfolio: portfolio,
     });
@@ -105,8 +103,8 @@ class Trading extends React.Component {
   };
 
   handleSellStock = (e) => {
-    e.preventDefault();
     // finds all transactions for the company
+    e.preventDefault();
     let companyId = this.state.searchedCompanies.id;
     let transactionsList = this.state.singlePortfolio.transactions;
     let transactionCompaniesArray = transactionsList.filter(
@@ -128,7 +126,6 @@ class Trading extends React.Component {
       (transaction) => transaction.quantity
     );
     let totalSellQuantities = sellQuantitiesArray.reduce((a, b) => a + b, 0);
-
     // generates the transaction
     let stock_price = this.state.currentStockPrice.c;
     let quantity = parseInt(this.state.tradeQuantity);
@@ -173,7 +170,6 @@ class Trading extends React.Component {
     let buyPricePerShare = totalBuyValues / totalBuyQuantities;
 
     //finds all Sell quantities
-
     let stock_price = this.state.currentStockPrice.c;
 
     let gainLoss = stock_price - buyPricePerShare;
@@ -221,12 +217,7 @@ class Trading extends React.Component {
               updatedQuantity={this.state.tradeQuantity}
             />
           </Col>
-          <Col
-            // md={{ span: 3, offset: 2 }}
-            // xs={2}
-            md={4}
-            className="profileContainer"
-          >
+          <Col md={4} className="profileContainer">
             <StockList
               companies={this.state.searchedCompanies}
               stockInfo={this.state.currentStockPrice}

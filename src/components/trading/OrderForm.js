@@ -1,16 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-}));
 
 const OrderForm = (props) => {
   const [display, setDisplay] = useState(false);
@@ -108,9 +99,6 @@ const OrderForm = (props) => {
                 label="# of Shares"
                 name="value"
                 style={{ marginTop: 0 }}
-                // InputLabelProps={{
-                //   shrink: true,
-                // }}
                 placeholder="Amount"
                 step="1.0"
                 onChange={onQuantityChange}
