@@ -217,7 +217,7 @@ class Trading extends React.Component {
               updatedQuantity={this.state.tradeQuantity}
             />
           </Col>
-          <Col md={4} className="profileContainer">
+          <Col xs={2} md={4} className="profileContainer">
             <StockList
               companies={this.state.searchedCompanies}
               stockInfo={this.state.currentStockPrice}

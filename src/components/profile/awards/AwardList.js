@@ -10,8 +10,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 const AwardList = (props) => {
-  console.log(props.portfolios.length);
-
   return (
     <Fragment>
       <TableContainer className="profileContainer">
@@ -45,7 +43,9 @@ const AwardList = (props) => {
                     <i />
                   </div>
                 </TableCell>
-                <br></br>
+              </TableRow>
+              <br></br>
+              <TableRow>
                 <TableCell>
                   {props.profitablePortfolios.length > 0 ? (
                     <img
