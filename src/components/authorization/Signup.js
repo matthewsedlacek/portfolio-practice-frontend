@@ -101,7 +101,6 @@ class Signup extends React.Component {
               />
               <Button
                 type="submit"
-                type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"

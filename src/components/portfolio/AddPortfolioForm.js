@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 class AddPortfolioForm extends Component {
   onChange = (e) => {
@@ -26,7 +24,7 @@ class AddPortfolioForm extends Component {
                 name="name"
                 placeholder="Portfolio Name"
                 onChange={this.onChange}
-                value={this.props.newPortfolio.title}
+                value={title}
               />
               <input
                 type="number"
@@ -34,7 +32,7 @@ class AddPortfolioForm extends Component {
                 placeholder="Amount"
                 step="100.0"
                 onChange={this.onChange}
-                value={this.props.newPortfolio.amount}
+                value={amount}
               />
             </div>
             <button type="submit" onClick={this.handleSubmit}>
