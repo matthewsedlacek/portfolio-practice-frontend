@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const SearchBar = (props) => {
   const [display, setDisplay] = useState(false);
@@ -45,14 +47,16 @@ const SearchBar = (props) => {
 
   return (
     <div>
+      <br></br>
       <form>
         <div>
           <div ref={wrapperRef}>
-            Name{" "}
-            <input
+            <Form.Control
               type="text"
+              aria-label="Default"
+              aria-describedby="inputGroup-sizing-default"
               id="auto"
-              placeholder="Company Name"
+              placeholder="Search Company Name"
               onClick={() => setDisplay(!display)}
               onChange={handleChange}
               value={search}
@@ -75,9 +79,15 @@ const SearchBar = (props) => {
             )}
           </div>
         </div>
-        <button type="submit" onClick={handleAddToWatchlist}>
+        <Button
+          variant="primary"
+          active
+          className="navBarButtons"
+          type="submit"
+          onClick={handleAddToWatchlist}
+        >
           Add To Watch List
-        </button>
+        </Button>
       </form>
     </div>
   );
