@@ -207,7 +207,7 @@ class Trading extends React.Component {
           <br></br>
         </Row>
         <Row>
-          <Col xs={2} md={4} className="profileContainer">
+          <Col xs={2} md={4} className="orderFormContainer">
             <OrderForm
               companies={this.state.companies}
               selectCompany={this.handleCompanySelect}

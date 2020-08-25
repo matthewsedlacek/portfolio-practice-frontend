@@ -14,7 +14,7 @@ const AwardList = (props) => {
     <Fragment>
       <TableContainer className="profileContainer">
         <Table>
-          <TableHead>Collect Awards By Trading Daily</TableHead>
+          <TableHead align="center">Collect Awards By Trading Daily</TableHead>
           <TableBody>
             <div>
               <br></br>

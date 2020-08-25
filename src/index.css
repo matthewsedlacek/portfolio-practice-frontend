@@ -102,8 +102,15 @@ code {
 
 .searchBar {
   margin-bottom: 7px;
-  /* padding: 5px; */
 }
 .orderFormButtons {
   margin-right: 1000px;
+}
+
+.orderFormContainer {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px; /* Rounded border */
+  padding: 5px; /* Some padding */
+  /* background-color: grey; */
+  margin-right: 10px;
 }
