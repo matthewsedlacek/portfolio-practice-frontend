@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import Alert from "react-bootstrap/Alert";
 
 class Signup extends React.Component {
   constructor() {
@@ -65,9 +66,9 @@ class Signup extends React.Component {
       <Container component="main" maxWidth="xs">
         <div>
           {this.state.error ? (
-            <h1>
+            <Alert variant="danger">
               Username taken or Password not provided. Please Try again...
-            </h1>
+            </Alert>
           ) : null}
           <div>
             <form className="loginForm" onSubmit={this.handleSubmit} noValidate>
