@@ -50,7 +50,6 @@ class Portfolio extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.props.currentUser);
     api.userData
       .newPortfolio(this.state.newPortfolio, this.props.currentUser)
       .then((res) => {

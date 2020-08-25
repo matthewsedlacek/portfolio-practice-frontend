@@ -95,6 +95,10 @@ code {
   color: "white";
 }
 
+.portfolioCreateBar {
+  margin-bottom: 7px;
+}
+
 .portfolioTableContainer {
   margin: 100px;
   background-color: lightblue;

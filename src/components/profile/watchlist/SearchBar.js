@@ -82,7 +82,6 @@ const SearchBar = (props) => {
         <Button
           variant="primary"
           active
-          className="navBarButtons"
           type="submit"
           onClick={handleAddToWatchlist}
         >
