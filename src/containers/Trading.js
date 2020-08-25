@@ -6,6 +6,7 @@ import PortfolioInfo from "../components/trading/PortfolioInfo";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Alert from "react-bootstrap/Alert";
 
 class Trading extends React.Component {
   state = {
@@ -15,6 +16,7 @@ class Trading extends React.Component {
     singlePortfolio: [],
     tradeQuantity: 0,
     currentStockPrice: [],
+    errorMessage: 0,
   };
 
   componentDidMount() {
@@ -83,11 +85,12 @@ class Trading extends React.Component {
           stock_price
         )
         .then((res) => {
-          console.log(res);
           this.buyStock();
         });
     } else {
-      console.log("Insuffienct Cash Available");
+      this.setState({
+        errorMessage: "Insufficent Cash Available",
+      });
     }
   };
 
@@ -143,7 +146,9 @@ class Trading extends React.Component {
           this.sellStock();
         });
     } else {
-      console.log("You do not own specified shares");
+      this.setState({
+        errorMessage: "You do not own specified shares",
+      });
     }
   };
 
@@ -204,7 +209,14 @@ class Trading extends React.Component {
         <Row>
           <br></br>
           <br></br>
-          <br></br>
+        </Row>
+        <Row>
+          {this.state.errorMessage !== 0 ? (
+            <Alert variant="danger">
+              <Alert.Heading>Transaction Failed!</Alert.Heading>
+              <p>{this.state.errorMessage}</p>
+            </Alert>
+          ) : null}
         </Row>
         <Row>
           <Col xs={2} md={4} className="orderFormContainer">
