@@ -3,6 +3,9 @@ import { api } from "../services/api";
 import PortfolioCard from "../components/portfolio/PortfolioCard";
 import AddPortfolioForm from "../components/portfolio/AddPortfolioForm";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Alert from "react-bootstrap/Alert";
 
 class Portfolio extends React.Component {
   state = {
@@ -11,6 +14,7 @@ class Portfolio extends React.Component {
       name: "",
       value: 0,
     },
+    errorMessage: 0,
   };
 
   componentDidMount() {
@@ -53,7 +57,14 @@ class Portfolio extends React.Component {
     api.userData
       .newPortfolio(this.state.newPortfolio, this.props.currentUser)
       .then((res) => {
-        this.fetchPortfolios();
+        if (res.id === null) {
+          this.setState({
+            errorMessage: "Portfolio Amount must be a number greater than $100",
+          });
+          this.fetchPortfolios();
+        } else {
+          this.fetchPortfolios();
+        }
       });
   };
 
@@ -65,6 +76,17 @@ class Portfolio extends React.Component {
           handleSubmit={this.handleSubmit}
           newPortfolio={this.state.newPortfolio}
         />
+        <br></br>
+        <Row>
+          <Col>
+            {this.state.errorMessage !== 0 ? (
+              <Alert align="center" variant="danger">
+                <Alert.Heading>Transaction Failed!</Alert.Heading>
+                <p>{this.state.errorMessage}</p>
+              </Alert>
+            ) : null}
+          </Col>
+        </Row>
         {this.renderPortfolios()}
       </div>
     );

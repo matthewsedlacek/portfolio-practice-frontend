@@ -148,8 +148,6 @@ const stockPurchase = (portfolio, transactionValue) => {
   let portfolioId = portfolio.id;
   let currentValue = portfolio.available_cash;
   let newValue = currentValue - transactionValue;
-  console.log(newValue);
-  console.log(transactionValue);
   return fetch(`${API}/portfolios/${portfolioId}`, {
     method: "PATCH",
     headers: headers(),
@@ -166,10 +164,6 @@ const newSellTransaction = (
   transactionValue,
   stockPrice
 ) => {
-  console.log(company);
-  console.log(portfolio);
-  console.log(quantity);
-  console.log(transactionValue);
   let portfolioId = parseInt(portfolio.id);
   let sellQuantity = parseInt(quantity);
   return fetch(`${API}/transactions/`, {
@@ -202,9 +196,6 @@ const stockSale = (portfolio, transactionValue, totalGainLoss) => {
 };
 
 const newWatchListItem = (company, user) => {
-  console.log(company.id);
-  console.log(user.id);
-
   return fetch(`${API}/watchlist_companies`, {
     method: "POST",
     headers: headers(),
