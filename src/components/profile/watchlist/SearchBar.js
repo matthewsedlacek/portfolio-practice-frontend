@@ -50,7 +50,7 @@ const SearchBar = (props) => {
       <br></br>
       <form>
         <div>
-          <div ref={wrapperRef}>
+          <div className="searchBar" ref={wrapperRef}>
             <Form.Control
               type="text"
               aria-label="Default"

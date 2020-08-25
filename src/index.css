@@ -100,6 +100,10 @@ code {
   background-color: lightblue;
 }
 
+.searchBar {
+  margin-bottom: 7px;
+  /* padding: 5px; */
+}
 .orderFormButtons {
   margin-right: 1000px;
 }
