@@ -24,6 +24,7 @@ const WatchList = (props) => {
       );
     });
   };
+
   return (
     <div className="profileContainer">
       <TableContainer component={Paper}>
