@@ -19,8 +19,9 @@ Portfolio Practice was created to be an educational tool for new investors and f
 8. Enjoy Portfolio Practice
 
 To view an active user please feel free to access the following user account
-username: gordongekko
-password: money
+
+- username: gordongekko
+- password: money
 
 ## Features
 
