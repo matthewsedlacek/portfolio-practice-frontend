@@ -27,7 +27,7 @@ To view an active user please feel free to access the following user account
 
 Users can:
 
-Login/Signup Pages
+**Login/Signup Pages**
 
 - Log in to their account
 - Signout of their account
@@ -35,7 +35,7 @@ Login/Signup Pages
 
 ![Login and Signup Page](README_assets/Login&Signup.gif)
 
-Profile Page
+**Profile Page**
 
 - View awards earned from trading
 - View news stories related to the stock market
@@ -45,7 +45,7 @@ Profile Page
 
 ![Profile Page](README_assets/ProfilePage.gif)
 
-Portfolio Page
+**Portfolio Page**
 
 - Create a portoflio
 - View portoflio transactions
@@ -54,15 +54,16 @@ Portfolio Page
 
 ![Portfolio Page](README_assets/PortfolioPage.gif)
 
-Trading Page
+**Trading Page**
 
 - Buy stocks for specified portfolio
 - Sell stocks for specified portfolio
 - View company stock information
+- View portfolio information
 
 ![Trading Page](README_assets/TradingPage.gif)
 
-Coming Soon
+**Coming Soon**
 
 - List of terms and equations useful for stock trading.
 - Graph showing users returns vs. S&P 500
