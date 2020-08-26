@@ -1,8 +1,9 @@
 const API_ROOT = `http://localhost:3000/api/v1`;
 const API = `http://localhost:3000`;
-const NEWS = `https://stocknewsapi.com/api/v1/category?section=general&items=50&token=8kzkbtqiqnqmsubqcym2fqishmzzhkxnqr8ipinj`;
+const NEWS = `https://stocknewsapi.com/api/v1/category?section=general&items=50&token=`;
 const WATCHED_STOCK = `https://finnhub.io/api/v1/quote?symbol=`;
-const FINNHUB_TOKEN = "bso3q47rh5rctp1frig0";
+const FINNHUB_TOKEN = process.env.REACT_APP_FINNHUB_API_KEY;
+const NEWS_TOKEN = process.env.REACT_APP_NEWS_API_KEY;
 const token = () => localStorage.getItem("token");
 
 const headers = () => {
@@ -63,7 +64,9 @@ const getPortfolios = () => {
 };
 
 const getNews = () => {
-  return fetch(`${NEWS}`, { headers: newsHeaders() }).then((res) => res.json());
+  return fetch(`${NEWS}${NEWS_TOKEN}`, { headers: newsHeaders() }).then((res) =>
+    res.json()
+  );
 };
 
 const getWatchListPrice = (ticker) => {
