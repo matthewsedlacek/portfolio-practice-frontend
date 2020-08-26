@@ -27,6 +27,14 @@ To view an active user please feel free to access the following user account
 
 Users can:
 
+Login/Signup Pages
+
+- Log in to their account
+- Create a new account
+- Signout of their account
+
+![Login and Signup Page](README_assets/Login&Signup.gif)
+
 Profile Page
 
 - Add stocks to a personal watchlist
@@ -63,16 +71,6 @@ Coming Soon
 - Boostrap
 - Material UI
 
-## Special Thanks To
-
-Finnhub.io
-
-- Stock Market API
-
-Stocknewsapi.com
-
-- Stock Market News API
-
 ## Author
 
 - Matthew Sedlacek - [Github](https://github.com/matthewsedlacek) [LinkedIn](https://www.linkedin.com/in/matthew-sedlacek/)
@@ -82,6 +80,16 @@ Stocknewsapi.com
 Helen Johns
 
 - UX/UI Designer
+
+## External APIs
+
+Finnhub.io
+
+- Stock Market API
+
+Stocknewsapi.com
+
+- Stock Market News API
 
 ## Licensing
 
