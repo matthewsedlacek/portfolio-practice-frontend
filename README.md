@@ -11,8 +11,11 @@ Portfolio Practice was created to be an educational tool for new investors and f
 1. Fork this repository
 2. Run `npm install` in terminal
 3. Run the backend server - refer to [backend](https://github.com/matthewsedlacek/Portfolio-Practice-Backend) repository
-4. Run `npm start` in your terminal
-5. Enjoy Portfolio Practice
+4. The Stock News and Finnhub APIs each require a key which you can obtain from here [Stock News](https://stocknewsapi.com/)[Finnhub](https://finnhub.io/).
+5. Create a file called ".env" outside of your src folder.
+6. Add Stock News and Finnhub API keys as variables to the your .env file as such `REACT_APP_FINNHUB_API_KEY="<yourKey>"` `REACT_APP_NEWS_API_KEY=<yourKey>`.
+7. Run `npm start` in your terminal
+8. Enjoy Portfolio Practice
 
 To view an active user please feel free to access the following user account
 username: gordongekko
