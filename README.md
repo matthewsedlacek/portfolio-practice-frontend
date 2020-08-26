@@ -75,7 +75,7 @@ Stocknewsapi.com
 
 ## Author
 
-- Matthew Sedlacek - [Github](https://github.com/matthewsedlacek/Portfolio-Practice-Backend) [LinkedIn](https://www.linkedin.com/in/matthew-sedlacek/)
+- Matthew Sedlacek - [Github](https://github.com/matthewsedlacek) [LinkedIn](https://www.linkedin.com/in/matthew-sedlacek/)
 
 ## Collaborators
 
