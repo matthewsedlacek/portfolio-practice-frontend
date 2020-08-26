@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./components/NavBar";
+import Navbar from "./components/Navbar";
 import Login from "./components/authorization/Login";
 import Signup from "./components/authorization/Signup";
 import { api } from "./services/api";
@@ -54,7 +54,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <NavBar
+          <Navbar
             currentUser={this.state.auth.user}
             handleLogout={this.logout}
             loggedIn={this.state.loggedIn}

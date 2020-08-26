@@ -8,8 +8,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
-const WatchList = (props) => {
-  WatchList.defaultProps = {
+const Watchlist = (props) => {
+  Watchlist.defaultProps = {
     userWatchList: [],
   };
 
@@ -43,4 +43,4 @@ const WatchList = (props) => {
   );
 };
 
-export default WatchList;
+export default Watchlist;

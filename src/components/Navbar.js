@@ -12,7 +12,7 @@ const link = {
   padding: "10px",
 };
 
-const NavBar = (props) => {
+const Navbar = (props) => {
   const loggedIn = props.loggedIn;
   return (
     <div className="navBar">
@@ -99,4 +99,4 @@ const NavBar = (props) => {
   );
 };
 
-export default withRouter(NavBar);
+export default withRouter(Navbar);

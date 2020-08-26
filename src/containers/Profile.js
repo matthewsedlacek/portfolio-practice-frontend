@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NewsList from "../components/profile/news/NewsList";
 import SearchBar from "../components/profile/watchlist/SearchBar";
-import WatchList from "../components/profile/watchlist/WatchList";
+import Watchlist from "../components/profile/watchlist/Watchlist";
 import AwardList from "../components/profile/awards/AwardList";
 
 class Profile extends React.Component {
@@ -139,7 +139,7 @@ class Profile extends React.Component {
           <Col>
             <h2>Watchlist</h2>
             <div>
-              <WatchList
+              <Watchlist
                 userWatchList={this.state.watchList}
                 handleDelete={this.handleWatchListRemove}
               />
