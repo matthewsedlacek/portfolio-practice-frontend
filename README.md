@@ -73,6 +73,10 @@ Stocknewsapi.com
 
 - Stock Market News API
 
+## Author
+
+- Matthew Sedlacek - [Github](https://github.com/matthewsedlacek/Portfolio-Practice-Backend) [LinkedIn](https://www.linkedin.com/in/matthew-sedlacek/)
+
 ## Collaborators
 
 Helen Johns
