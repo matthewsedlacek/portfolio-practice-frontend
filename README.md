@@ -37,7 +37,6 @@ Login/Signup Pages
 
 Profile Page
 
-- Add stocks to a personal watchlist
 - View stock price and daily change of stocks in watchlist
 - Add stocks to watchlist
 - Delete stocks from watchlist
