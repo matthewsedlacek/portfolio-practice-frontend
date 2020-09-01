@@ -6,6 +6,7 @@ import Logo from "../stylesheets/logo2.png";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "@material-ui/core/Button";
 
 // Styling
 const link = {
@@ -20,7 +21,7 @@ const Navbar = (props) => {
         <Container>
           <Row>
             <Col md={4}>
-              <div class="logoBox">
+              <div className="logoBox">
                 <img
                   alt="Portfolio Practice"
                   src={Logo}
@@ -31,7 +32,7 @@ const Navbar = (props) => {
             <Col md={{ span: 4, offset: 4 }}>
               {loggedIn ? (
                 <div
-                  class="box"
+                  className="box"
                   onClick={() => {
                     props.handleLogout();
                     props.history.push("/login");
@@ -40,7 +41,7 @@ const Navbar = (props) => {
                   Sign Out
                 </div>
               ) : (
-                <div to="/login" exact></div>
+                <div to="/login"></div>
               )}
             </Col>
           </Row>
@@ -48,24 +49,22 @@ const Navbar = (props) => {
         {loggedIn ? (
           <Container>
             <React.Fragment>
-              <div class="box">
+              <div className="box">
                 <Nav>
-                  <Nav.Item>
-                    <a
-                      id="navBarButtons"
-                      class="btn btn-primary active"
-                      href="/profile"
-                      role="button"
-                      size="lg"
-                    >
-                      Home
-                    </a>
-                  </Nav.Item>
+                  <Button
+                    id="navBarButtons"
+                    class="btn btn-primary active"
+                    href="/profile"
+                    role="button"
+                    size="lg"
+                  >
+                    Home
+                  </Button>
                   <Nav.Item>
                     <Nav.Link style={link}></Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <a
+                    <Button
                       id="navBarButtons"
                       class="btn btn-primary active"
                       href="/portfolio"
@@ -73,13 +72,13 @@ const Navbar = (props) => {
                       size="lg"
                     >
                       Portfolios
-                    </a>
+                    </Button>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link style={link}></Nav.Link>
                   </Nav.Item>
                   <Nav.Item id="navBarButtons">
-                    <a
+                    <Button
                       id="navBarButtons"
                       class="btn btn-primary active"
                       href="/trading"
@@ -87,7 +86,7 @@ const Navbar = (props) => {
                       size="lg"
                     >
                       Trade
-                    </a>
+                    </Button>
                   </Nav.Item>
                 </Nav>
               </div>
