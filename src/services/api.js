@@ -2,7 +2,7 @@
 // const API = `http://localhost:3000`;
 
 const API_ROOT = `https://salty-ravine-43340.herokuapp.com/api/v1`;
-const API = `https://salty-ravine-43340.herokuapp.com/`;
+const API = `https://salty-ravine-43340.herokuapp.com`;
 
 const NEWS = `https://stocknewsapi.com/api/v1/category?section=general&items=50&token=`;
 const WATCHED_STOCK = `https://finnhub.io/api/v1/quote?symbol=`;
