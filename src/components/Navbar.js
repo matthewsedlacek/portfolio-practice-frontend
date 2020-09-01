@@ -67,7 +67,7 @@ const Navbar = (props) => {
                     <Button
                       id="navBarButtons"
                       class="btn btn-primary active"
-                      href="/portfolios"
+                      href="/portfolio"
                       role="button"
                       size="lg"
                     >
