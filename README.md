@@ -6,6 +6,8 @@ An application that provides users the ability to practice buying and selling S&
 
 Portfolio Practice was created to be an educational tool for new investors and finance students. The application empowers new investors with a no risk opportunity to practice buying and selling stocks. To encourage user engagement users are rewarded with stock awards when they try new strategies and realize gains. The application also provides users with breaking news stories realted to the stock market.
 
+## Live Demo
+
 ## Installation
 
 1. Fork this repository
