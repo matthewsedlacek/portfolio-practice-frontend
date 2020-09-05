@@ -8,7 +8,14 @@ Portfolio Practice was created to be an educational tool for new investors and f
 
 ## Live Demo
 
-## Installation
+Visit https://stock-market-practice.netlify.app/
+
+To view an active user please access the following account
+
+- username: gordongekko
+- password: money
+
+## Local Installation
 
 1. Fork this repository
 2. Run `npm install` in terminal
@@ -19,11 +26,6 @@ Portfolio Practice was created to be an educational tool for new investors and f
    `REACT_APP_FINNHUB_API_KEY="<yourKey>"` `REACT_APP_NEWS_API_KEY=<yourKey>`.
 7. Run `npm start` in your terminal
 8. Enjoy Portfolio Practice
-
-To view an active user please feel free to access the following user account
-
-- username: gordongekko
-- password: money
 
 ## Features
 
@@ -75,7 +77,7 @@ Users can:
 
 - React
 - Rails as API
-- React
+- React Hooks
 - Boostrap
 - Material UI
 
