@@ -4,11 +4,17 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import { CardMedia } from "@material-ui/core";
 
 const StockCard = (props) => {
+  const yahooLink = `https://finance.yahoo.com/quote/${props.stock.ticker}`;
+
   return (
     <div>
       {props.stockPrice.length !== 0 ? (
         <Card>
-          <CardActionArea>
+          <CardActionArea
+            href={yahooLink}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <div key={props.stock.id}>
               <CardMedia
                 style={{ height: 200, margin: 10 }}
