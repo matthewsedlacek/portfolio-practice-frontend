@@ -6,12 +6,15 @@ const NewsCard = (props) => {
       <br></br>
       <div key={props.newsStory.id}>
         <div>
-          <a href={props.newsStory.news_url}>
+          <a
+            href={props.newsStory.news_url}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <img
               alt={props.newsStory.title}
               src={props.newsStory.image_url}
               className="newsThumnail"
-              target="_blank"
             />
           </a>
         </div>
