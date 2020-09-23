@@ -19,7 +19,7 @@ const NewsCard = (props) => {
           </a>
         </div>
         <div>
-          <div>
+          <div className="newsThumbnailText ">
             {props.newsStory.title}
             <i />
           </div>
