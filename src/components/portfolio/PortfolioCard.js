@@ -129,13 +129,22 @@ const PortfolioCard = (props) => {
               {props.portfolio.name}
             </TableCell>
             <TableCell component="th" scope="row" align="right">
-              Value: ${props.portfolio.locked_in_value.toFixed(2)}
+              Value: $
+              {props.portfolio.locked_in_value
+                ? props.portfolio.locked_in_value.toFixed(2)
+                : ""}
             </TableCell>
             <TableCell component="th" scope="row" align="right">
-              Buying Power: ${props.portfolio.available_cash.toFixed(2)}
+              Buying Power: $
+              {props.portfolio.available_cash
+                ? props.portfolio.available_cash.toFixed(2)
+                : ""}
             </TableCell>
             <TableCell component="th" scope="row" align="right">
-              Available Cash: ${props.portfolio.available_cash.toFixed(2)}
+              Available Cash: $
+              {props.portfolio.available_cash
+                ? props.portfolio.available_cash.toFixed(2)
+                : ""}
             </TableCell>
             <TableCell component="th" scope="row" align="right">
               {" "}
