@@ -43,6 +43,7 @@ const SearchBar = (props) => {
   const handleAddToWatchlist = (event) => {
     event.preventDefault();
     props.watchListAdd(event);
+    setSearch("");
   };
 
   return (
