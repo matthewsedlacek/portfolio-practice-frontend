@@ -11,6 +11,7 @@ class AddPortfolioForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.handleSubmit(event);
+    this.form.reset();
   };
 
   render() {
@@ -19,7 +20,7 @@ class AddPortfolioForm extends Component {
       <Container>
         <br></br>
         <div>
-          <Form>
+          <Form ref={(form) => (this.form = form)}>
             <Row className="portfolioCreateBar">
               <Col>
                 <Form.Control

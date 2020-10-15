@@ -66,6 +66,13 @@ class Portfolio extends React.Component {
           this.fetchPortfolios();
         }
       });
+    this.setState({
+      newPortfolio: {
+        name: "",
+        value: 0,
+      },
+      errorMessage: 0,
+    });
   };
 
   render() {
