@@ -110,44 +110,53 @@ class Trading extends React.Component {
     e.preventDefault();
     let companyId = this.state.searchedCompanies.id;
     let transactionsList = this.state.singlePortfolio.transactions;
-    let transactionCompaniesArray = transactionsList.filter(
-      (transaction) => transaction.company_id === companyId
-    );
-    //finds all Buy quantities
-    let buyTransactions = transactionCompaniesArray.filter(
-      (transaction) => transaction.buy_sell === "buy"
-    );
-    let buyQuantitiesArray = buyTransactions.map(
-      (transaction) => transaction.quantity
-    );
-    let totalBuyQuantities = buyQuantitiesArray.reduce((a, b) => a + b, 0);
-    //finds all Sell quantities
-    let sellTransactions = transactionCompaniesArray.filter(
-      (transaction) => transaction.buy_sell === "sell"
-    );
-    let sellQuantitiesArray = sellTransactions.map(
-      (transaction) => transaction.quantity
-    );
-    let totalSellQuantities = sellQuantitiesArray.reduce((a, b) => a + b, 0);
-    // generates the transaction
-    let stock_price = this.state.currentStockPrice.c;
-    let quantity = parseInt(this.state.tradeQuantity);
-    let tradeValue = stock_price * quantity;
-    if (totalBuyQuantities >= totalSellQuantities + quantity) {
-      api.userData
-        .newSellTransaction(
-          this.state.searchedCompanies,
-          this.state.singlePortfolio,
-          this.state.tradeQuantity,
-          tradeValue,
-          stock_price
-        )
-        .then((res) => {
-          this.sellStock();
+
+    if (transactionsList) {
+      console.log(transactionsList);
+      let transactionCompaniesArray = transactionsList.filter(
+        (transaction) => transaction.company_id === companyId
+      );
+
+      //finds all Buy quantities
+      let buyTransactions = transactionCompaniesArray.filter(
+        (transaction) => transaction.buy_sell === "buy"
+      );
+      let buyQuantitiesArray = buyTransactions.map(
+        (transaction) => transaction.quantity
+      );
+      let totalBuyQuantities = buyQuantitiesArray.reduce((a, b) => a + b, 0);
+      //finds all Sell quantities
+      let sellTransactions = transactionCompaniesArray.filter(
+        (transaction) => transaction.buy_sell === "sell"
+      );
+      let sellQuantitiesArray = sellTransactions.map(
+        (transaction) => transaction.quantity
+      );
+      let totalSellQuantities = sellQuantitiesArray.reduce((a, b) => a + b, 0);
+      // generates the transaction
+      let stock_price = this.state.currentStockPrice.c;
+      let quantity = parseInt(this.state.tradeQuantity);
+      let tradeValue = stock_price * quantity;
+      if (totalBuyQuantities >= totalSellQuantities + quantity) {
+        api.userData
+          .newSellTransaction(
+            this.state.searchedCompanies,
+            this.state.singlePortfolio,
+            this.state.tradeQuantity,
+            tradeValue,
+            stock_price
+          )
+          .then((res) => {
+            this.sellStock();
+          });
+      } else {
+        this.setState({
+          errorMessage: "You do not own specified shares",
         });
+      }
     } else {
       this.setState({
-        errorMessage: "You do not own specified shares",
+        errorMessage: "Please select a portfolio",
       });
     }
   };
