@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 const OrderForm = (props) => {
   const [display, setDisplay] = useState(false);
@@ -10,119 +11,88 @@ const OrderForm = (props) => {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleClickOutside = (e) => {
     const { current: wrap } = wrapperRef;
-    if (wrap && !wrap.contains(e.target)) {
-      setDisplay(false);
-    }
+    if (wrap && !wrap.contains(e.target)) setDisplay(false);
   };
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    let filteredCompanies = props.companies.filter((company) =>
-      company.name.toLowerCase().includes(e.target.value.toLowerCase())
+    setOptions(
+      props.companies.filter((c) =>
+        c.name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
     );
-    setOptions(filteredCompanies);
   };
 
-  const setName = (name) => {
-    setSearch(name);
+  const handleCompanyClick = (company) => {
+    props.selectCompany(company);
+    setSearch(company.name);
     setDisplay(false);
-  };
-
-  const handleCompanyClick = (companyObject) => {
-    props.selectCompany(companyObject);
-    setName(companyObject.name);
-  };
-
-  const handleBuyStock = (event) => {
-    event.preventDefault();
-    props.handleBuyStock(event);
-  };
-
-  const handleSellStock = (event) => {
-    event.preventDefault();
-    props.handleSellStock(event);
-  };
-
-  const onQuantityChange = (e) => {
-    props.handleQuantityChange(e);
   };
 
   return (
     <div>
+      <Typography variant="subtitle1" style={{ fontWeight: 600, marginBottom: 8 }}>
+        Order Form
+      </Typography>
       <form>
-        <div align="center">Order Form</div>
-        <div>
-          <div ref={wrapperRef}>
-            Company Name{" "}
-            <div align="center">
-              <TextField
-                type="text"
-                id="auto"
-                placeholder="Company Name"
-                onClick={() => setDisplay(!display)}
-                onChange={handleChange}
-                value={search}
-                label="Required"
-              />
+        <div ref={wrapperRef} style={{ marginBottom: 16 }}>
+          <TextField
+            fullWidth
+            type="text"
+            label="Company Name"
+            placeholder="Search companies"
+            onClick={() => setDisplay(!display)}
+            onChange={handleChange}
+            value={search}
+          />
+          {display && (
+            <div className="autoContainer">
+              {options.map((company, i) => (
+                <div
+                  key={i}
+                  onClick={() => handleCompanyClick(company)}
+                  className="option"
+                  tabIndex="0"
+                >
+                  {company.name}
+                </div>
+              ))}
             </div>
-            {display && (
-              <div className="autoContainer">
-                {options.map((companyObject, i) => {
-                  return (
-                    <div
-                      onClick={() => handleCompanyClick(companyObject)}
-                      className="option"
-                      key={i}
-                      tabIndex="0"
-                    >
-                      <span>{companyObject.name}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-          <div>
-            Quantity
-            <div align="center">
-              <TextField
-                type="number"
-                id="standard-number"
-                label="# of Shares"
-                name="value"
-                style={{ marginTop: 0 }}
-                placeholder="Amount"
-                step="1.0"
-                onChange={onQuantityChange}
-                value={props.tradeQuantity}
-              />
-            </div>
-          </div>
+          )}
         </div>
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          onClick={handleBuyStock}
-        >
-          Buy
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          style={{ margin: 10 }}
-          onClick={handleSellStock}
-        >
-          Sell
-        </Button>
+        <div style={{ marginBottom: 16 }}>
+          <TextField
+            fullWidth
+            type="number"
+            label="Shares"
+            placeholder="Number of shares"
+            onChange={props.handleQuantityChange}
+            value={props.updatedQuantity}
+          />
+        </div>
+        <div style={{ display: "flex", gap: 8 }}>
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#2e7d32", color: "white", flex: 1 }}
+            type="submit"
+            onClick={props.handleBuyStock}
+          >
+            Buy
+          </Button>
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#c62828", color: "white", flex: 1 }}
+            type="submit"
+            onClick={props.handleSellStock}
+          >
+            Sell
+          </Button>
+        </div>
       </form>
     </div>
   );

@@ -1,5 +1,6 @@
-import React, { Fragment, useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 
 const PortfolioInfo = (props) => {
   const [display, setDisplay] = useState(false);
@@ -9,82 +10,73 @@ const PortfolioInfo = (props) => {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleClickOutside = (e) => {
     const { current: wrap } = wrapperRef;
-    if (wrap && !wrap.contains(e.target)) {
-      setDisplay(false);
-    }
+    if (wrap && !wrap.contains(e.target)) setDisplay(false);
   };
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    let filteredPortfolios = props.portfolios.filter((portfolio) =>
-      portfolio.name.toLowerCase().includes(e.target.value.toLowerCase())
+    setOptions(
+      props.portfolios.filter((p) =>
+        p.name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
     );
-    setOptions(filteredPortfolios);
   };
 
-  const setName = (name) => {
-    setSearch(name);
+  const handlePortfolioClick = (portfolio) => {
+    props.selectPortfolio(portfolio);
+    setSearch(portfolio.name);
     setDisplay(false);
   };
 
-  const handlePortfolioClick = (portfolioObject) => {
-    props.selectPortfolio(portfolioObject);
-    setName(portfolioObject.name);
-  };
+  const { singlePortfolio } = props;
 
   return (
-    <Fragment>
+    <div>
+      <Typography variant="subtitle1" style={{ fontWeight: 600, marginBottom: 8 }}>
+        Select Portfolio
+      </Typography>
       <div ref={wrapperRef}>
-        Portfolio Name{" "}
         <TextField
+          fullWidth
           type="text"
-          id="auto"
-          placeholder="Select Portfolio"
+          placeholder="Portfolio name"
           onClick={() => setDisplay(!display)}
           onChange={handleChange}
           value={search}
         />
         {display && (
           <div className="autoContainer">
-            {options.map((portfolioObject, i) => {
-              return (
-                <div
-                  onClick={() => handlePortfolioClick(portfolioObject)}
-                  className="option"
-                  key={i}
-                  tabIndex="0"
-                >
-                  <span>{portfolioObject.name}</span>
-                </div>
-              );
-            })}
+            {options.map((portfolio, i) => (
+              <div
+                key={i}
+                onClick={() => handlePortfolioClick(portfolio)}
+                className="option"
+                tabIndex="0"
+              >
+                {portfolio.name}
+              </div>
+            ))}
           </div>
         )}
       </div>
-      <div>
-        {props.singlePortfolio.locked_in_value ? (
-          <div>
-            <div>
-              Portfolio Value: $
-              {props.singlePortfolio.locked_in_value.toFixed(2)}
-            </div>
-            <div>
-              Buying Power: ${props.singlePortfolio.available_cash.toFixed(2)}
-            </div>
-            <div>
-              Available Cash: ${props.singlePortfolio.available_cash.toFixed(2)}
-            </div>
+      {singlePortfolio.locked_in_value && (
+        <div style={{ marginTop: 16 }}>
+          <div className="portfolioStatRow">
+            <Typography variant="body2" color="textSecondary">Total Value</Typography>
+            <Typography variant="body1">${singlePortfolio.locked_in_value.toFixed(2)}</Typography>
           </div>
-        ) : null}
-      </div>
-    </Fragment>
+          <div className="portfolioStatRow">
+            <Typography variant="body2" color="textSecondary">Available Cash</Typography>
+            <Typography variant="body1">${singlePortfolio.available_cash.toFixed(2)}</Typography>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

@@ -52,20 +52,13 @@ class Trading extends React.Component {
   };
 
   handleCompanySelect = (company) => {
-    this.setState(
-      {
-        searchedCompanies: company,
-      },
-      () => {
-        this.fetchCurrentStockPrice();
-      }
-    );
+    this.setState({ searchedCompanies: company }, () => {
+      this.fetchCurrentStockPrice();
+    });
   };
 
   handlePortfolioSelect = (portfolio) => {
-    this.setState({
-      singlePortfolio: portfolio,
-    });
+    this.setState({ singlePortfolio: portfolio });
   };
 
   handleBuyStock = (e) => {
@@ -84,13 +77,9 @@ class Trading extends React.Component {
           companyId,
           stock_price
         )
-        .then((res) => {
-          this.buyStock();
-        });
+        .then(() => this.buyStock());
     } else {
-      this.setState({
-        errorMessage: "Insufficent Cash Available",
-      });
+      this.setState({ errorMessage: "Insufficient cash available" });
     }
   };
 
@@ -100,103 +89,71 @@ class Trading extends React.Component {
     let tradeValue = stock_price * quantity;
     api.userData
       .stockPurchase(this.state.singlePortfolio, tradeValue)
-      .then((res) => {
-        this.props.history.push("/portfolio");
-      });
+      .then(() => this.props.history.push("/portfolio"));
   };
 
   handleSellStock = (e) => {
-    // finds all transactions for the company
     e.preventDefault();
     let companyId = this.state.searchedCompanies.id;
     let transactionsList = this.state.singlePortfolio.transactions;
 
-    if (transactionsList) {
-      console.log(transactionsList);
-      let transactionCompaniesArray = transactionsList.filter(
-        (transaction) => transaction.company_id === companyId
-      );
+    if (!transactionsList) {
+      this.setState({ errorMessage: "Please select a portfolio" });
+      return;
+    }
 
-      //finds all Buy quantities
-      let buyTransactions = transactionCompaniesArray.filter(
-        (transaction) => transaction.buy_sell === "buy"
-      );
-      let buyQuantitiesArray = buyTransactions.map(
-        (transaction) => transaction.quantity
-      );
-      let totalBuyQuantities = buyQuantitiesArray.reduce((a, b) => a + b, 0);
-      //finds all Sell quantities
-      let sellTransactions = transactionCompaniesArray.filter(
-        (transaction) => transaction.buy_sell === "sell"
-      );
-      let sellQuantitiesArray = sellTransactions.map(
-        (transaction) => transaction.quantity
-      );
-      let totalSellQuantities = sellQuantitiesArray.reduce((a, b) => a + b, 0);
-      // generates the transaction
-      let stock_price = this.state.currentStockPrice.c;
-      let quantity = parseInt(this.state.tradeQuantity);
-      let tradeValue = stock_price * quantity;
-      if (totalBuyQuantities >= totalSellQuantities + quantity) {
-        api.userData
-          .newSellTransaction(
-            this.state.searchedCompanies,
-            this.state.singlePortfolio,
-            this.state.tradeQuantity,
-            tradeValue,
-            stock_price
-          )
-          .then((res) => {
-            this.sellStock();
-          });
-      } else {
-        this.setState({
-          errorMessage: "You do not own specified shares",
-        });
-      }
+    let transactionCompaniesArray = transactionsList.filter(
+      (t) => t.company_id === companyId
+    );
+    let totalBuyQuantities = transactionCompaniesArray
+      .filter((t) => t.buy_sell === "buy")
+      .map((t) => t.quantity)
+      .reduce((a, b) => a + b, 0);
+    let totalSellQuantities = transactionCompaniesArray
+      .filter((t) => t.buy_sell === "sell")
+      .map((t) => t.quantity)
+      .reduce((a, b) => a + b, 0);
+
+    let stock_price = this.state.currentStockPrice.c;
+    let quantity = parseInt(this.state.tradeQuantity);
+    let tradeValue = stock_price * quantity;
+
+    if (totalBuyQuantities >= totalSellQuantities + quantity) {
+      api.userData
+        .newSellTransaction(
+          this.state.searchedCompanies,
+          this.state.singlePortfolio,
+          this.state.tradeQuantity,
+          tradeValue,
+          stock_price
+        )
+        .then(() => this.sellStock());
     } else {
-      this.setState({
-        errorMessage: "Please select a portfolio",
-      });
+      this.setState({ errorMessage: "You do not own the specified shares" });
     }
   };
 
   sellStock = () => {
-    // finds all transactions for the company
     let companyId = this.state.searchedCompanies.id;
     let transactionsList = this.state.singlePortfolio.transactions;
     let transactionCompaniesArray = transactionsList.filter(
-      (transaction) => transaction.company_id === companyId
+      (t) => t.company_id === companyId
     );
-    //finds all Buy quantities
     let buyTransactions = transactionCompaniesArray.filter(
-      (transaction) => transaction.buy_sell === "buy"
+      (t) => t.buy_sell === "buy"
     );
-    let buyQuantitiesArray = buyTransactions.map(
-      (transaction) => transaction.quantity
-    );
-    let totalBuyQuantities = buyQuantitiesArray.reduce((a, b) => a + b, 0);
-
-    let buyValueArray = buyTransactions.map((transaction) => transaction.value);
-
-    let totalBuyValues = buyValueArray.reduce((a, b) => a + b, 0);
-
+    let totalBuyQuantities = buyTransactions.map((t) => t.quantity).reduce((a, b) => a + b, 0);
+    let totalBuyValues = buyTransactions.map((t) => t.value).reduce((a, b) => a + b, 0);
     let buyPricePerShare = totalBuyValues / totalBuyQuantities;
 
-    //finds all Sell quantities
     let stock_price = this.state.currentStockPrice.c;
-
-    let gainLoss = stock_price - buyPricePerShare;
-
     let quantity = parseInt(this.state.tradeQuantity);
-    let totalGainLoss = gainLoss * quantity;
-
+    let totalGainLoss = (stock_price - buyPricePerShare) * quantity;
     let tradeValue = stock_price * quantity;
+
     api.userData
       .stockSale(this.state.singlePortfolio, tradeValue, totalGainLoss)
-      .then((res) => {
-        this.props.history.push("/portfolio");
-      });
+      .then(() => this.props.history.push("/portfolio"));
   };
 
   handleQuantityChange = (e) => {
@@ -205,30 +162,22 @@ class Trading extends React.Component {
 
   render() {
     return (
-      <Container style={{ marginTop: 10 }}>
+      <Container style={{ paddingTop: 24 }}>
+        {this.state.errorMessage !== 0 && (
+          <Alert variant="danger" onClose={() => this.setState({ errorMessage: 0 })} dismissible>
+            <Alert.Heading>Transaction Failed</Alert.Heading>
+            <p>{this.state.errorMessage}</p>
+          </Alert>
+        )}
         <Row>
-          <Col md={4} className="profileContainer">
+          <Col md={3} className="orderFormContainer">
             <PortfolioInfo
               portfolios={this.state.portfolios}
               selectPortfolio={this.handlePortfolioSelect}
               singlePortfolio={this.state.singlePortfolio}
             />
           </Col>
-        </Row>
-        <Row>
-          <br></br>
-          <br></br>
-        </Row>
-        <Row>
-          {this.state.errorMessage !== 0 ? (
-            <Alert variant="danger">
-              <Alert.Heading>Transaction Failed!</Alert.Heading>
-              <p>{this.state.errorMessage}</p>
-            </Alert>
-          ) : null}
-        </Row>
-        <Row>
-          <Col xs={2} md={4} className="orderFormContainer">
+          <Col md={4} className="orderFormContainer">
             <OrderForm
               companies={this.state.companies}
               selectCompany={this.handleCompanySelect}
@@ -238,7 +187,7 @@ class Trading extends React.Component {
               updatedQuantity={this.state.tradeQuantity}
             />
           </Col>
-          <Col xs={2} md={4} className="profileContainer">
+          <Col md={5}>
             <StockList
               companies={this.state.searchedCompanies}
               stockInfo={this.state.currentStockPrice}

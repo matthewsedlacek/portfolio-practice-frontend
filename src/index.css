@@ -149,6 +149,23 @@ code {
   margin-right: 16px;
 }
 
+.portfolioStatRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.option {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: #f0f7ff;
+}
+
 .orderFormContainer {
   border: 1px solid #ddd; /* Gray border */
   border-radius: 4px; /* Rounded border */
