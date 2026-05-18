@@ -86,9 +86,14 @@ class Profile extends React.Component {
   };
 
   handleWatchListAdd = () => {
+    const company = this.state.searchedCompanies;
+    if (!company || !company.id) return;
     api.userData
-      .newWatchListItem(this.state.searchedCompanies, this.props.currentUser)
-      .then(() => this.fetchWatchlist());
+      .newWatchListItem(company, this.props.currentUser)
+      .then(() => {
+        this.setState({ searchedCompanies: [] });
+        this.fetchWatchlist();
+      });
   };
 
   handleWatchListRemove = (watchedItem) => {

@@ -26,7 +26,11 @@ class App extends React.Component {
         this.setState({
           auth: {
             ...this.state.auth,
-            user: { id: data.user.id, username: data.user.username },
+            user: {
+              id: data.user.id,
+              username: data.user.username,
+              watchlistId: data.user.watchlist?.id,
+            },
           },
           loggedIn: true,
         });
@@ -39,7 +43,11 @@ class App extends React.Component {
     this.setState({
       auth: {
         ...this.state.auth,
-        user: { id: data.user.id, username: data.user.username },
+        user: {
+          id: data.user.id,
+          username: data.user.username,
+          watchlistId: data.user.watchlist?.id,
+        },
       },
       loggedIn: true,
     });

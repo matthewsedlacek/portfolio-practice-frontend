@@ -47,7 +47,7 @@ const SearchBar = (props) => {
           type="text"
           label="Add to Watchlist"
           placeholder="Search company name"
-          onClick={() => setDisplay(!display)}
+          onClick={() => setDisplay(true)}
           onChange={handleChange}
           value={search}
           size="small"

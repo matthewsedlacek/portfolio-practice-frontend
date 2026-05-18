@@ -94,10 +94,7 @@ const newWatchlist = (data) => {
   return fetch(`${API}/watchlists`, {
     method: "POST",
     headers: headers(),
-    body: JSON.stringify({
-      id: data.id,
-      user_id: data.id,
-    }),
+    body: JSON.stringify({ user_id: data.id }),
   }).then((res) => res.json());
 };
 
@@ -198,7 +195,7 @@ const newWatchListItem = (company, user) => {
     method: "POST",
     headers: headers(),
     body: JSON.stringify({
-      watchlist_id: user.id,
+      watchlist_id: user.watchlistId,
       company_id: company.id,
     }),
   }).then((res) => res.json());
