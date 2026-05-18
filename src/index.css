@@ -22,11 +22,11 @@ code {
 }
 
 #navBarTabs {
-  width: "100px";
-  padding: "12px";
-  margin: "0 6px 6px";
-  background: "blue";
-  color: "white";
+  width: 100px;
+  padding: 12px;
+  margin: 0 6px 6px;
+  background: #2395cb;
+  color: white;
 }
 
 .box {
@@ -41,16 +41,16 @@ code {
 
 .loginPaper {
   margin-top: 100px;
-  display: "flex";
-  flex-direction: "column";
-  align-items: "center";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .loginSubmit {
-  margin: 100px;
-  background-color: lightblue;
+  margin-top: 16px;
+  background-color: #2395cb;
 }
 .loginForm {
-  width: "100%";
+  width: 100%;
   margin-top: 25px;
 }
 
@@ -91,18 +91,18 @@ code {
 
 .navBarLogo {
   width: auto;
-  height: "30";
+  height: 30px;
   padding: 5px;
 }
 
 #navBarButtons {
-  width: "100px";
-  padding: "10px";
-  margin: "0 6px 0px";
-  background: "blue";
-  text-decoration: "none";
-  text-align: "center";
-  color: "white";
+  width: 100px;
+  padding: 10px;
+  margin: 0 6px 0;
+  background: #2395cb;
+  text-decoration: none;
+  text-align: center;
+  color: white;
 }
 
 .portfolioCreateBar {
@@ -110,7 +110,7 @@ code {
 }
 
 .portfolioTableContainer {
-  margin: 100px;
+  margin: 24px;
   background-color: lightblue;
 }
 
@@ -118,7 +118,7 @@ code {
   margin-bottom: 7px;
 }
 .orderFormButtons {
-  margin-right: 1000px;
+  margin-right: 16px;
 }
 
 .orderFormContainer {
