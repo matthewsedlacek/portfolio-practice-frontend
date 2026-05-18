@@ -4,10 +4,9 @@
 const API_ROOT = `https://salty-ravine-43340.herokuapp.com/api/v1`;
 const API = `https://salty-ravine-43340.herokuapp.com`;
 
-const NEWS = `https://stocknewsapi.com/api/v1/category?section=general&items=50&token=`;
 const WATCHED_STOCK = `https://finnhub.io/api/v1/quote?symbol=`;
+const MARKET_NEWS = `https://finnhub.io/api/v1/news?category=general`;
 const FINNHUB_TOKEN = process.env.REACT_APP_FINNHUB_API_KEY;
-const NEWS_TOKEN = process.env.REACT_APP_NEWS_API_KEY;
 const token = () => localStorage.getItem("token");
 
 const headers = () => {
@@ -68,9 +67,9 @@ const getPortfolios = () => {
 };
 
 const getNews = () => {
-  return fetch(`${NEWS}${NEWS_TOKEN}`, { headers: newsHeaders() }).then((res) =>
-    res.json()
-  );
+  return fetch(`${MARKET_NEWS}&token=${FINNHUB_TOKEN}`, {
+    headers: stockHeaders(),
+  }).then((res) => res.json());
 };
 
 const getWatchListPrice = (ticker) => {

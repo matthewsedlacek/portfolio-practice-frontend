@@ -7,20 +7,20 @@ const NewsCard = (props) => {
       <div key={props.newsStory.id}>
         <div>
           <a
-            href={props.newsStory.news_url}
+            href={props.newsStory.url}
             rel="noopener noreferrer"
             target="_blank"
           >
             <img
-              alt={props.newsStory.title}
-              src={props.newsStory.image_url}
+              alt={props.newsStory.headline}
+              src={props.newsStory.image}
               className="newsThumnail"
             />
           </a>
         </div>
         <div>
           <div className="newsThumbnailText ">
-            {props.newsStory.title}
+            {props.newsStory.headline}
             <i />
           </div>
         </div>
