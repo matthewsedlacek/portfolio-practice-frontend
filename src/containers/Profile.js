@@ -58,8 +58,9 @@ class Profile extends React.Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.userData.getPortfolios().then((data) => {
-        this.setState({ portfolios: data });
-        this.findProfitablePortfolios();
+        this.setState({ portfolios: data }, () => {
+          this.findProfitablePortfolios();
+        });
       });
     }
   };
@@ -68,9 +69,7 @@ class Profile extends React.Component {
     const newPortfolios = this.state.portfolios.filter(
       (portfolio) => portfolio.starting_value < portfolio.locked_in_value
     );
-    this.setState({
-      profitablePortfolios: newPortfolios,
-    });
+    this.setState({ profitablePortfolios: newPortfolios });
   };
 
   fetchWatchlist = () => {
@@ -83,33 +82,27 @@ class Profile extends React.Component {
   };
 
   handleCompanySelect = (company) => {
-    this.setState({
-      searchedCompanies: company,
-    });
+    this.setState({ searchedCompanies: company });
   };
 
   handleWatchListAdd = () => {
     api.userData
       .newWatchListItem(this.state.searchedCompanies, this.props.currentUser)
-      .then((res) => {
-        this.fetchWatchlist();
-      });
+      .then(() => this.fetchWatchlist());
   };
 
   handleWatchListRemove = (watchedItem) => {
-    api.userData.deleteWatchListItem(watchedItem).then((res) => {
-      this.fetchWatchlist();
-    });
+    api.userData.deleteWatchListItem(watchedItem).then(() => this.fetchWatchlist());
   };
 
   render() {
     return (
-      <Container>
-        <Row>
-          <Col md={4} bg="dark">
-            <h1>Welcome {this.props.currentUser.username}</h1>{" "}
+      <Container style={{ paddingTop: 24 }}>
+        <Row style={{ marginBottom: 16, alignItems: "center" }}>
+          <Col md={6}>
+            <h4>Welcome, {this.props.currentUser.username}</h4>
           </Col>
-          <Col md={{ span: 4, offset: 4 }}>
+          <Col md={6}>
             <SearchBar
               companies={this.state.companies}
               selectCompany={this.handleCompanySelect}
@@ -118,32 +111,24 @@ class Profile extends React.Component {
           </Col>
         </Row>
         <Row>
-          <br></br>
-          <br></br>{" "}
-        </Row>
-        <Row>
-          <Col>
-            <h2>Awards</h2>
+          <Col md={3}>
+            <h6 className="sectionHeading">Awards</h6>
             <AwardList
               portfolios={this.state.portfolios}
               transactions={this.state.transactions}
               profitablePortfolios={this.state.profitablePortfolios}
             />
           </Col>
-          <Col>
-            <h2>Market News</h2>
-            <div>
-              <NewsList news={this.state.newsArray} />
-            </div>
+          <Col md={5}>
+            <h6 className="sectionHeading">Market News</h6>
+            <NewsList news={this.state.newsArray} />
           </Col>
-          <Col>
-            <h2>Watchlist</h2>
-            <div>
-              <Watchlist
-                userWatchList={this.state.watchList}
-                handleDelete={this.handleWatchListRemove}
-              />
-            </div>
+          <Col md={4}>
+            <h6 className="sectionHeading">Watchlist</h6>
+            <Watchlist
+              userWatchList={this.state.watchList}
+              handleDelete={this.handleWatchListRemove}
+            />
           </Col>
         </Row>
       </Container>

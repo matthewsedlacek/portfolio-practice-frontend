@@ -1,81 +1,35 @@
-import React, { Fragment } from "react";
+import React from "react";
 import First from "./firststock.png";
 import Blur from "./question-mark.png";
 import Gain from "./growportfolio.png";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
 
-const AwardList = (props) => {
-  return (
-    <Fragment>
-      <TableContainer className="profileContainer">
-        <Table>
-          <TableHead align="center">Collect Awards By Trading Daily</TableHead>
-          <TableBody>
-            <div>
-              <br></br>
-              <TableRow>
-                <br></br>
-                <TableCell>
-                  {props.transactions.length > 0 ? (
-                    <img
-                      alt="First Stock Purchase"
-                      src={First}
-                      className="awardThumbnail"
-                      target="_blank"
-                    />
-                  ) : (
-                    <img
-                      alt="First Stock Purchase Locked"
-                      src={Blur}
-                      className="awardThumbnail"
-                      target="_blank"
-                    />
-                  )}
-                </TableCell>
-                <TableCell>
-                  <div>
-                    First Stock Purchase
-                    <i />
-                  </div>
-                </TableCell>
-              </TableRow>
-              <br></br>
-              <TableRow>
-                <TableCell>
-                  {props.profitablePortfolios.length > 0 ? (
-                    <img
-                      alt="Gain on Stock Sale"
-                      src={Gain}
-                      className="awardThumbnail"
-                      target="_blank"
-                    />
-                  ) : (
-                    <img
-                      alt="First Stock Purchase Locked"
-                      src={Blur}
-                      className="awardThumbnail"
-                      target="_blank"
-                    />
-                  )}
-                </TableCell>
-                <TableCell>
-                  <div>
-                    Gain on Stock Sale
-                    <i />
-                  </div>
-                </TableCell>
-              </TableRow>
-            </div>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Fragment>
-  );
-};
+const Award = ({ unlocked, image, lockedImage, label }) => (
+  <div className="awardItem">
+    <img
+      alt={label}
+      src={unlocked ? image : lockedImage}
+      className={`awardThumbnail ${unlocked ? "" : "awardLocked"}`}
+    />
+    <span className="awardLabel">{label}</span>
+  </div>
+);
+
+const AwardList = ({ transactions, profitablePortfolios }) => (
+  <div className="awardList">
+    <p className="awardHint">Collect awards by trading daily</p>
+    <Award
+      unlocked={transactions.length > 0}
+      image={First}
+      lockedImage={Blur}
+      label="First Stock Purchase"
+    />
+    <Award
+      unlocked={profitablePortfolios.length > 0}
+      image={Gain}
+      lockedImage={Blur}
+      label="Gain on Stock Sale"
+    />
+  </div>
+);
 
 export default AwardList;

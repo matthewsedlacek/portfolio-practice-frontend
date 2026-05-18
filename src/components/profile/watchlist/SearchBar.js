@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const SearchBar = (props) => {
   const [display, setDisplay] = useState(false);
@@ -10,85 +10,71 @@ const SearchBar = (props) => {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleClickOutside = (e) => {
     const { current: wrap } = wrapperRef;
-    if (wrap && !wrap.contains(e.target)) {
-      setDisplay(false);
-    }
+    if (wrap && !wrap.contains(e.target)) setDisplay(false);
   };
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    let filteredCompanies = props.companies.filter((company) =>
-      company.name.toLowerCase().includes(e.target.value.toLowerCase())
+    setOptions(
+      props.companies.filter((c) =>
+        c.name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
     );
-    setOptions(filteredCompanies);
   };
 
-  const setName = (name) => {
-    setSearch(name);
+  const handleCompanyClick = (company) => {
+    props.selectCompany(company);
+    setSearch(company.name);
     setDisplay(false);
   };
 
-  const handleCompanyClick = (companyObject) => {
-    props.selectCompany(companyObject);
-    setName(companyObject.name);
-  };
-
-  const handleAddToWatchlist = (event) => {
-    event.preventDefault();
-    props.watchListAdd(event);
+  const handleAddToWatchlist = (e) => {
+    e.preventDefault();
+    props.watchListAdd(e);
     setSearch("");
   };
 
   return (
-    <div>
-      <br></br>
-      <form>
-        <div>
-          <div className="searchBar" ref={wrapperRef}>
-            <Form.Control
-              type="text"
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              id="auto"
-              placeholder="Search Company Name"
-              onClick={() => setDisplay(!display)}
-              onChange={handleChange}
-              value={search}
-            />
-            {display && (
-              <div className="autoContainer">
-                {options.map((companyObject, i) => {
-                  return (
-                    <div
-                      onClick={() => handleCompanyClick(companyObject)}
-                      className="option"
-                      key={i}
-                      tabIndex="0"
-                    >
-                      <span>{companyObject.name}</span>
-                    </div>
-                  );
-                })}
+    <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+      <div ref={wrapperRef} style={{ flex: 1 }}>
+        <TextField
+          fullWidth
+          type="text"
+          label="Add to Watchlist"
+          placeholder="Search company name"
+          onClick={() => setDisplay(!display)}
+          onChange={handleChange}
+          value={search}
+          size="small"
+        />
+        {display && (
+          <div className="autoContainer">
+            {options.map((company, i) => (
+              <div
+                key={i}
+                onClick={() => handleCompanyClick(company)}
+                className="option"
+                tabIndex="0"
+              >
+                {company.name}
               </div>
-            )}
+            ))}
           </div>
-        </div>
-        <Button
-          variant="primary"
-          active
-          type="submit"
-          onClick={handleAddToWatchlist}
-        >
-          Add To Watch List
-        </Button>
-      </form>
+        )}
+      </div>
+      <Button
+        variant="contained"
+        style={{ backgroundColor: "#2395cb", color: "white", marginTop: 2 }}
+        onClick={handleAddToWatchlist}
+        type="submit"
+      >
+        Add
+      </Button>
     </div>
   );
 };

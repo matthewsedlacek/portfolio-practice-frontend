@@ -7,40 +7,36 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
-const Watchlist = (props) => {
-  Watchlist.defaultProps = {
-    userWatchList: [],
-  };
-
-  const renderWatchedStock = () => {
-    return props.userWatchList.map((singleWatch) => {
-      return (
-        <WatchItem
-          watchedStock={singleWatch}
-          id={singleWatch.id}
-          handleDelete={props.handleDelete}
-        />
-      );
-    });
-  };
-
-  return (
-    <div className="profileContainer">
-      <TableContainer component={Paper}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="left">Ticker</TableCell>
-              <TableCell align="left">Price</TableCell>
-              <TableCell align="left">Daily Change</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>{props.userWatchList && renderWatchedStock()}</TableBody>
-        </Table>
-      </TableContainer>
-    </div>
-  );
-};
+const Watchlist = ({ userWatchList = [], handleDelete }) => (
+  <TableContainer component={Paper}>
+    {userWatchList.length === 0 ? (
+      <Typography variant="body2" color="textSecondary" style={{ padding: 16 }}>
+        No stocks on your watchlist yet.
+      </Typography>
+    ) : (
+      <Table size="small" aria-label="watchlist">
+        <TableHead>
+          <TableRow>
+            <TableCell>Ticker</TableCell>
+            <TableCell>Price</TableCell>
+            <TableCell>Change</TableCell>
+            <TableCell padding="none" />
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {userWatchList.map((item) => (
+            <WatchItem
+              key={item.id}
+              watchedStock={item}
+              handleDelete={handleDelete}
+            />
+          ))}
+        </TableBody>
+      </Table>
+    )}
+  </TableContainer>
+);
 
 export default Watchlist;
