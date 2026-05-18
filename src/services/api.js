@@ -17,14 +17,6 @@ const headers = () => {
   };
 };
 
-const newsHeaders = () => {
-  return {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    Authorization: token(),
-  };
-};
-
 const stockHeaders = () => {
   return {
     "Content-Type": "text/plain",
