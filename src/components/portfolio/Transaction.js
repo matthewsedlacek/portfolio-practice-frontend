@@ -27,18 +27,22 @@ class Transaction extends React.Component {
     const gainLoss = currentValue - value;
     const currentPrice = this.state.currentPrice.c * 1;
 
+    const gainLossColor = gainLoss >= 0 ? "#2e7d32" : "#c62828";
+
     return (
       <Fragment>
         <tr>
           <td>{ticker}</td>
           <td>{name}</td>
-          <td>{quantity}</td>
-          <td>{share_price}</td>
-          <td>{value.toFixed(2)}</td>
-          <td>{buy_sell === "sell" ? "N/A" : currentPrice.toFixed(2)}</td>
-          <td>{buy_sell === "sell" ? "N/A" : currentValue.toFixed(2)}</td>
-          <td>{buy_sell === "sell" ? "N/A" : gainLoss.toFixed(2)}</td>
-          <td>{buy_sell}</td>
+          <td style={{ textAlign: "right" }}>{quantity}</td>
+          <td style={{ textAlign: "right" }}>{share_price}</td>
+          <td style={{ textAlign: "right" }}>{value.toFixed(2)}</td>
+          <td style={{ textAlign: "right" }}>{buy_sell === "sell" ? "N/A" : currentPrice.toFixed(2)}</td>
+          <td style={{ textAlign: "right" }}>{buy_sell === "sell" ? "N/A" : currentValue.toFixed(2)}</td>
+          <td style={{ textAlign: "right", color: buy_sell === "sell" ? "inherit" : gainLossColor, fontWeight: 600 }}>
+            {buy_sell === "sell" ? "N/A" : (gainLoss >= 0 ? "+" : "") + gainLoss.toFixed(2)}
+          </td>
+          <td style={{ textAlign: "center", textTransform: "capitalize" }}>{buy_sell}</td>
         </tr>
       </Fragment>
     );

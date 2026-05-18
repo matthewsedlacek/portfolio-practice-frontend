@@ -31,17 +31,13 @@ class Portfolio extends React.Component {
   };
 
   renderPortfolios = () => {
-    return this.state.portfolios.map((soloPortfolio) => {
-      return (
-        <Container>
-          <PortfolioCard
-            currentUser={this.props.currentUser}
-            key={soloPortfolio.id}
-            portfolio={soloPortfolio}
-          />
-        </Container>
-      );
-    });
+    return this.state.portfolios.map((soloPortfolio) => (
+      <PortfolioCard
+        currentUser={this.props.currentUser}
+        key={soloPortfolio.id}
+        portfolio={soloPortfolio}
+      />
+    ));
   };
 
   handleChange = (e) => {
@@ -77,13 +73,12 @@ class Portfolio extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container style={{ paddingTop: 24 }}>
         <AddPortfolioForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           newPortfolio={this.state.newPortfolio}
         />
-        <br></br>
         <Row>
           <Col>
             {this.state.errorMessage !== 0 ? (
@@ -95,7 +90,7 @@ class Portfolio extends React.Component {
           </Col>
         </Row>
         {this.renderPortfolios()}
-      </div>
+      </Container>
     );
   }
 }
