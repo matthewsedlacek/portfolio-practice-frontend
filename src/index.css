@@ -71,21 +71,46 @@ code {
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
 }
 
-.newsThumnail {
-  border: 1px solid #ddd; /* Gray border */
-  border-radius: 4px; /* Rounded border */
-  padding: 5px; /* Some padding */
-  width: 275px; /* Set a small width */
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+.newsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 520px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
 }
 
-.newsThumbnailText {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 75%;
+.newsCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s;
+}
+
+.newsCard:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: inherit;
+  text-decoration: none;
+}
+
+.newsCardImage {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.newsCardHeadline {
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .awardThumbnail {

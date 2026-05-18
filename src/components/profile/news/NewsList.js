@@ -1,22 +1,12 @@
-import React, { Fragment } from "react";
+import React from "react";
 import NewsCard from "./NewsCard";
 
-const NewsList = (props) => {
-  const renderNews = () => {
-    return props.news.map((singleNews) => {
-      return <NewsCard newsStory={singleNews} />;
-    });
-  };
-
-  return (
-    <Fragment>
-      <div className="profileContainer">
-        <table>
-          <tbody>{props.news && renderNews()}</tbody>
-        </table>
-      </div>
-    </Fragment>
-  );
-};
+const NewsList = ({ news }) => (
+  <div className="newsList">
+    {news && news.map((story) => (
+      <NewsCard key={story.id} newsStory={story} />
+    ))}
+  </div>
+);
 
 export default NewsList;
