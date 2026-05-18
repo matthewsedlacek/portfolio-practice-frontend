@@ -133,7 +133,7 @@ class Profile extends React.Component {
           <Col>
             <h2>Market News</h2>
             <div>
-              <NewsList news={this.state.newsArray.data} />
+              <NewsList news={this.state.newsArray} />
             </div>
           </Col>
           <Col>
