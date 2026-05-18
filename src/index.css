@@ -21,19 +21,6 @@ code {
   z-index: 1;
 }
 
-#navBarTabs {
-  width: 100px;
-  padding: 12px;
-  margin: 0 6px 6px;
-  background: #2395cb;
-  color: white;
-}
-
-.box {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
 .logoBox {
   display: flex;
   flex-direction: row;
@@ -56,6 +43,32 @@ code {
 
 .navBar {
   background-color: #2395cb;
+  padding: 8px 0;
+}
+
+.navBarInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navBarLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navBarButton {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.navBarButton:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.navBarSignOut {
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
 }
 
 .newsThumnail {
@@ -93,16 +106,6 @@ code {
   width: auto;
   height: 30px;
   padding: 5px;
-}
-
-#navBarButtons {
-  width: 100px;
-  padding: 10px;
-  margin: 0 6px 0;
-  background: #2395cb;
-  text-decoration: none;
-  text-align: center;
-  color: white;
 }
 
 .portfolioCreateBar {
