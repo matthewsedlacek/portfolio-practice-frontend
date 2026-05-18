@@ -1,8 +1,8 @@
 // const API_ROOT = `http://localhost:3000/api/v1`;
 // const API = `http://localhost:3000`;
 
-const API_ROOT = `https://salty-ravine-43340.herokuapp.com/api/v1`;
-const API = `https://salty-ravine-43340.herokuapp.com`;
+const API_ROOT = `https://portfolio-practice-api.onrender.com/api/v1`;
+const API = `https://portfolio-practice-api.onrender.com`;
 
 const WATCHED_STOCK = `https://finnhub.io/api/v1/quote?symbol=`;
 const MARKET_NEWS = `https://finnhub.io/api/v1/news?category=general`;
