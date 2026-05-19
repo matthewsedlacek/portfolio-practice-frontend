@@ -28,7 +28,7 @@ class Trading extends React.Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.userData.getPortfolios().then((data) => {
-        this.setState({ portfolios: data });
+        if (Array.isArray(data)) this.setState({ portfolios: data });
       });
     }
   };
@@ -37,7 +37,7 @@ class Trading extends React.Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.companyData.getCompanies().then((data) => {
-        this.setState({ companies: data, searchedCompanies: data });
+        if (Array.isArray(data)) this.setState({ companies: data, searchedCompanies: data });
       });
     }
   };

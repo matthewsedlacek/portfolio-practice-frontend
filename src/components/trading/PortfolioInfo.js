@@ -68,11 +68,11 @@ const PortfolioInfo = (props) => {
         <div style={{ marginTop: 16 }}>
           <div className="portfolioStatRow">
             <Typography variant="body2" color="textSecondary">Total Value</Typography>
-            <Typography variant="body1">${singlePortfolio.locked_in_value.toFixed(2)}</Typography>
+            <Typography variant="body1">${parseFloat(singlePortfolio.locked_in_value).toFixed(2)}</Typography>
           </div>
           <div className="portfolioStatRow">
             <Typography variant="body2" color="textSecondary">Available Cash</Typography>
-            <Typography variant="body1">${singlePortfolio.available_cash.toFixed(2)}</Typography>
+            <Typography variant="body1">${parseFloat(singlePortfolio.available_cash).toFixed(2)}</Typography>
           </div>
         </div>
       )}
