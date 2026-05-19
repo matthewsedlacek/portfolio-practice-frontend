@@ -40,7 +40,7 @@ class Profile extends React.Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.companyData.getCompanies().then((data) => {
-        this.setState({ companies: data });
+        if (Array.isArray(data)) this.setState({ companies: data });
       });
     }
   };
@@ -49,7 +49,7 @@ class Profile extends React.Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.stockPrices.getTransactions().then((data) => {
-        this.setState({ transactions: data });
+        if (Array.isArray(data)) this.setState({ transactions: data });
       });
     }
   };
@@ -58,16 +58,19 @@ class Profile extends React.Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.userData.getPortfolios().then((data) => {
-        this.setState({ portfolios: data }, () => {
-          this.findProfitablePortfolios();
-        });
+        if (Array.isArray(data)) {
+          this.setState({ portfolios: data }, () => {
+            this.findProfitablePortfolios();
+          });
+        }
       });
     }
   };
 
   findProfitablePortfolios = () => {
     const newPortfolios = this.state.portfolios.filter(
-      (portfolio) => portfolio.starting_value < portfolio.locked_in_value
+      (portfolio) =>
+        parseFloat(portfolio.starting_value) < parseFloat(portfolio.locked_in_value)
     );
     this.setState({ profitablePortfolios: newPortfolios });
   };
