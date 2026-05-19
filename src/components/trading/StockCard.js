@@ -18,7 +18,7 @@ const StockCard = ({ stock, stockPrice }) => {
         <CardMedia
           style={{ height: 160, backgroundSize: "contain", margin: "12px 24px 0" }}
           title={stock.name}
-          image={stock.logo || `https://financialmodelingprep.com/image-stock/${stock.ticker}.png`}
+          image={`https://financialmodelingprep.com/image-stock/${stock.ticker}.png`}
         />
         <CardContent>
           <Typography variant="h6" gutterBottom>{stock.name}</Typography>
