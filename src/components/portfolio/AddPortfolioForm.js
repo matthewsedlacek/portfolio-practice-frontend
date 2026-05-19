@@ -15,7 +15,7 @@ class AddPortfolioForm extends Component {
   };
 
   render() {
-    const { title, amount } = this.props.newPortfolio;
+    const { name, value } = this.props.newPortfolio;
     return (
       <Container>
         <br></br>
@@ -28,7 +28,7 @@ class AddPortfolioForm extends Component {
                   name="name"
                   placeholder="Portfolio Name"
                   onChange={this.onChange}
-                  value={title}
+                  value={name}
                 />
               </Col>
               <Col>
@@ -42,7 +42,7 @@ class AddPortfolioForm extends Component {
                     placeholder="Amount"
                     step="100.0"
                     onChange={this.onChange}
-                    value={amount}
+                    value={value}
                   />
                 </InputGroup>
               </Col>

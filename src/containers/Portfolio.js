@@ -25,7 +25,9 @@ class Portfolio extends React.Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.userData.getPortfolios().then((data) => {
-        this.setState({ portfolios: data });
+        if (Array.isArray(data)) {
+          this.setState({ portfolios: data });
+        }
       });
     }
   };
