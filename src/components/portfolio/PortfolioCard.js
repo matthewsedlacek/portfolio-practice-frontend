@@ -17,7 +17,10 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 const PortfolioCard = ({ portfolio }) => {
   const [open, setOpen] = React.useState(false);
 
-  const gainLoss = portfolio.locked_in_value - portfolio.starting_value;
+  const lockedInValue = parseFloat(portfolio.locked_in_value) || 0;
+  const availableCash = parseFloat(portfolio.available_cash) || 0;
+  const startingValue = parseFloat(portfolio.starting_value) || 0;
+  const gainLoss = lockedInValue - startingValue;
   const gainLossColor = gainLoss >= 0 ? "#2e7d32" : "#c62828";
 
   return (
@@ -37,11 +40,11 @@ const PortfolioCard = ({ portfolio }) => {
             </TableCell>
             <TableCell align="right">
               <Typography variant="body2" color="textSecondary">Total Value</Typography>
-              <Typography variant="body1">${portfolio.locked_in_value.toFixed(2)}</Typography>
+              <Typography variant="body1">${lockedInValue.toFixed(2)}</Typography>
             </TableCell>
             <TableCell align="right">
               <Typography variant="body2" color="textSecondary">Available Cash</Typography>
-              <Typography variant="body1">${portfolio.available_cash.toFixed(2)}</Typography>
+              <Typography variant="body1">${availableCash.toFixed(2)}</Typography>
             </TableCell>
             <TableCell align="right">
               <Typography variant="body2" color="textSecondary">Gain / Loss</Typography>

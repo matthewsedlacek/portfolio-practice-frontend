@@ -20,7 +20,9 @@ class Transaction extends React.Component {
   };
 
   render() {
-    const { quantity, buy_sell, share_price, value } = this.props.transaction;
+    const { quantity, buy_sell } = this.props.transaction;
+    const share_price = parseFloat(this.props.transaction.share_price) || 0;
+    const value = parseFloat(this.props.transaction.value) || 0;
 
     const { ticker, name } = this.props.transaction.company;
     const currentValue = this.state.currentPrice.c * quantity;
